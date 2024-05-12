@@ -130,11 +130,11 @@ function Appointment() {
         className="absolute inset-0 object-cover h-full"
       />
       {currentStep === 1 && (
-        <div className="z-10 bg-white py-6 px-8 flex flex-col">
+        <div className="z-10 bg-white py-6 px-8 mx-4 flex flex-col">
           <h2 className="text-3xl font-medium">
             Réservation SAV en quelques clics.
           </h2>
-          <span className="text-sm font-normal w-3/5 my-4">
+          <span className="text-sm font-normal md:w-3/5 my-4">
             Planifiez facilement vos entretiens, réparations et autres services
             avec un réparateur Mercedes-Benz près de chez vous.
           </span>
@@ -161,7 +161,7 @@ function Appointment() {
       )}
 
       {currentStep === 2 && (
-        <div className="z-10 bg-white h-screen w-screen py-40 px-40">
+        <div className="z-10 bg-white h-screen w-screen md:py-40 md:px-40 py-20 px-10">
           <h2>Sélectionnez une ou plusieurs prestation(s) de service.</h2>
           {services.map((category) => (
             <div key={category._id} className="mt-14">
@@ -196,7 +196,7 @@ function Appointment() {
         </div>
       )}
       {currentStep === 3 && (
-        <div className="z-10 bg-white h-screen w-screen py-40 px-40 flex justify-center items-center">
+        <div className="z-10 bg-white h-screen w-screen md:py-40 md:px-40 px-10 my-20 flex justify-center items-center">
           <div className="flex flex-col md:flex-row items-center md:items-start justify-center w-full">
             <div className="flex-1 md:mr-8">
               <h2 className="text-lg font-semibold mb-20">
@@ -264,7 +264,7 @@ function Appointment() {
       )}
 
 {currentStep === 4 && (
-  <div className="z-10 bg-white h-screen w-screen py-12 px-8 flex justify-center items-center">
+  <div className="z-10 bg-white h-screen w-screen md:py-12 px-8 flex justify-center items-center">
     <div className="max-w-4xl w-full flex justify-between">
       {/* Left side: Inputs */}
       <div className="flex-1 mr-8">
@@ -306,13 +306,13 @@ function Appointment() {
         </div>
         <button
           onClick={handleConfirmAppointment}
-          className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="flex py-3 px-8 bg-blue-500 w-fit text-white mt-5"
         >
           Confirm Date & Time
         </button>
       </div>
       {/* Right side: Display available dates */}
-      <div className="flex-1">
+      <div className="md:flex flex-1 hidden">
         <div className=" border border-gray-300 px-6 py-4 rounded-md">
           <h3 className="text-lg font-semibold mb-4">Opening hours</h3>
           <ul className="flex flex-col justify-between items-start gap-4">
@@ -332,7 +332,7 @@ function Appointment() {
 
 
       {currentStep === 5 && (
-        <div className="z-10 bg-white">
+        <div className="z-10 bg-white h-screen w-screen px-8 py-10">
           <h2 className="text-xl font-bold mb-4">
             Step 5: Appointment Summary
           </h2>
@@ -373,7 +373,7 @@ function Appointment() {
                 onChange={(e) =>
                   setFormData({ ...formData, firstName: e.target.value })
                 }
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="md:w-3/4 w-full py-3 px-2 border border-gray-300 mt-2"
               />
             </div>
             <div>
@@ -390,7 +390,7 @@ function Appointment() {
                 onChange={(e) =>
                   setFormData({ ...formData, lastName: e.target.value })
                 }
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="md:w-3/4 w-full py-3 px-2 border border-gray-300 mt-2"
               />
             </div>
             <div>
@@ -407,7 +407,7 @@ function Appointment() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="md:w-3/4 w-full py-3 px-2 border border-gray-300 mt-2"
               />
             </div>
             <div>
@@ -424,12 +424,12 @@ function Appointment() {
                 onChange={(e) =>
                   setFormData({ ...formData, phoneNumber: e.target.value })
                 }
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="md:w-3/4 w-full py-3 px-2 border border-gray-300 mt-2"
               />
             </div>
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="flex py-3 px-8 bg-blue-500 w-fit text-white mt-5"
             >
               Submit
             </button>

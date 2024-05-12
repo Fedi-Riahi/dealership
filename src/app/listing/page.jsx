@@ -5,14 +5,14 @@ import ModelFilter from "@/components/modelFilter/ModelFilter";
 import TypeFilter from "@/components/typefilter/TypeFilter";
 import Link from 'next/link';
 import TransmissionFilter from '@/components/transmissionFilter/TransmissionFilter';
-import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
+
 
 const Listings = () => {
   const [listings, setListings] = useState([]);
   const [filteredTypes, setFilteredTypes] = useState([]);
   const [filteredModels, setFilteredModels] = useState([]);
   const [filteredTransmissions, setFilteredTransmissions] = useState([]);
-  const [displayedListings, setDisplayedListings] = useState(8);
+  const [displayedListings, setDisplayedListings] = useState(6);
   const [showFilters, setShowFilters] = useState(false); // Initially hide filters on mobile
 
   const handleTypeFilterChange = (selectedTypes) => {
@@ -61,7 +61,7 @@ const Listings = () => {
   }, [filteredTypes, filteredTransmissions, filteredModels]);
 
   const loadMoreListings = () => {
-    setDisplayedListings(prev => prev + 8);
+    setDisplayedListings(prev => prev + 6);
     const listingsContainer = document.getElementById('listings-container');
     if (listingsContainer) {
       listingsContainer.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -69,13 +69,13 @@ const Listings = () => {
   };
 
   return (
-    <div className="md:px-20 sm:px-5 my-40">
+    <div className="md:px-20 sm:px-5 my-28">
       {/* <div className='flex items-center pt-20 mt-20 cursor-pointer'>
         <ArrowLongLeftIcon className='h-6 w-6 text-zinc' />
         <h3 className='text-md hover:bg-gray-300 px-2 py-1'>Retour à la sélection de la gamme de modèles</h3>
       </div> */}
       <div className='flex items-center justify-between w-full mt-4 mb-5'>
-        <h3 className='font-mercedes-light md:w-3/5 md:text-4xl sm:text-xl w-full'>Sélectionnez votre Mercedes-Benz de rêve</h3>
+        <h3 className=' md:w-3/5 md:text-4xl sm:text-lg w-full mx-4'>Sélectionnez votre Mercedes-Benz de rêve</h3>
         <div className='flex flex-col gap-1 w-2/5'>
           <div className='md:flex items-center justify-center gap-4 hidden'>
             <input type='text' placeholder='Rechercher un modèle' className='w-[500px] px-4 py-3 border border-zinc bg-transparent' />
@@ -83,7 +83,7 @@ const Listings = () => {
           </div>
                   {/* Filter button for mobile */}
         <button
-          className="block md:hidden bg-zinc text-white py-2 px-4"
+          className="block md:hidden bg-zinc text-white py-2 px-4 mx-4"
           onClick={() => setShowFilters(true)}
         >
           Filters
@@ -114,7 +114,7 @@ const Listings = () => {
       <div className="flex items-start justify-between mx-auto my-20 gap-5">
         {/* Filter section for desktop */}
         <div className="hidden md:block w-1/5">
-          <div className="border border-gray-200 mb-2">
+          <div className="bg-white mb-2">
             <div className='p-5 border-b border-gray-200 dark:border-gray-700'>
               <h3 className="text-lg font-semibold mb-2">Types</h3>
               <TypeFilter selectedTypes={filteredTypes} onChange={handleTypeFilterChange} />
@@ -132,11 +132,11 @@ const Listings = () => {
 
         {/* Listings section */}
         <div className=" w-full flex items-center justify-center flex-col mb-40" id="listings-container">
-          <div className="grid md:grid-cols-4 grid-cols-1 gap-5 w-fit">
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-5 w-full">
             {listings.slice(0, displayedListings).map((listing) => (
-              <Link key={listing._id} href={`/listing/${listing._id}`} className='cursor-default'>
+
                 <ListingCard listing={listing} id={listing._id}/>
-              </Link>
+
             ))}
           </div>
           {/* Load More Button */}

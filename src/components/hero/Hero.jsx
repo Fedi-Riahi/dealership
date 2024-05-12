@@ -71,8 +71,8 @@ function Hero() {
             </div>
 
             {/* For desktop */}
-            <div className="absolute bottom-20 right-10 md:block hidden">
-                <button onClick={handleTogglePlay} className=" rounded-xl p-2 flex justify-center items-center border-2 border-white">
+            <div className="absolute bottom-32 right-10 md:block hidden">
+                <button onClick={handleTogglePlay} className=" rounded-xl p-2 flex justify-center items-center border border-white">
                     {isPlaying ? (
                         <PauseIcon className="h-8 w-8 text-white" />
                     ) : (

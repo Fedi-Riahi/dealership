@@ -5,11 +5,20 @@ import { LuFuel } from "react-icons/lu";
 import { GiGearStickPattern } from "react-icons/gi";
 import { PiArrowUpRightThin } from "react-icons/pi";
 import Image from "next/image";
+import CarReserve from "@/components/carreserve/CarReserve";
+import Link from "next/link";
 
 const ListingCard = ({ listing }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
@@ -41,7 +50,7 @@ const ListingCard = ({ listing }) => {
   }
 
   return (
-    <div className="max-w-md bg-white relative flex flex-col transition-transform duration-500 rounded-lg">
+    <div className="max-w-md bg-white relative flex flex-col transition-transform duration-50 mx-4">
       <div className="flex flex-col items-start justify-center w-full">
         <div className="px-5 py-2">
           <Image
@@ -52,51 +61,69 @@ const ListingCard = ({ listing }) => {
             className="w-full object-cover"
           />
           <div className="flex items-center justify-start gap-5">
-
-        <h3 className="text-gray-900 font-semibold text-xl  cursor-pointer">
-            {listing.listingTitle}
-          </h3>
-          <p className="text-gray-500 font-medium text-xl cursor-pointer">{listing.model}</p>
+            <Link key={listing._id} href={`/listing/${listing._id}`} className='cursor-default'>
+            <h3 className="text-gray-900 font-semibold text-xl  cursor-pointer">
+              {listing.listingTitle}
+            </h3>
+            </Link>
+            <p className="text-gray-500 font-medium text-xl cursor-pointer">
+              {listing.model}
+            </p>
           </div>
         </div>
         <div className="flex flex-col px-4 my-4 w-full">
-
           {/* <div className="border-t border-gray-200 my-4 " /> */}
           {/* Display this section on both desktop and mobile screens */}
           <div className="flex flex-col justify-start items-center text-gray-700 ">
             <div className="flex flex-col  w-full ">
               <div className="flex  items-center gap-2">
                 <GiSpeedometer className="h-5 w-5  text-zinc" />
-                <p className="font-normal mt-1  text-gray-700 pb-1">220 Km/h</p>
+                <p className="font-normal mt-1  text-gray-700 pb-1">
+                  {listing.maxSpeed} Km/h
+                </p>
               </div>
-                <p className="text-sm">Top speed</p>
-                <div className="w-full border-t border-gray-200 my-2"/>
+              <p className="text-sm">Top speed</p>
+              <div className="w-full border-t border-gray-200 my-2" />
               <div className="flex items-center gap-2 ">
                 <LuFuel className="h-5 w-5 text-zinc" />
-                <p className="font-normal mt-1 text-gray-700">320 kW / 424 PS</p>
+                <p className="font-normal mt-1 text-gray-700">
+                  {listing.powerKw} kW / 424 PS
+                </p>
               </div>
               <p className="text-sm">power up to (kW) power up to (PS)</p>
-              <div className="w-full border-t border-gray-200 my-2"/>
+              <div className="w-full border-t border-gray-200 my-2" />
               <div className="flex items-center gap-2 ">
                 <GiGearStickPattern className="h-5 w-5 text-zinc" />
-                <p className="font-normal mt-1 text-gray-700 pb-1">4.7s</p>
+                <p className="font-normal mt-1 text-gray-700 pb-1">
+                  {listing.acceleration}s
+                </p>
               </div>
-              <p className="text-sm">Acceleration from 0 to 100 Km/h with launch control</p>
-
+              <p className="text-sm">
+                Acceleration from 0 to 100 Km/h with launch control
+              </p>
             </div>
           </div>
 
           {/* <div className="border-t border-gray-300 my-4 w-full" /> */}
-          <div className="flex items-center w-full  justify-between mt-6">
-            <div className="flex items-center justify-center gap-1 cursor-pointer">
-              <p className="text-white bg-zinc py-3 px-10 font-normal">Configure</p>
+          <div className="flex items-center w-full  justify-between mt-6 gap-5">
+            <div className="flex-2 flex items-center justify-center gap-1 cursor-pointer">
+              <p className="text-white bg-zinc py-3 px-10 font-normal w-full">
+                Technical Details
+              </p>
               {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
             </div>
-            <div className="flex items-center justify-center gap-1 cursor-pointer">
-              <p className="text-zinc border border-zinc py-3 px-4 font-normal">Technical Details</p>
+            <div className="flex-1 flex items-center justify-center gap-1 cursor-pointer">
+              <p className="text-zinc border border-zinc py-3 px-10 font-normal w-full text-center" onClick={openModal}>
+                Reserve
+              </p>
               {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
             </div>
           </div>
+          {/* Modal overlay */}
+          <CarReserve
+            isOpen={isModalOpen}
+            onClose={closeModal}
+          />
         </div>
       </div>
     </div>

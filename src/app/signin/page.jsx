@@ -46,7 +46,7 @@ export default function LoginForm() {
         return;
       }
 
-      router.replace("/profile"); // Redirect to the profile page after successful sign-in
+      router.replace("/"); // Redirect to the profile page after successful sign-in
     } catch (error) {
       console.error(error);
     }

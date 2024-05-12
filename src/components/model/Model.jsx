@@ -14,7 +14,7 @@ const MyModel = () => {
   const [cameraUpAndDown, setCameraUpAndDown] = useState(false);
 
   return (
-    <div className="w-full h-full  rounded-xl ">
+    <div className="w-full md:h-full h-1/2  rounded-xl px-4">
       <Canvas>
         <ambientLight intensity={1.5} />
         <OrbitControls 
@@ -43,7 +43,7 @@ const MyModel = () => {
         <Suspense fallback={null}>
           <Car cameraUpAndDown={cameraUpAndDown} />
         </Suspense>
-        <Environment preset="sunset" />
+        <Environment preset="city" />
       </Canvas>
     </div>
   );

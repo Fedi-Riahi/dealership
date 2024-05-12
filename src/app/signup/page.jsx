@@ -30,7 +30,7 @@ const Register = () => {
       }
 
       // Redirect user to verification pending page
-      router.push("/singin");
+      router.push("/");
 
     } catch (error) {
       setError(error.message);

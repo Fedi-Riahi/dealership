@@ -128,13 +128,13 @@ const CarParts = () => {
 
       <div className="flex items-start justify-between mx-auto my-15 gap-5">
         {/* Filters section for desktop */}
-        <div className="w-1/5 hidden md:block">
-          <div className="border border-gray-200 mb-2">
-            <div className="p-5 border-b border-gray-200 dark:border-gray-700">
+        <div className="w-1/5 hidden md:block bg-white">
+          <div className=" mb-2">
+            <div className="p-5">
               <h3 className="text-lg font-semibold mb-2">Categories</h3>
               <PartsFilter onChange={handleCategoryFilterChange} />
             </div>
-            <div className="p-5 border-b border-gray-200 dark:border-gray-700">
+            <div className="p-5 ">
               <h3 className="text-lg font-semibold mb-2">Compatible Models</h3>
               <CompatibleCarModelsFilter onChange={handleModelFilterChange} />
             </div>
@@ -145,7 +145,7 @@ const CarParts = () => {
           className="w-4/5 flex items-center flex-col mb-40"
           id="car-parts-container"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 w-full">
             {carParts.slice(0, displayedCarParts).map((part) => (
               <CarPartCard part={part} id={part._id} />
             ))}

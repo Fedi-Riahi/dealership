@@ -1,8 +1,10 @@
 "use client"
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 
 const TypeFilter = ({ selectedTypes = [], onChange }) => {
   const [carTypes, setCarTypes] = useState([]);
+  const [carData, setCarData] = useState(null); // State to store fetched car data
 
   useEffect(() => {
     const fetchCarTypes = async () => {
@@ -15,6 +17,7 @@ const TypeFilter = ({ selectedTypes = [], onChange }) => {
         const allCarTypes = data.carListing.map(listing => listing.type);
         const uniqueTypes = Array.from(new Set(allCarTypes));
         setCarTypes(uniqueTypes); // Exclude "All" option
+        setCarData(data); // Store fetched data
       } catch (error) {
         console.error("Error fetching car types:", error);
       }
@@ -22,6 +25,12 @@ const TypeFilter = ({ selectedTypes = [], onChange }) => {
 
     fetchCarTypes();
   }, []);
+
+  const getLastModelCardImage = (type) => {
+    if (!carData) return null; // Return null if carData is not available yet
+    const lastModel = carData.carListing.find(listing => listing.type === type);
+    return lastModel ? lastModel.cardImages[1] : null;
+  };
 
   const handleTypeChange = (event, carType) => {
     const isChecked = event.target.checked;
@@ -55,7 +64,12 @@ const TypeFilter = ({ selectedTypes = [], onChange }) => {
                 onChange={(event) => handleTypeChange(event, carType)}
                 className="accent-gray-800 w-6 h-6 text-white border-gray-300 rounded   mr-2 peer peer-checked:bg-gray-500 peer-checked:text-gray-900"
               />
-              <span className="text-md font-medium">{carType}</span>
+
+              {/* Display last model's card image */}
+              {getLastModelCardImage(carType) && (
+                <Image src={getLastModelCardImage(carType)} alt={`Card image of ${carType}`} width={80} height={80} className='object-cover'/>
+              )}
+              <span className="text-md font-medium pl-4">{carType}</span>
             </label>
           </li>
         ))}

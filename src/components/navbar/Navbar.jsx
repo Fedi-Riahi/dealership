@@ -101,9 +101,14 @@ const Navbar = () => {
             <li>
               <div className="relative">
                 <UserIcon
-                  className="h-6 w-6 cursor-pointer"
+                  className="h-6 w-6 cursor-pointer relative"
                   onClick={toggleDropdown}
                 />
+                  {status === "authenticated" && (
+
+                <CheckCircleIcon className="text-blue-500 h-5 w-5 absolute -top-3 -right-3" />
+                  )}
+
                 {status === "authenticated" && isDropdownOpen && (
                   <div className="absolute top-8 right-2 bg-white font-lmedium text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50">
                     <p className="text-zinc text-2xl">

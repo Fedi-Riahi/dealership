@@ -218,10 +218,8 @@ const ModelDetails = () => {
         <MyCarousel model={model} />
       </div>
       <div
-        className={`px-auto md:py-10 md:w-full flex items-center flex-col justify-center relative ${
-          isDesktop ? "h-1/2" : "" // Apply the style only if it”s a desktop
-        }`}
-        style={{ height: isDesktop ? "120vh" : "80vh" }} // Adjust height for desktop
+        className="px-auto md:py-10 md:w-full flex items-center flex-col justify-center relative"
+// Adjust height for desktop
       >
         <h1 className="md:text-4xl text-2xl  w-fit text-zinc x-4 py-2 font-mercedes-bold text-center flex items-center justify-center mt-4 absolute md:-top-16 top-20 md:left-50 z-10">
           L”extérieur de l”{model.listingTitle}

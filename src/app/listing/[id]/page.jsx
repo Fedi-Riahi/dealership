@@ -15,14 +15,8 @@ import { GiGearStickPattern } from "react-icons/gi";
 
 const ModelDetails = () => {
   const pathname = usePathname();
-  const isDesktop = useRef(window.innerWidth >= 1024);
   const id = pathname.split("/").pop();
 
-  if (!id) {
-    return <div className="text-center">No ID provided</div>;
-  }
-
-  // Define all hooks unconditionally
   const [model, setModel] = useState(null);
   const [similarModels, setSimilarModels] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,7 +25,6 @@ const ModelDetails = () => {
   useEffect(() => {
     const fetchModelData = async () => {
       try {
-        // Fetch details of the current model
         const modelResponse = await fetch(
           `http://localhost:3000/api/carmodels/${id}`
         );
@@ -41,7 +34,6 @@ const ModelDetails = () => {
         const modelData = await modelResponse.json();
         setModel(modelData.model);
 
-        // Fetch all car models
         const allModelsResponse = await fetch(
           `http://localhost:3000/api/carmodels`
         );
@@ -50,7 +42,6 @@ const ModelDetails = () => {
         }
         const allModelsData = await allModelsResponse.json();
 
-        // Filter similar models based on the year of the current model
         const similarModelsFiltered = allModelsData.carListing.filter(
           (similarModel) =>
             similarModel.year === modelData.model.year &&
@@ -59,16 +50,12 @@ const ModelDetails = () => {
         setSimilarModels(similarModelsFiltered);
       } catch (error) {
         console.error("Error fetching model:", error);
-        // Handle the error (e.g., display an error message)
+        // Handle the error
       }
     };
 
     fetchModelData();
-  }, []);
-
-  if (!model) {
-    return <div className="text-center">Loading...</div>;
-  }
+  }, [id]);
 
   const handleModalOpen = () => {
     setIsModalOpen(true);
@@ -85,6 +72,10 @@ const ModelDetails = () => {
   const handleModalCloseReserve = () => {
     setIsModalOpenReserve(false);
   };
+
+  if (!model) {
+    return <div className="text-center">Loading...</div>;
+  }
 
   return (
     <div>

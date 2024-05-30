@@ -1,8 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import CarPartCard from "@/components/carPartCard/CarPartCard";
-import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
+import CarPartCard from "@/components/carpartcard/CarPartCard";
 import PartsFilter from "@/components/partfilter/PartsFilter";
 import CompatibleCarModelsFilter from "@/components/compatibleFilter/CompatibleCarModelsFilter ";
 

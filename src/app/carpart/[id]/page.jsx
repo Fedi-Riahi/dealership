@@ -6,10 +6,9 @@ import { CiShoppingCart } from "react-icons/ci";
 import { Context } from "@/app/context/page";
 
 const PartDetails = () => {
-  
-    const [part, setPart] = useState(null);
-    const [similarParts, setSimilarParts] = useState([]);
-    const { handleAddToCart } = useContext(Context);
+  const { handleAddToCart } = useContext(Context);
+  const [part, setPart] = useState(null);
+  const [similarParts, setSimilarParts] = useState([]);
   const pathname = usePathname();
   const id = pathname.split("/").pop();
 

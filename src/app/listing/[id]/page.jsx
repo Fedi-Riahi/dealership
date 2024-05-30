@@ -25,19 +25,10 @@ const ModelDetails = () => {
   // Define all hooks unconditionally
   const [model, setModel] = useState(null);
   const [similarModels, setSimilarModels] = useState([]);
-  const [currentImage, setCurrentImage] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenReserve, setIsModalOpenReserve] = useState(false);
-  const [topPosition, setTopPosition] = useState("-top-40");
-  c
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTopPosition("top-28");
-    }, 500); // Adjust the delay time as needed (in milliseconds)
 
-    return () => clearTimeout(timer);
-  }, []); // This effect will run only once on component mount
 
   useEffect(() => {
     const fetchModelData = async () => {
@@ -69,8 +60,6 @@ const ModelDetails = () => {
         );
         setSimilarModels(similarModelsFiltered);
 
-        // Set the current image once the model data is fetched
-        setCurrentImage(modelData.model.exteriorImages[0]);
       } catch (error) {
         console.error("Error fetching model:", error);
       }

@@ -7,13 +7,20 @@ import { PiArrowUpRightThin } from "react-icons/pi";
 import Image from "next/image";
 import CarReserve from "@/components/carreserve/CarReserve";
 import Link from "next/link";
-
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 const ListingCard = ({ listing }) => {
+  const { data: session } = useSession();
+  const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
-    setIsModalOpen(true);
+    if (!session) {
+      router.push("/signin");
+    } else {
+      setIsModalOpen(true);
+    }
   };
 
   const closeModal = () => {
@@ -51,8 +58,8 @@ const ListingCard = ({ listing }) => {
 
   return (
     <div className="max-w-md bg-white relative flex flex-col transition-transform duration-50 mx-4">
-      <div className="flex flex-col items-start justify-center w-full">
-        <div className="px-5 py-2">
+      <div className="flex flex-col items-center justify-center w-full">
+        <div className=" py-2">
           <Image
             src={listing.cardImages[0]}
             alt={listing.listingTitle}
@@ -60,18 +67,22 @@ const ListingCard = ({ listing }) => {
             height={300}
             className="w-full object-cover"
           />
-          <div className="flex items-center justify-start gap-5">
-            <Link key={listing._id} href={`/listing/${listing._id}`} className='cursor-default'>
-            <h3 className="text-gray-900 font-semibold text-xl  cursor-pointer">
-              {listing.listingTitle}
-            </h3>
-            </Link>
+          <div className="flex flex-col  my-4 w-full">
+            <div className="flex items-center justify-start gap-5 sm:gap-2">
+              <Link
+                key={listing._id}
+                href={`/listing/${listing._id}`}
+                className="cursor-default"
+              >
+                <h3 className="text-gray-900 font-semibold text-xl   cursor-pointer">
+                  {listing.listingTitle}
+                </h3>
+              </Link>
+            </div>
             <p className="text-gray-500 font-medium text-xl cursor-pointer">
               {listing.model}
             </p>
           </div>
-        </div>
-        <div className="flex flex-col px-4 my-4 w-full">
           {/* <div className="border-t border-gray-200 my-4 " /> */}
           {/* Display this section on both desktop and mobile screens */}
           <div className="flex flex-col justify-start items-center text-gray-700 ">
@@ -106,24 +117,18 @@ const ListingCard = ({ listing }) => {
 
           {/* <div className="border-t border-gray-300 my-4 w-full" /> */}
           <div className="flex items-center w-full  justify-between mt-6 gap-5">
-            <div className="flex-2 flex items-center justify-center gap-1 cursor-pointer">
-              <p className="text-white bg-zinc py-3 px-10 font-normal w-full">
+            <div className=" flex items-center justify-center gap-1 cursor-pointer w-full">
+              <p
+                className="bg-blue-500 text-white  py-3 px-8 font-normal w-full text-center"
+                onClick={openModal}
+              >
                 Technical Details
-              </p>
-              {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
-            </div>
-            <div className="flex-1 flex items-center justify-center gap-1 cursor-pointer">
-              <p className="text-zinc border border-zinc py-3 px-10 font-normal w-full text-center" onClick={openModal}>
-                Reserve
               </p>
               {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
             </div>
           </div>
           {/* Modal overlay */}
-          <CarReserve
-            isOpen={isModalOpen}
-            onClose={closeModal}
-          />
+          <CarReserve isOpen={isModalOpen} onClose={closeModal} />
         </div>
       </div>
     </div>

@@ -53,7 +53,7 @@ const TransmissionFilter = ({ selectedTypes = [], onChange }) => {
                 type="checkbox"
                 checked={selectedTypes.includes(transmissionType)}
                 onChange={(event) => handleTypeChange(event, transmissionType)}
-                className="accent-gray-800 w-6 h-6 text-white border-gray-300 rounded   mr-2 peer peer-checked:bg-gray-500 peer-checked:text-gray-900"
+                className="accent-blue-500 w-6 h-6 text-white border-gray-300 rounded   mr-2 peer peer-checked:bg-gray-500 peer-checked:text-gray-900"
               />
               <span className="text-md font-medium">{transmissionType}</span>
             </label>

@@ -6,8 +6,6 @@ import { MeshBasicMaterial } from "three"; // Import necessary material
 import SL from "../../../public/Sl";
 import * as THREE from "three";
 import GroundComponent   from "./Ground";
-import  Rings  from "./Rings";
-import Boxes from "./Boxes";
 import FloatingGrid from "./FloatingGrid";
 
 const MyModel = () => {

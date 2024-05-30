@@ -39,7 +39,7 @@ const Intro = ({ introTitle }) => {
         <h3 className="text-gray-900 font-semibold text-xl  cursor-pointer">
             {car.listingTitle}
           </h3>
-          <p className="text-gray-500 font-medium text-xl cursor-pointer">{car.model}</p>
+          <p className="text-gray-500 font-medium text-xl cursor-pointer">{car.model} </p>
           </div>
           <Image
             src={car.cardImages[0]}
@@ -79,11 +79,11 @@ const Intro = ({ introTitle }) => {
           {/* <div className="border-t border-gray-300 my-4 w-full" /> */}
           <div className="flex items-center w-full  justify-center gap-4 mt-6">
             <div className="flex items-center justify-center gap-1 cursor-pointer">
-              <p className="text-white bg-zinc py-3 px-14 font-normal">Configure</p>
+              <p className="bg-blue-500 text-white hover:bg-blue-500/90 py-3 px-14 font-normal">Configure</p>
               {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
             </div>
             <div className="flex items-center justify-center gap-1 cursor-pointer">
-              <p className="text-zinc border border-zinc py-3 px-10 font-normal hover:bg-gray-50">Technical Details</p>
+              <p className="text-zinc border border-zinc py-3 md:px-10 font-normal hover:bg-gray-50 sm:text-sm px-6">Technical Details</p>
               {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
             </div>
           </div>
@@ -95,34 +95,46 @@ const Intro = ({ introTitle }) => {
 
   const carTypes = ['Sedan', 'SUV', 'Convertible']; // Example car types
 
-  return (
-    <div className="px-4 md:px-20"> {/* Add padding for mobile screens */}
-      <div className='flex items-center justify-between w-full'>
-        {introTitle && <h2 className="text-3xl font-mercedes-light mb-4">{introTitle}</h2>} {/* Adjust font size for mobile */}
-        {!introTitle && <h2 className="text-3xl font-mercedes-light mb-4">Explorez tous les véhicules</h2>} {/* Adjust font size for mobile */}
-        <Link href ='/listing'className='md:flex  items-center justify-center cursor-pointer hidden '>
-          <p className='text-zinc font-medium '>View Details</p>
-          <PiArrowUpRightThin className='h-6 w-6 text-zinc '/>
-        </Link>
-      </div>
-      <div className="flex justify-center gap-6 mt-8 flex-wrap"> {/* Updated to wrap items for smaller screens */}
-        {/* Render tabs for each car type */}
-        {carTypes.map(type => (
+return (
+  <div className="px-4 md:px-20"> {/* Add padding for mobile screens */}
+    <div className='flex items-center justify-between w-full'>
+      {introTitle && <h2 className="text-3xl font-mercedes-light mb-4">{introTitle}</h2>} {/* Adjust font size for mobile */}
+      {!introTitle && <h2 className="text-3xl font-mercedes-light mb-4">Explorez tous les véhicules</h2>} {/* Adjust font size for mobile */}
+      <Link href='/listing' className='md:flex items-center justify-center cursor-pointer hidden'>
+        <p className='text-zinc font-medium '>View Details</p>
+        <PiArrowUpRightThin className='h-6 w-6 text-zinc ' />
+      </Link>
+    </div>
+    <div className="flex justify-center gap-6 mt-8 flex-wrap"> {/* Updated to wrap items for smaller screens */}
+      {/* Render tabs for each car type */}
+      {carTypes.map(type => {
+        // Filter car models based on the current type
+        const filteredModels = carModels.filter(car => car.type === type);
+        // Find the latest card image for the current type
+        const latestCardImage = filteredModels.length > 0 ? filteredModels[0].cardImages[0] : null;
+
+        return (
           <div 
             key={type} 
             className={`cursor-pointer font-medium text-center ${selectedType === type ? 'border-b-2 border-blue-500' : ''}`} // Apply underline style for the selected type
             onClick={() => setSelectedType(type)} // Update selected type on click
           >
-            {type}
+            {/* Display the car type name and the latest card image */}
+            <div>
+              <p>{type}</p>
+              {latestCardImage && <img src={latestCardImage} alt={type} className="object-contain w-20 h-20" />}
+            </div>
           </div>
-        ))}
-      </div>
-      <div className="border-t border-gray-300 mt-4" />
-      <div className="flex flex-col justify-center gap-6 mt-4 md:flex-row md:flex-wrap"> {/* Adjust spacing for mobile */}
-        {renderCarCards()}
-      </div>
+        );
+      })}
     </div>
-  );
+    <div className="border-t border-gray-300 mt-4" />
+    <div className="flex flex-col justify-center gap-6 mt-4 md:flex-row md:flex-wrap"> {/* Adjust spacing for mobile */}
+      {renderCarCards()}
+    </div>
+  </div>
+);
+
 };
 
 export default Intro;

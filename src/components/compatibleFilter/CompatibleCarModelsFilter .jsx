@@ -1,9 +1,9 @@
-"use client"
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useEffect } from "react";
 
 const CompatibleCarModelsFilter = ({ onChange }) => {
   const [compatibleCarModels, setCompatibleCarModels] = useState([]);
-  const [selectedModels, setSelectedModels] = useState([]);
+  const [selectedModel, setSelectedModel] = useState("");
 
   useEffect(() => {
     const fetchCompatibleCarModels = async () => {
@@ -13,7 +13,9 @@ const CompatibleCarModelsFilter = ({ onChange }) => {
           throw new Error("Failed to fetch compatible car models");
         }
         const data = await response.json();
-        const allCompatibleCarModels = data.carParts.flatMap(part => part.compatibleCarModels);
+        const allCompatibleCarModels = data.carParts.flatMap(
+          (part) => part.compatibleCarModels
+        );
         const uniqueModels = Array.from(new Set(allCompatibleCarModels));
         setCompatibleCarModels(uniqueModels);
       } catch (error) {
@@ -24,40 +26,39 @@ const CompatibleCarModelsFilter = ({ onChange }) => {
     fetchCompatibleCarModels();
   }, []);
 
-  const handleModelChange = (model) => {
-    const updatedModels = selectedModels.includes(model)
-      ? selectedModels.filter(selectedModel => selectedModel !== model)
-      : [...selectedModels, model];
-    setSelectedModels(updatedModels);
+  const handleModelChange = (event) => {
+    setSelectedModel(event.target.value);
   };
 
   useEffect(() => {
-    onChange(selectedModels);
-  }, [selectedModels]);
+    onChange(selectedModel);
+  }, [selectedModel]);
 
   return (
-    <div> 
-      <ul className="flex flex-col items-start justify-center gap-2">
+    <div>
+      <select
+        value={selectedModel}
+        onChange={handleModelChange}
+        className="w-full p-2 font-normal text-gray-900 cursor-pointer border border-zinc rounded"
+      >
+        <option
+          value=""
+          className="w-full p-2 font-normal text-gray-900 cursor-pointer border border-zinc rounded"
+        >
+          Select a car model
+        </option>
+        <option
+          value=""
+          className="w-full p-2 font-normal text-gray-900 cursor-pointer border border-zinc rounded"
+        >
+          All Models
+        </option>
         {compatibleCarModels.map((model, index) => (
-          <li key={index}>
-            <label
-              htmlFor={`model-${index}`}
-              className={`inline-flex items-center w-full p-2 font-normal text-gray-900 cursor-pointer `}
-              style={{ width: '100%' }} // Set width to 100% for the label container
-            >
-              <input
-                type="checkbox"
-                id={`model-${index}`}
-                value={model}
-                checked={selectedModels.includes(model)}
-                onChange={() => handleModelChange(model)}
-                className="accent-gray-800 w-6 h-6 text-white border-gray-300 rounded mr-2"
-              />
-              <span className="text-md font-medium">{model}</span>
-            </label>
-          </li>
+          <option key={index} value={model}>
+            {model}
+          </option>
         ))}
-      </ul>
+      </select>
     </div>
   );
 };

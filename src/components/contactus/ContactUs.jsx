@@ -2,14 +2,14 @@ import React from 'react';
 
 const ContactUs = () => {
   return (
-    <section className="py-12 ">
-      <div className="container mx-auto flex flex-col md:flex-row items-center gap-20">
+    <section className="py-12 px-4">
+      <div className="container mx-auto flex flex-col md:flex-row items-center gap-20 ">
         {/* Image */}
         <div className="w-full mb-6 md:mb-0">
-          <img src="/intro_cover.jpg" alt="Contact" className="w-full h-auto rounded-xl" />
+          <img src="/intro_cover.jpg" alt="Contact" className="w-full h-auto md:rounded-xl" />
         </div>
         {/* Form */}
-        <div className="md:w-1/2 w-full">
+        <div className="md:w-1/2 w-full ">
           <h2 className="text-3xl font-semibold mb-6">Vous avez d’autres questions?  N’hésitez pas à nous contacter</h2>
           <form className="w-full max-w-lg">
             <div className="flex mb-6 gap-2">

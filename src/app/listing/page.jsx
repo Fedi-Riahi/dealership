@@ -79,7 +79,7 @@ const Listings = () => {
         <div className='flex flex-col gap-1 w-2/5'>
           <div className='md:flex items-center justify-center gap-4 hidden'>
             <input type='text' placeholder='Rechercher un modèle' className='w-[500px] px-4 py-3 border border-zinc bg-transparent' />
-            <button className='bg-zinc text-white px-8 py-3 hover:bg-black'>Search</button>
+            <button className='bg-blue-500 text-white px-8 py-3 hover:bg-blue-500/90'>Search</button>
           </div>
                   {/* Filter button for mobile */}
         <button
@@ -92,8 +92,8 @@ const Listings = () => {
       </div>
       {/* Filter section for mobile */}
       {showFilters && (
-        <div className="fixed  z-10 inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-          <div className="bg-white p-8 rounded-lg">
+        <div className="absolute top-14  z-10  inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center overflow-x-scroll">
+          <div className="bg-white p-12 rounded-lg">
             <h2 className="text-2xl font-bold mb-4">Filters</h2>
             <div className='p-5 border-b border-gray-200 dark:border-gray-700'>
               <h3 className="text-lg font-semibold mb-2">Types</h3>
@@ -141,7 +141,7 @@ const Listings = () => {
           </div>
           {/* Load More Button */}
           {displayedListings < listings.length && (
-            <button className="bg-zinc text-white py-2 px-4 mt-4" onClick={loadMoreListings}>
+            <button className="bg-blue-500 text-white py-2 px-4 mt-4" onClick={loadMoreListings}>
               Charger plus
             </button>
           )}

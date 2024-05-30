@@ -59,7 +59,7 @@ const CarPartCard = ({ part }) => {
               />
           </div>
         </Suspense>
-        <p className="text-white mb-2 cursor-pointer bg-zinc px-3 py-1 w-fit absolute top-5 left-5">
+        <p className="text-white mb-2 cursor-pointer bg-blue-500 px-3 py-1 w-fit absolute top-5 left-5">
           {part.category}
         </p>
         <div className="w-full flex flex-col relative">
@@ -69,7 +69,7 @@ const CarPartCard = ({ part }) => {
             </h3>
           </Link>
           <p className="text-zinc font-semibold text-xl ">{part.price} DT</p>
-          <div className="flex items-center justify-center gap-1 cursor-pointer  px-6 py-4 mt-5 text-white bg-zinc hover:bg-black " onClick={addToCart}>
+          <div className="flex items-center justify-center gap-1 cursor-pointer  px-6 py-4 mt-5 text-white bg-blue-500 hover:bg-blue-500/90 " onClick={addToCart}>
             <CiShoppingCart className="h-6 w-6" />
             <p className=" font-normal sm:text-sm">Ajouter au panier</p>
           </div>

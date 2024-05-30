@@ -3,7 +3,7 @@ import React from 'react'
 
 const Billing = () => {
   return (
-    <div className='md:px-20 my-28 max-h-screen'>
+    <div className='md:px-20 my-28'>
         <BillingDetails />
     </div>
   )

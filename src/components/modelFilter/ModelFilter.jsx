@@ -49,7 +49,7 @@ const ModelFilter = ({ selectedModels = [], onChange }) => {
                 value={model}
                 checked={selectedModels.includes(model)}
                 onChange={(event) => handleModelChange(event, model)}
-                className="accent-gray-800 w-6 h-6 text-white border-gray-300 rounded   mr-2 peer peer-checked:bg-gray-500 peer-checked:text-gray-900"
+                className="accent-blue-500 w-6 h-6 text-white border-gray-300 rounded   mr-2 peer peer-checked:bg-gray-500 peer-checked:text-gray-900"
               />
               <span className="text-sm font-medium">{model}</span>
             </label>

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'; // Importing ChevronLeftIcon and ChevronRightIcon from Heroicons
 import { PiArrowUpRightThin } from "react-icons/pi";
-
+import Link from 'next/link';
 const Latest = () => {
     const newsData = [
         {
@@ -50,7 +50,7 @@ const Latest = () => {
             <div className='flex items-center justify-between w-full my-6'>
                 <h2 className="text-5xl font-mercedes-light mb-4">Actualité</h2>
                 <div className='flex items-center justify-center gap-1 cursor-pointer'>
-                    <p className='text-zinc font-medium'>View Details</p>
+                    <Link href='/news' className='text-zinc font-medium'>View Details</Link>
                     <PiArrowUpRightThin className='h-6 w-6 text-zinc'/>
                 </div>
             </div>

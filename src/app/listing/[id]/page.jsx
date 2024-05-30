@@ -7,7 +7,11 @@ import MyModel from "@/components/model/Model";
 import MyCarousel from "@/components/mycarousel/MyCarousel";
 import AudioSection from "@/components/audioSection/AudioSection";
 import ElecCarousel from "@/components/mycarousel/ElecCarousel";
-
+import TechnicalDetailsModal from "@/components/TechnicalDetails/TechnicalDetails";
+import CarReserve from "@/components/carreserve/CarReserve";
+import { GiSpeedometer } from "react-icons/gi";
+import { LuFuel } from "react-icons/lu";
+import { GiGearStickPattern } from "react-icons/gi";
 const ModelDetails = () => {
   const pathname = usePathname();
   const isDesktop = window.innerWidth >= 1024;
@@ -21,7 +25,8 @@ const ModelDetails = () => {
   const [similarModels, setSimilarModels] = useState([]);
   const scrollContainerRef = useRef(null);
   const [currentImage, setCurrentImage] = useState([]);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenReserve, setIsModalOpenReserve] = useState(false);
   const [topPosition, setTopPosition] = useState("-top-40");
   const [acceleration, setAcceleration] = useState(0);
   const [kw, setKw] = useState(0);
@@ -80,13 +85,29 @@ const ModelDetails = () => {
     return <div className="text-center">Loading...</div>;
   }
 
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleModalOpenReserve = () => {
+    setIsModalOpenReserve(true);
+  };
+
+  const handleModalCloseReserve = () => {
+    setIsModalOpenReserve(false);
+  };
+
   return (
     <div>
       <div className=" flex flex-col items-center justify-center h-full">
         {/* Display the cardImages[2] */}
         <div className="w-full flex flex-col items-center justify-center ">
           <h1
-            className={`font-mercedes-light md:text-8xl text-4xl absolute md:top-20 top-16 text-center opacity-70 pb-80 -z-10 pt-20 transition-all duration-500 w-full  bg-gradient-to-t from-black/10 to-transparent`}
+            className={`font-mercedes-light md:text-8xl text-4xl absolute md:top-16 top-10 text-center opacity-70 pb-80 -z-10 pt-20 transition-all duration-500 w-full  bg-gradient-to-t from-black/10 to-transparent`}
           >
             Mercedes-Benz
           </h1>
@@ -99,18 +120,45 @@ const ModelDetails = () => {
           />
           {/* Display the h1 elements under the image */}
           <div className="relative flex flex-col items-center justify-center  gap-5 w-full">
-            <h1 className="md:text-4xl font-normal mt-4 absolute md:-top-60 -top-28">
+            <h1 className="md:text-4xl font-normal mt-4 absolute md:-top-64 -top-28">
               {model.model}
             </h1>
-            <h1 className="md:text-7xl text-2xl font-normal px-4 py-2  absolute md:-top-44 -top-16">
+            <h1 className="md:text-7xl text-2xl font-normal px-4 py-2  absolute md:-top-48 -top-16">
               {model.listingTitle}
             </h1>
-            <h1 className="md:text-2xl text-md font-normal px-4 py-2  absolute md:-top-20 -top-2">
+            <h1 className="md:text-2xl text-md font-normal px-4 py-2  absolute md:-top-24 -top-2">
               From {model.price} DT including VAT.
             </h1>
+            <div className="absolute md:-top-10 top-10 flex items-center justify-center gap-4">
+              {/* Technical Details button */}
+              <button
+                className="md:text-xl text-md font-normal px-8 py-3 text-white   bg-blue-500 hover:bg-blue-600"
+                onClick={handleModalOpen}
+              >
+                Technical Details
+              </button>
+              {/* Demand a quote button */}
+              <button
+                className="md:text-xl text-md font-normal px-8 py-3 text-zinc border border-zinc bg-back   hover:bg-gray-100/20"
+                onClick={handleModalOpenReserve}
+              >
+                Demand a quote
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      <CarReserve
+        isOpen={isModalOpenReserve}
+        onClose={handleModalCloseReserve}
+        carId={id}
+      />
+      <TechnicalDetailsModal
+        model={model}
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+      />
+
       {/* Specs*/}
       <div className="flex items-center justify-center w-full gap-20 md:px-60 px-auto  mt-20 md:my-80 my-auto py-auto ">
         {/* Details */}
@@ -154,23 +202,22 @@ const ModelDetails = () => {
       </div>
 
       <div className="md:flex flex-col items-center justify-center w-full px-auto mt-20 bg-zinc relative hidden">
-        <div className="w-full  hidden md:block">
+        {/* <div className="w-full h-1/2  hidden md:block">
           <Image
             src={model.exteriorImages[3]}
             alt={model.model}
-            layout="responsive"
             width={1920} // Set the width of the image
-            height={600} // Set a lower height for the image
-            className="object-cover"
+            height={400} // Set a lower height for the image
+            className="object-cover "
           />
-        </div>
+        </div> */}
 
         {/* Text */}
-        <div className=" flex items-center justify-center flex-col text-center text-white my-10">
-          <span className="md:text-justify mx-auto md:text-4xl text-xl text-start  mt-6">
+        <div className=" flex items-center justify-center flex-col text-center  my-10 relative">
+          <span className="md:text-justify mx-auto md:text-6xl text-xl text-start  mt-6 absolute bottom-52 font-mercedes-bold z-20 text-zinc">
             {model.listingTitle}
           </span>
-          <span className="text-center mx-auto max-w-2xl mt-6">
+          <span className="text-center mx-auto text-xl w-1/2 py-10  text-white">
             Les rêves sont la motivation la plus forte. Avec le {model.model},
             nous avons transposé cette conviction dans le domaine de
             l’électromobilité et avons ouvert un nouveau chapitre
@@ -179,17 +226,17 @@ const ModelDetails = () => {
       </div>
 
       <div
-        className="md:flex hidden flex-col items-center justify-center w-full px-auto bg-zinc  relative"
-        style={{ height: "60vh" }}
+        className="md:flex hidden flex-col items-center justify-center w-full px-40 bg-zinc  relative"
+        style={{ height: "50vh" }}
       >
         {/* Carousel */}
-        <div className="w-full absolute md:bottom-4">
+        <div className="w-full absolute md:-bottom-32">
           <ElecCarousel model={model} />
         </div>
       </div>
 
-      <div className="px-auto md:pt-10 my-10  md:h-screen ">
-        <h1 className="md:text-4xl text-xl  text-zinc text-center font-medium flex items-center justify-center md:mb-20 mb-10">
+      <div className="px-auto md:pt-10 my-36  md:h-screen ">
+        <h1 className="md:text-4xl text-xl  text-zinc text-center font-mercedes-bold flex items-center justify-center md:mb-20 mb-10">
           {model.listingTitle} Highlights.
         </h1>
         <MyCarousel model={model} />
@@ -200,8 +247,9 @@ const ModelDetails = () => {
         }`}
         style={{ height: isDesktop ? "120vh" : "80vh" }} // Adjust height for desktop
       >
-        <h1 className="md:text-3xl text-2xl md:bg-zinc w-fit md:text-white px-4 py-2 font-medium text-center flex items-center justify-center mt-4 absolute md:-top-16 top-20 md:left-50 z-10">
-          Experience the SL legend, retold at top speed by Mercedes-AMG
+        <h1 className="md:text-4xl text-2xl  w-fit text-zinc x-4 py-2 font-mercedes-bold text-center flex items-center justify-center mt-4 absolute md:-top-16 top-20 md:left-50 z-10">
+        L'extérieur de l”{model.listingTitle}
+
         </h1>
         <MyModel />
       </div>
@@ -252,6 +300,67 @@ const ModelDetails = () => {
           <div className="mt-14">
             <AudioSection model={model} />
           </div>
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center w-full px-auto my-20">
+        <h1 className="text-4xl font-medium mb-8">Similar Car Models</h1>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {similarModels.slice(0, 4).map((similarModel) => (
+            <div className="flex flex-col items-start justify-center w-full">
+              <div className="px-5 py-2">
+                <div className="flex items-start flex-col justify-start gap-2">
+                  <h3 className="text-gray-900 font-semibold text-xl  cursor-pointer">
+                    {similarModel.listingTitle}
+                  </h3>
+                  <p className="text-gray-500 font-medium text-xl cursor-pointer">
+                    {similarModel.model}{" "}
+                  </p>
+                </div>
+                <Image
+                  src={similarModel.cardImages[0]}
+                  alt={similarModel.listingTitle}
+                  width={280}
+                  height={280}
+                  className="w-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col px-4 my-2 w-full">
+                {/* <div className="border-t border-gray-200 my-4 " /> */}
+                {/* Display this section on both desktop and mobile screens */}
+                <div className="flex flex-col justify-start items-center text-gray-700 ">
+                  <div className="flex items-center justify-between  w-full ">
+                    <div className="flex  items-center gap-2">
+                      <GiSpeedometer className="h-7 w-7  text-zinc" />
+                      <p className="text-lg font-normal mt-1  text-gray-700 pb-1">
+                        {similarModel.maxSpeed} Km/h
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2 ">
+                      <LuFuel className="h-7 w-7 text-zinc" />
+                      <p className="text-lg font-normal mt-1 text-gray-700">
+                        {similarModel.powerKw} kW {similarModel.powerPs}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2 ">
+                      <GiGearStickPattern className="h-7 w-7 text-zinc" />
+                      <p className="text-lg font-normal mt-1 text-gray-700 pb-1">
+                        {similarModel.acceleration}s
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                  <div className="flex items-center justify-start gap-1 cursor-pointer w-full mt-10 ">
+                    <p className="text-white bg-blue-500 py-4 md:px-10 font-normal hover:bg-blue-600 text-md sm:text-sm px-6 w-full text-center">
+                      Technical Details
+                    </p>
+                    {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
+                  </div>
+                </div>
+              </div>
+          ))}
         </div>
       </div>
     </div>

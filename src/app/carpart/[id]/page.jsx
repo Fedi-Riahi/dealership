@@ -12,15 +12,15 @@ const PartDetails = () => {
   if (!id) {
     return <div className="text-center">No ID provided</div>;
   }
-  // Replace this with your logic to fetch part data
+
   const [part, setPart] = useState(null);
+  const [similarParts, setSimilarParts] = useState([]);
 
   const { handleAddToCart } = useContext(Context);
 
   useEffect(() => {
     const fetchPartData = async () => {
       try {
-        // Fetch details of the current part
         const response = await fetch(
           `http://localhost:3000/api/carparts/${id}`
         );
@@ -29,6 +29,16 @@ const PartDetails = () => {
         }
         const data = await response.json();
         setPart(data.part);
+
+        // Fetch similar parts based on category
+        const similarResponse = await fetch(
+          `http://localhost:3000/api/carparts?category=${data.part.category}`
+        );
+        if (!similarResponse.ok) {
+          throw new Error("Failed to fetch similar parts");
+        }
+        const similarData = await similarResponse.json();
+        setSimilarParts(similarData.parts);
       } catch (error) {
         console.error("Error fetching part data:", error);
       }
@@ -42,8 +52,9 @@ const PartDetails = () => {
   }
 
   return (
-    <div className="container mx-auto my-40 w-full">
-      <div className="flex sm:flex-col md:flex-row items-start gap-10 my-8  w-full">
+    <div className="container mx-auto my-40 w-full px-4">
+      <span className="text-4xl font-mercedes-bold">Pièces Automobiles</span>
+      <div className="flex flex-col md:flex-row items-start gap-10 my-16 w-full">
         <div className="">
           <Image
             src={part.images[0]}
@@ -55,14 +66,16 @@ const PartDetails = () => {
           <div className="flex mt-2 gap-2">
             {/* Additional images can be displayed here */}
           </div>
-
-          {/* Other sections can be added here (e.g., features, specifications) */}
         </div>
         <div className="md:w-1/4 md:ml-8 w-full">
           <div className="flex flex-col items-start justify-between px-auto py-8 w-full ">
-            <h2 className="font-bold text-4xl mb-4 w-full">{part.name}</h2>
-            <h2 className="text-zinc/90 font-semibold text-2xl mb-4">${part.price}</h2>
-            <h2 className="text-zinc/90 font-medium text-md">{part.stock} in stock</h2>
+            <h2 className="font-medium text-4xl mb-4 w-full">{part.name}</h2>
+            <h2 className="text-zinc/90 font-semibold text-2xl mb-4">
+              ${part.price}
+            </h2>
+            <h2 className="text-zinc/90 font-medium text-md">
+              {part.stock} in stock
+            </h2>
             <div className="flex items-center gap-2 mt-6">
               <p className="font-medium text-gray-500">SKU</p>
               <h2 className="font-medium">{part.modelNumber}</h2>
@@ -94,8 +107,6 @@ const PartDetails = () => {
                 ))}
               </div>
             )}
-
-            {/* Add functionality to add part to cart */}
             <button
               className="text-white hover:underline mt-5 w-full text-center mx-auto px-8 py-4 bg-blue-500 flex items-center justify-center gap-2"
               onClick={() => handleAddToCart(part)}
@@ -104,18 +115,48 @@ const PartDetails = () => {
               Ajouter au panier
             </button>
           </div>
-          {/* Additional details about the part can be displayed here */}
         </div>
       </div>
-      <div className=" md:w-[600px] mt-10  px-6 py-8">
+      <div className="md:w-[600px] mt-10 px-6 py-8">
         <h2 className="font-semibold text-xl pb-3 text-blue-500 underline underline-offset-8">
           Description
         </h2>
         <h2 className="font-semibold text-xl py-3 text-zinc">Details</h2>
         <p className="text-zinc">{part.description}</p>
       </div>
-      {/* Section for displaying similar parts */}
-      {/* Similar parts can be displayed here */}
+      <div className="mt-10 px-4 md:px-0">
+        <h2 className="font-semibold text-2xl pb-3 text-blue-500 underline underline-offset-8">
+          Similar Parts
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+          {similarParts && similarParts.length > 0 ? (
+            similarParts.map((similarPart) => (
+              <div key={similarPart.id} className="border p-4 rounded-md">
+                <Image
+                  src={similarPart.images[0]}
+                  alt={similarPart.name}
+                  width={300}
+                  height={200}
+                  className="object-cover w-full h-40"
+                />
+                <h2 className="font-semibold text-lg mt-2">
+                  {similarPart.name}
+                </h2>
+                <p className="text-gray-500">${similarPart.price}</p>
+                <button
+                  className="text-white bg-blue-500 hover:underline mt-2 w-full py-2 flex items-center justify-center gap-2"
+                  onClick={() => handleAddToCart(similarPart)}
+                >
+                  <CiShoppingCart className="h-5 w-5" />
+                  Ajouter au panier
+                </button>
+              </div>
+            ))
+          ) : (
+            <div>No similar parts found.</div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

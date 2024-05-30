@@ -67,13 +67,7 @@ const CarParts = () => {
   };
 
   return (
-    <div className="md:px-20 sm:px-5 my-40">
-      <div className="flex items-center pt-20 mt-20 cursor-pointer">
-        <ArrowLongLeftIcon className="h-6 w-6 text-zinc" />
-        <h3 className="text-md hover:bg-gray-300 px-2 py-1">
-          Back to Car Parts Selection
-        </h3>
-      </div>
+    <div className="md:px-20 sm:px-5 my-20">
       <div className="flex items-center justify-between w-full mt-4 mb-5">
         <h3 className="font-mercedes-bold md:w-3/5 md:text-4xl sm:text-xl w-full">
           Sélectionnez votre Mercedes-Benz de rêve
@@ -85,13 +79,13 @@ const CarParts = () => {
               placeholder="Rechercher un modèle"
               className="w-[500px] px-4 py-3 border border-zinc bg-transparent"
             />
-            <button className="bg-zinc text-white px-8 py-3 hover:bg-black">
+            <button className="bg-blue-500 text-white px-8 py-3 hover:bg-blue-500/90">
               Search
             </button>
           </div>
           {/* Filter button for mobile */}
           <button
-            className="block md:hidden bg-zinc text-white py-2 px-4"
+            className="block md:hidden bg-blue-500 text-white py-2 px-4"
             onClick={() => setShowFilters(true)}
           >
             Filters
@@ -115,7 +109,7 @@ const CarParts = () => {
           <h3 className="text-lg font-semibold mb-2">Compatible Models</h3>
           <CompatibleCarModelsFilter onChange={handleModelFilterChange} />
         </div>
-        <button onClick={() => setShowFilters(false)} className="bg-zinc text-white py-2 px-4 mt-4">Close</button>
+        <button onClick={() => setShowFilters(false)} className="bg-blue-500 text-white py-2 px-4 mt-4">Close</button>
       </div>
     </div>
   </div>

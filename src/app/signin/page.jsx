@@ -113,7 +113,7 @@ export default function LoginForm() {
             type="submit"
             className="w-full py-5 px-4 border border-transparent rounded-md shadow-sm text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
-            Créer un compte
+            Sign in
           </button>
           <div className="w-full flex items-center justify-evenly my-1">
             <div className="border-t border-gray-300 my-6 flex-grow" />

@@ -53,7 +53,7 @@ export async function GET(request) {
   } catch (error) {
     console.error("Error fetching appointments:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Failed to fetch appointments from the database" },
       { status: 500 }
     );
   }

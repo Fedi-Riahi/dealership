@@ -23,7 +23,7 @@ const CarParts = () => {
   useEffect(() => {
     const getCarParts = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/carparts");
+        const res = await fetch("/api/carparts");
 
         if (!res.ok) {
           throw new Error("Failed to fetch car parts");

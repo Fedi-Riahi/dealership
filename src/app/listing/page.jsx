@@ -30,7 +30,7 @@ const Listings = () => {
   useEffect(() => {
     const getListings = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/carmodels");
+        const res = await fetch("/api/carmodels");
   
         if (!res.ok) {
           throw new Error("Failed to fetch listings");

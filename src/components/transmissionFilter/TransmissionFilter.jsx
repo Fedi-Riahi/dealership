@@ -7,7 +7,7 @@ const TransmissionFilter = ({ selectedTypes = [], onChange }) => {
   useEffect(() => {
     const fetchTransmissionTypes = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/carmodels");
+        const response = await fetch("/api/carmodels");
         if (!response.ok) {
           throw new Error("Failed to fetch transmission types");
         }

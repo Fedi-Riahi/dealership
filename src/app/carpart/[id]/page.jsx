@@ -15,14 +15,14 @@ const PartDetails = () => {
   useEffect(() => {
     const fetchPartData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/carparts/${id}`);
+        const response = await fetch(`/api/carparts/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch part data");
         }
         const data = await response.json();
         setPart(data.part);
 
-        const similarResponse = await fetch(`http://localhost:3000/api/carparts?category=${data.part.category}`);
+        const similarResponse = await fetch(`/api/carparts?category=${data.part.category}`);
         if (!similarResponse.ok) {
           throw new Error("Failed to fetch similar parts");
         }

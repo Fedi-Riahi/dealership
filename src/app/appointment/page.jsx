@@ -23,7 +23,7 @@ function Appointment() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/service")
+    fetch("/api/service")
       .then((response) => response.json())
       .then((data) => {
         setServices(data.services);
@@ -41,7 +41,7 @@ function Appointment() {
       return;
     }
 
-    fetch(`http://localhost:3000/api/carmodels`)
+    fetch(`/api/carmodels`)
       .then((response) => response.json())
       .then((data) => {
         const matchingCarModel = data.carListing.find((car) => car.vin === vin);

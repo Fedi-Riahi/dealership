@@ -38,7 +38,7 @@ const PartDetails = () => {
     };
 
     fetchPartData();
-  }, [id]);
+  }, [id]); // Call useEffect unconditionally
 
   if (!part) {
     return <div>Loading...</div>;

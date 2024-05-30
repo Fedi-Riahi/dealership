@@ -28,8 +28,6 @@ const ModelDetails = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenReserve, setIsModalOpenReserve] = useState(false);
 
-
-
   useEffect(() => {
     const fetchModelData = async () => {
       try {

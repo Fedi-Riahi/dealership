@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -57,7 +57,6 @@ const ModelDetails = () => {
             similarModel._id !== id
         );
         setSimilarModels(similarModelsFiltered);
-
       } catch (error) {
         console.error("Error fetching model:", error);
       }

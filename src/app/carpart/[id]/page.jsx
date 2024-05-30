@@ -12,10 +12,6 @@ const PartDetails = () => {
   const pathname = usePathname();
   const id = pathname.split("/").pop();
 
-  if (!id) {
-    return <div className="text-center">No ID provided</div>;
-  }
-
   useEffect(() => {
     const fetchPartData = async () => {
       try {
@@ -34,6 +30,7 @@ const PartDetails = () => {
         setSimilarParts(similarData.parts);
       } catch (error) {
         console.error("Error fetching part data:", error);
+        // Handle the error (e.g., display an error message)
       }
     };
 

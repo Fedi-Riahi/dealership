@@ -64,7 +64,7 @@ const ModelDetails = () => {
     };
 
     fetchModelData();
-  }, [id]);
+  }, []);
 
   if (!model) {
     return <div className="text-center">Loading...</div>;
@@ -292,7 +292,7 @@ const ModelDetails = () => {
           {similarModels.slice(0, 4).map((similarModel) => (
             <div
               className="flex flex-col items-start justify-center w-full"
-              key={index}
+              key={similarModel._id}
             >
               <div className="px-5 py-2">
                 <div className="flex items-start flex-col justify-start gap-2">

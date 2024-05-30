@@ -59,6 +59,7 @@ const ModelDetails = () => {
         setSimilarModels(similarModelsFiltered);
       } catch (error) {
         console.error("Error fetching model:", error);
+        // Handle the error (e.g., display an error message)
       }
     };
 

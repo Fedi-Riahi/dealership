@@ -1,8 +1,7 @@
-"use client";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
 import MyModel from "@/components/model/Model";
 import MyCarousel from "@/components/mycarousel/MyCarousel";
 import AudioSection from "@/components/audioSection/AudioSection";
@@ -12,9 +11,10 @@ import CarReserve from "@/components/carreserve/CarReserve";
 import { GiSpeedometer } from "react-icons/gi";
 import { LuFuel } from "react-icons/lu";
 import { GiGearStickPattern } from "react-icons/gi";
+
 const ModelDetails = () => {
   const pathname = usePathname();
-  const isDesktop = window.innerWidth >= 1024;
+  const isDesktop = useRef(window.innerWidth >= 1024);
   const id = pathname.split("/").pop();
 
   if (!id) {
@@ -24,15 +24,11 @@ const ModelDetails = () => {
   // Define all hooks unconditionally
   const [model, setModel] = useState(null);
   const [similarModels, setSimilarModels] = useState([]);
-  const scrollContainerRef = useRef(null);
   const [currentImage, setCurrentImage] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenReserve, setIsModalOpenReserve] = useState(false);
   const [topPosition, setTopPosition] = useState("-top-40");
-  const [acceleration, setAcceleration] = useState(0);
-  const [kw, setKw] = useState(0);
-  const [ps, setPs] = useState(0);
-  const [topSpeed, setTopSpeed] = useState(0);
+  c
 
   useEffect(() => {
     const timer = setTimeout(() => {

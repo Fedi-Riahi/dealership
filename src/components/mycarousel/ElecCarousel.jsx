@@ -71,7 +71,7 @@ const ElecCarousel = () => {
       className="cursor-pointer"
     >
       {imagesData.map((imageData, index) => (
-        <div className="px-4 py-4 relative ">
+        <div className="px-4 py-4 relative " key={imageData.url}>
           <div key={index} className=" bg-white w-fit px-16 py-10 shadow-md rounded-md ">
           <div
               style={{ width: "500px", height: "300px", paddingRight: "10px" }}

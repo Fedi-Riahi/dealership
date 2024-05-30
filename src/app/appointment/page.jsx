@@ -167,10 +167,11 @@ function Appointment() {
   return (
     <div className="flex justify-center items-center h-screen relative ">
       {/* Background Image */}
-      <img
+      <Image
         src="./appointment-image.png"
         alt="Background"
         className="absolute inset-0 object-cover h-full"
+        layout="fill"
       />
       {currentStep === 1 && (
         <div className="z-10 bg-white py-6 px-8 md:mx-20 mx-4 flex flex-col">
@@ -296,7 +297,7 @@ function Appointment() {
               </button>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8">
-              <img
+              <Image
                 src="/tow.png"
                 alt="Your Image"
                 className="object-cover"

@@ -1,21 +1,21 @@
 "use client"
+import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
-import { useState, useEffect, useContext } from "react";
 import { usePathname } from "next/navigation";
 import { CiShoppingCart } from "react-icons/ci";
 import { Context } from "@/app/context/page";
 
 const PartDetails = () => {
+  
+    const [part, setPart] = useState(null);
+    const [similarParts, setSimilarParts] = useState([]);
+    const { handleAddToCart } = useContext(Context);
   const pathname = usePathname();
   const id = pathname.split("/").pop();
 
   if (!id) {
     return <div className="text-center">No ID provided</div>;
   }
-
-  const [part, setPart] = useState(null);
-  const [similarParts, setSimilarParts] = useState([]);
-  const { handleAddToCart } = useContext(Context);
 
   useEffect(() => {
     const fetchPartData = async () => {

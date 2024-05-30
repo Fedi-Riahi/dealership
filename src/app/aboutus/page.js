@@ -34,30 +34,33 @@ const AboutUs = () => {
           <span className="text-2xl md:text-3xl font-mercedes-bold">Nos services</span>
           <div className="flex flex-col md:flex-row justify-center mt-10 gap-10">
             <div className="w-full md:w-1/3">
-              <img
+              <Image
                 src="ser1.png"
                 alt="Service 1"
                 className="w-full h-auto rounded-md"
+                layout="fill"
               />
               <h2 className="text-lg font-semibold mt-4 text-center">
                 Entretien du voiture
               </h2>
             </div>
             <div className="w-full md:w-1/3">
-              <img
+              <Image
                 src="ser2.png"
                 alt="Service 2"
                 className="w-full h-auto rounded-md"
+                layout="fill"
               />
               <h2 className="text-lg font-semibold mt-4 text-center">
                 Vente des voitures
               </h2>
             </div>
             <div className="w-full md:w-1/3">
-              <img
+              <Image
                 src="ser3.png"
                 alt="Service 3"
                 className="w-full h-auto rounded-md"
+                layout="fill"
               />
               <h2 className="text-lg font-semibold mt-4 text-center">
                 Vente des pièces voitures
@@ -102,7 +105,7 @@ const AboutUs = () => {
             Notre partenaire officiel
           </h2>
           <div className="flex flex-col md:flex-row justify-center items-start mt-10">
-            <img src="/pixel.png" alt="Partner" className="w-full md:w-1/2 h-auto" />
+            <Image src="/pixel.png" alt="Partner" className="w-full md:w-1/2 h-auto" />
             <div className="flex flex-col justify-center items-center gap-10 md:gap-20 mt-10 md:mt-0 md:ml-8">
               <p className="text-lg md:text-xl">
                 <span className="text-zinc font-semibold">Mercedes-Benz</span>{" "}

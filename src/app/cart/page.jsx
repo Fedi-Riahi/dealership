@@ -39,7 +39,7 @@ function Cart() {
 
   return ( 
     <div className="my-28 mx-40 ">
-        <h2 className="text-3xl text-zinc font-medium mb-4">Panier d'achat</h2>
+        <h2 className="text-3xl text-zinc font-medium mb-4">Panier d&apos;achat</h2>
     <div className=" flex justify-between my-10 ">
       <div className="w-3/4">
         {cartItems && cartItems.length > 0 ? (

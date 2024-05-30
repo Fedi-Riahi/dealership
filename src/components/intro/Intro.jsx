@@ -31,7 +31,7 @@ const Intro = ({ introTitle }) => {
   const renderCarCards = () => {
     const filteredModels = carModels.filter(car => car.type === selectedType); // Filter car models based on selected type
     return filteredModels.map(car => (
-      <div className="max-w-md bg-white relative flex flex-col transition-transform duration-500 rounded-lg">
+      <div className="max-w-md bg-white relative flex flex-col transition-transform duration-500 rounded-lg" key={car._id}>
       <div className="flex flex-col items-start justify-center w-full">
         <div className="px-5 py-2">
           <div className="flex items-start flex-col justify-start gap-2">

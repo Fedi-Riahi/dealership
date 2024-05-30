@@ -3,22 +3,10 @@ import React, { useRef, useState, useEffect } from "react";
 
 function Hero() {
   const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false); // Set initial state to false
+
   const [showTextAndButtons, setShowTextAndButtons] = useState(false); // State to control the visibility of text and buttons
 
-  const handleTogglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play().catch((error) => {
-          console.error("Play failed:", error.message);
-        });
-        setShowTextAndButtons(true); // Show text and buttons when video starts playing
-      }
-      setIsPlaying(!isPlaying); // Toggle play/pause state
-    }
-  };
+
 
   useEffect(() => {
     // Play the video when the component mounts
@@ -56,17 +44,7 @@ function Hero() {
         </div>
       )}
 
-      {/* Conditionally render play/pause button */}
-      {isPlaying && (
-        <div className="absolute bottom-32 right-10">
-          <button
-            onClick={handleTogglePlay}
-            className="rounded-xl p-2 flex justify-center items-center border border-white"
-          >
-            <PauseIcon className="h-8 w-8 text-white" />
-          </button>
-        </div>
-      )}
+      
     </div>
   );
 }

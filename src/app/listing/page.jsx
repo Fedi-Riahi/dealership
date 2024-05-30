@@ -135,7 +135,7 @@ const Listings = () => {
           <div className="grid md:grid-cols-3 grid-cols-1 gap-5 w-full">
             {listings.slice(0, displayedListings).map((listing) => (
 
-                <ListingCard listing={listing} id={listing._id}/>
+                <ListingCard listing={listing} id={listing._id} key={listing._id}/>
 
             ))}
           </div>

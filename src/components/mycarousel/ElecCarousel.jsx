@@ -91,7 +91,7 @@ const ElecCarousel = () => {
               <span className="text-zinc text-justify md:text-lg hidden md:flex items-end   w-full  my-4">
                 Les moteurs Mercedes sont réputés pour leur performance
                 exceptionnelle, leur fiabilité et leur technologie avancée.
-                Conçus avec une précision d'ingénierie allemande, ils offrent
+                Conçus avec une précision d&apos;ingénierie allemande, ils offrent
                 une puissance remarquable tout en garantissant une efficacité
                 énergétique optimale.
               </span>

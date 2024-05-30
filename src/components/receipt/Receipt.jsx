@@ -77,7 +77,7 @@ const Receipt = () => {
               <div className="border-t border-gray-300 my-2 w-full" />
               <ul>
                 {order.items.map((item) => (
-                  <div className="flex items-center justify-between my-2">
+                  <div className="flex items-center justify-between my-2" key={item._id}>
                     <li key={item._id} className="mb-2">
                       <span className="text-blue-500 font-medium">
                         {item.itemName}

@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import { usePathname } from "next/navigation";
@@ -15,25 +15,19 @@ const PartDetails = () => {
 
   const [part, setPart] = useState(null);
   const [similarParts, setSimilarParts] = useState([]);
-
   const { handleAddToCart } = useContext(Context);
 
   useEffect(() => {
     const fetchPartData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/carparts/${id}`
-        );
+        const response = await fetch(`http://localhost:3000/api/carparts/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch part data");
         }
         const data = await response.json();
         setPart(data.part);
 
-        // Fetch similar parts based on category
-        const similarResponse = await fetch(
-          `http://localhost:3000/api/carparts?category=${data.part.category}`
-        );
+        const similarResponse = await fetch(`http://localhost:3000/api/carparts?category=${data.part.category}`);
         if (!similarResponse.ok) {
           throw new Error("Failed to fetch similar parts");
         }
@@ -50,7 +44,6 @@ const PartDetails = () => {
   if (!part) {
     return <div>Loading...</div>;
   }
-
   return (
     <div className="container mx-auto my-40 w-full px-4">
       <span className="text-4xl font-mercedes-bold">Pièces Automobiles</span>

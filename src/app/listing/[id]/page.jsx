@@ -21,6 +21,7 @@ const ModelDetails = () => {
     return <div className="text-center">No ID provided</div>;
   }
 
+  // Define all hooks unconditionally
   const [model, setModel] = useState(null);
   const [similarModels, setSimilarModels] = useState([]);
   const scrollContainerRef = useRef(null);
@@ -243,13 +244,12 @@ const ModelDetails = () => {
       </div>
       <div
         className={`px-auto md:py-10 md:w-full flex items-center flex-col justify-center relative ${
-          isDesktop ? "h-1/2" : "" // Apply the style only if it's a desktop
+          isDesktop ? "h-1/2" : "" // Apply the style only if it”s a desktop
         }`}
         style={{ height: isDesktop ? "120vh" : "80vh" }} // Adjust height for desktop
       >
         <h1 className="md:text-4xl text-2xl  w-fit text-zinc x-4 py-2 font-mercedes-bold text-center flex items-center justify-center mt-4 absolute md:-top-16 top-20 md:left-50 z-10">
-        L'extérieur de l”{model.listingTitle}
-
+          L”extérieur de l”{model.listingTitle}
         </h1>
         <MyModel />
       </div>
@@ -305,8 +305,11 @@ const ModelDetails = () => {
       <div className="flex flex-col items-center justify-center w-full px-auto my-20">
         <h1 className="text-4xl font-medium mb-8">Similar Car Models</h1>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        {similarModels.slice(0, 4).map((similarModel) => (
-            <div className="flex flex-col items-start justify-center w-full">
+          {similarModels.slice(0, 4).map((similarModel) => (
+            <div
+              className="flex flex-col items-start justify-center w-full"
+              key={index}
+            >
               <div className="px-5 py-2">
                 <div className="flex items-start flex-col justify-start gap-2">
                   <h3 className="text-gray-900 font-semibold text-xl  cursor-pointer">
@@ -352,14 +355,14 @@ const ModelDetails = () => {
                   </div>
                 </div>
 
-                  <div className="flex items-center justify-start gap-1 cursor-pointer w-full mt-10 ">
-                    <p className="text-white bg-blue-500 py-4 md:px-10 font-normal hover:bg-blue-600 text-md sm:text-sm px-6 w-full text-center">
-                      Technical Details
-                    </p>
-                    {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
-                  </div>
+                <div className="flex items-center justify-start gap-1 cursor-pointer w-full mt-10 ">
+                  <p className="text-white bg-blue-500 py-4 md:px-10 font-normal hover:bg-blue-600 text-md sm:text-sm px-6 w-full text-center">
+                    Technical Details
+                  </p>
+                  {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
                 </div>
               </div>
+            </div>
           ))}
         </div>
       </div>

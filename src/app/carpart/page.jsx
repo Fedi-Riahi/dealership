@@ -140,7 +140,7 @@ const CarParts = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 w-full">
             {carParts.slice(0, displayedCarParts).map((part) => (
-              <CarPartCard part={part} id={part._id} />
+              <CarPartCard part={part} id={part._id} key={part._id}/>
             ))}
           </div>
           {/* Load More Button */}

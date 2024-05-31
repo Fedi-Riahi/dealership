@@ -5,18 +5,21 @@ import Image from "next/image";
 const TechnicalDetailsModal = ({ model, isOpen, onClose }) => {
   return (
     <div
-      className={`fixed top-0 right-0 h-full w-full md:w-1/3 bg-white shadow-lg transform transition-transform duration-300 ${
-        isOpen ? "translate-x-0" : "translate-x-full"
+      className={`fixed top-0 right-0 h-full w-full md:w-2/4 bg-white shadow-lg transform transition-transform duration-300 ${
+        isOpen ? "translate-x-0 backdrop-blur-md" : "translate-x-full backdrop-blur-md"
       } z-50`}
     >
-      <div className="p-6">
+      <div className="p-6 h-full overflow-y-auto ">
         <button
-          className="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 float-right"
+          className="bg-white hover:bg-zinc/10 text-zinc border border-zinc  px-8 py-3 float-right my-4"
           onClick={onClose}
         >
           Close
         </button>
         <h2 className="text-2xl font-bold mb-4">Technical Details</h2>
+        <div className="my-10">
+          <Image src='/dim.webp' alt="e" width={800} height={100} className="object-cover" />
+        </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <span className="font-semibold">Model:</span>

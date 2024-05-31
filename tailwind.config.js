@@ -14,8 +14,7 @@ module.exports = {
       },
     },
     fontFamily:{
-      'mercedes-bold':'Corporate A Condensed W07 Lt',
-      'mercedes-light':'Corporate A BQ'
+      'mercedes-bold':'Corporate A BQ'
     }
   },
   plugins: [],

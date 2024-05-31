@@ -75,7 +75,7 @@ const Listings = () => {
         <h3 className='text-md hover:bg-gray-300 px-2 py-1'>Retour à la sélection de la gamme de modèles</h3>
       </div> */}
       <div className='flex items-center justify-between w-full mt-4 mb-5'>
-        <h3 className=' md:w-3/5 md:text-4xl sm:text-lg w-full mx-4'>Sélectionnez votre Mercedes-Benz de rêve</h3>
+        <h3 className=' md:w-3/5 md:text-4xl sm:text-lg font-mercedes-bold w-full mx-4'>Sélectionnez votre Mercedes-Benz de rêve</h3>
         <div className='flex flex-col gap-1 w-2/5'>
           <div className='md:flex items-center justify-center gap-4 hidden'>
             <input type='text' placeholder='Rechercher un modèle' className='w-[500px] px-4 py-3 border border-zinc bg-transparent' />

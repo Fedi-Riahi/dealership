@@ -23,7 +23,7 @@ function Appointment() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/service")
+    fetch("/api/service")
       .then((response) => response.json())
       .then((data) => {
         setServices(data.services);
@@ -41,7 +41,7 @@ function Appointment() {
       return;
     }
 
-    fetch(`http://localhost:3000/api/carmodels`)
+    fetch(`/api/carmodels`)
       .then((response) => response.json())
       .then((data) => {
         const matchingCarModel = data.carListing.find((car) => car.vin === vin);
@@ -163,15 +163,32 @@ function Appointment() {
 
     fetchData();
   }, []);
-
+  const totalSteps = 4; // Total number of steps
+  const progressPercent = ((currentStep - 1) / totalSteps) * 100;
   return (
     <div className="flex justify-center items-center h-screen relative ">
       {/* Background Image */}
-      <img
-        src="./appointment-image.png"
+      <Image
+        src="/appointment-image.png"
         alt="Background"
         className="absolute inset-0 object-cover h-full"
+        layout="fill"
       />
+      {/* Progress Bar */}
+      {currentStep > 1 && (
+        <div className="fixed -top-2 left-0 right-0 h-2 z-40  mx-36 my-20 bg-gray-100">
+          <div className="w-full flex items-center justify-between py-4 bg-gray-100 ">
+            <span className="py-2 px-4">Services</span>
+            <span className="py-2 px-4">Mobilité</span>
+            <span className="py-2 px-4">Date et heure</span>
+            <span className="py-2 px-4">Détails personnels</span>
+          </div>
+          <div
+            className="h-full bg-blue-500 z-40 absolute top-0 left-0 z-40"
+            style={{ width: `${progressPercent}%` }}
+          />
+        </div>
+      )}
       {currentStep === 1 && (
         <div className="z-10 bg-white py-6 px-8 md:mx-20 mx-4 flex flex-col">
           <h2 className="text-3xl font-medium">
@@ -204,7 +221,7 @@ function Appointment() {
       )}
 
       {currentStep === 2 && (
-        <div className="absolute z-10 bg-white h-screen overflow-y-auto md:my-10 w-screen md:py-40 md:px-40 py-20 px-10">
+        <div className="absolute z-10 bg-white h-screen overflow-y-auto md:my-10 w-screen md:py-40 md:px-40 my-10 py-20 px-10">
           <h2>Sélectionnez une ou plusieurs prestation(s) de service.</h2>
           {services.map((category) => (
             <div key={category._id} className="mt-14">
@@ -216,11 +233,10 @@ function Appointment() {
                 {category.services.map((service) => (
                   <div
                     key={service._id}
-                    className={` p-4 rounded-md border border-gray-300 cursor-pointer ${
-                      selectedServices.includes(service)
-                        ? "bg-blue-500 text-white"
-                        : "bg-white text-gray-700 hover:bg-gray-100"
-                    }`}
+                    className={` p-4 rounded-md border border-gray-300 cursor-pointer ${selectedServices.includes(service)
+                      ? "bg-blue-100 text-blue-500"
+                      : "bg-white text-gray-700"
+                      }`}
                     onClick={() => handleServiceSelection(service)}
                   >
                     <div className="py-3flex items-center justify-start">
@@ -231,13 +247,21 @@ function Appointment() {
               </div>
             </div>
           ))}
+          <div className="flex items-center gap-10">
 
-          <button
-            onClick={() => setCurrentStep(3)}
-            className="flex py-3 px-8 bg-blue-500 w-fit text-white mt-5"
-          >
-            Continue
-          </button>
+            <button
+              onClick={() => setCurrentStep(currentStep - 1)}
+              className="flex py-3 px-8 border border-zinc w-fit text-zinc hover:bg-zinc/10 mt-5"
+            >
+              Back
+            </button>
+            <button
+              onClick={() => setCurrentStep(3)}
+              className="flex py-3 px-8 bg-blue-500 w-fit text-white mt-5 hover:bg-blue-600"
+            >
+              Continue
+            </button>
+          </div>
         </div>
       )}
       {currentStep === 3 && (
@@ -248,55 +272,62 @@ function Appointment() {
                 Profitez de nos solutions de mobilité. Cette prestation peut
                 être payante.
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4">
-                <div
-                  className={`mobility-option ${
-                    mobilityOption === "agency" ? "selected" : ""
-                  }`}
-                  onClick={() => setMobilityOption("agency")}
-                >
-                  <div className="p-4 rounded-md border border-gray-300 cursor-pointer">
-                    <div className="flex items-center mb-2">
-                      <div className="w-6 h-6 border border-gray-300 rounded-full flex items-center justify-center">
-                        {mobilityOption === "agency" && (
-                          <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                        )}
-                      </div>
-                      <label htmlFor="agency" className="ml-2 cursor-pointer">
-                        Come to Agency with Car
-                      </label>
-                    </div>
-                  </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4">
+                <div class={`mobility-option ${mobilityOption === "agency" ? "selected" : ""}`}>
+                  <input
+                    type="radio"
+                    id="agency"
+                    name="mobility"
+                    value="agency"
+                    checked={mobilityOption === "agency"}
+                    onChange={() => setMobilityOption("agency")}
+                    className="hidden peer"
+                  />
+                  <label
+                    htmlFor="agency"
+                    className={`py-4 px-40 rounded-md border border-gray-300 cursor-pointer inline-flex items-center justify-start ${mobilityOption === "agency" ? "bg-blue-100 text-blue-500" : "bg-white text-gray-700 hover:bg-gray-100"}`}
+                  >
+                    <span class=" cursor-pointer">No , merci (sauter)</span>
+                  </label>
                 </div>
-                <div
-                  className={`mobility-option ${
-                    mobilityOption === "tow" ? "selected" : ""
-                  }`}
-                  onClick={() => setMobilityOption("tow")}
-                >
-                  <div className="p-4 rounded-md border border-gray-300 cursor-pointer">
-                    <div className="flex items-center mb-2">
-                      <div className="w-6 h-6 border border-gray-300 rounded-full flex items-center justify-center">
-                        {mobilityOption === "tow" && (
-                          <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                        )}
-                      </div>
-                      <label htmlFor="tow" className="ml-2 cursor-pointer">
-                        Request Tow Truck
-                      </label>
-                    </div>
-                  </div>
+                <div class={`mobility-option ${mobilityOption === "tow" ? "selected" : ""}`}>
+                  <input
+                    type="radio"
+                    id="tow"
+                    name="mobility"
+                    value="tow"
+                    checked={mobilityOption === "tow"}
+                    onChange={() => setMobilityOption("tow")}
+                    className="hidden peer"
+                  />
+                  <label
+                    htmlFor="tow"
+                    className={`py-4 px-32 rounded-md border border-gray-300 cursor-pointer inline-flex items-center justify-start ${mobilityOption === "tow" ? "bg-blue-100 text-blue-500" : "bg-white text-gray-700 hover:bg-gray-100"}`}
+                  >
+                    <span class=" cursor-pointer">Vehicule de remplacement</span>
+                  </label>
                 </div>
               </div>
-              <button
-                onClick={() => setCurrentStep(4)}
-                className="flex py-3 px-8 bg-blue-500 w-fit text-white mt-5"
-              >
-                Continue
-              </button>
+
+
+
+              <div className="flex items-center gap-10 my-10">
+                <button
+                  onClick={() => setCurrentStep(currentStep - 1)}
+                  className="flex py-3 px-8 bg-white border border-zinc  hover:bg-zinc/10 w-fit text-zinc mt-5"
+                >
+                  Back
+                </button>
+                <button
+                  onClick={() => setCurrentStep(4)}
+                  className="flex py-3 px-8 bg-blue-500 hover:bg-blue-600  w-fit text-white mt-5"
+                >
+                  Continue
+                </button>
+              </div>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8">
-              <img
+              <Image
                 src="/tow.png"
                 alt="Your Image"
                 className="object-cover"
@@ -310,16 +341,17 @@ function Appointment() {
 
       {currentStep === 4 && (
         <div className="z-10 bg-white h-screen w-screen md:py-12 px-8 flex justify-center items-center">
-          <div className="max-w-screen flex justify-center items-center mx-auto px-auto">
+          <div className="w-screen flex justify-center items-center mx-32 px-auto">
             {/* Left side: Inputs */}
             <div className="flex-1 mr-8">
-              <h2 className="text-xl font-bold mb-4">
+              <h2 className="text-lg font-semibold mb-20">
                 Consultez les dates de rendez-vous disponibles et choisissez
                 celui qui convient à votre emploi du temps.
               </h2>
               <div className="flex flex-col space-y-4">
                 <div>
-                  <div className="mt-1 flex flex-wrap gap-2">
+                  <h3 className="text-lg font-medium mb-5">Choose a Date</h3>
+                  <div className="grid grid-cols-3 gap-4">
                     {[
                       "Monday",
                       "Tuesday",
@@ -328,12 +360,7 @@ function Appointment() {
                       "Friday",
                       "Saturday",
                     ].map((day) => (
-                      <div
-                        key={day}
-                        className={`flex items-center justify-center rounded-md py-2 px-4 border border-gray-300 cursor-pointer ${
-                          bookedDates.includes(day) ? "bg-gray-200" : ""
-                        }`}
-                      >
+                      <div key={day}>
                         <input
                           type="radio"
                           id={`day-${day}`}
@@ -341,52 +368,62 @@ function Appointment() {
                           value={day}
                           checked={selectedDate === day}
                           onChange={(e) => handleDateSelection(e.target.value)}
-                          className="mr-2"
+                          className="hidden peer"
                         />
-                        <label htmlFor={`day-${day}`}>{day}</label>
+                        <label
+                          htmlFor={`day-${day}`}
+                          className={`inline-flex items-center justify-center w-full p-4 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
+                        >
+                          {day}
+                        </label>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <div className="mt-1 flex flex-wrap gap-2">
+                  <h3 className="text-lg font-medium mb-5">Choose a Time</h3>
+                  <div className="grid grid-cols-3 gap-4">
                     {Array.from(Array(5)).map((_, index) => {
                       const hour = 8 + index;
                       const timeString = `${hour}:00`;
 
                       return (
-                        <div
-                          key={index}
-                          className={`flex items-center rounded-md py-2 px-4 border border-gray-300 cursor-pointer ${
-                            bookedTimes.includes(timeString)
-                              ? "bg-gray-200"
-                              : ""
-                          }`}
-                        >
+                        <div key={index}>
                           <input
                             type="radio"
                             id={`time-${hour}`}
                             name="time"
                             value={timeString}
                             checked={selectedTime === timeString}
-                            onChange={(e) =>
-                              handleTimeSelection(e.target.value)
-                            }
-                            className="mr-2"
+                            onChange={(e) => handleTimeSelection(e.target.value)}
+                            className="hidden peer"
                           />
-                          <label htmlFor={`time-${hour}`}>{timeString}</label>
+                          <label
+                            htmlFor={`time-${hour}`}
+                            className={`inline-flex items-center justify-center w-full p-4 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
+                          >
+                            {timeString}
+                          </label>
                         </div>
                       );
                     })}
                   </div>
                 </div>
               </div>
-              <button
-                onClick={handleConfirmAppointment}
-                className="flex py-3 px-8 bg-blue-500 w-fit text-white mt-5"
-              >
-                Confirm Date & Time
-              </button>
+              <div className="flex items-center gap-10">
+                <button
+                  onClick={() => setCurrentStep(currentStep - 1)}
+                  className="flex py-3 px-8 bg-white hover:bg-zinc/10 border border-zinc w-fit text-zinc mt-5"
+                >
+                  Back
+                </button>
+                <button
+                  onClick={handleConfirmAppointment}
+                  className="flex py-3 px-8 bg-blue-500 w-fit text-white mt-5"
+                >
+                  Next
+                </button>
+              </div>
             </div>
             {/* Right side: Display available dates */}
           </div>
@@ -394,10 +431,10 @@ function Appointment() {
       )}
 
       {currentStep === 5 && (
-        <div className="z-10 bg-white  md:py-12   my-60 py-40 px-40 h-screen w-screen flex justify-center items-start">
+        <div className="z-10 bg-white h-screen w-screen md:py-12  px-36 flex justify-center items-center">
           {/* Left side - Form */}
           <div className="flex-1 mr-8">
-            <h2 className="text-xl font-bold mb-4">Détails personnels</h2>
+            <h2 className="text-lg font-semibold ">Détails personnels</h2>
             <h3 className="py-8">
               Ces détails nous aideront à comprendre les meilleurs services pour
               votre véhicule.
@@ -471,12 +508,21 @@ function Appointment() {
                   className="md:w-3/4 w-full py-3 px-2 border border-gray-300 mt-2"
                 />
               </div>
-              <button
-                type="submit"
-                className="flex py-3 px-8 bg-blue-500 w-fit text-white mt-5"
-              >
-                Submit
-              </button>
+              <div className="flex items-center gap-10">
+
+                <button
+                  onClick={() => setCurrentStep(currentStep - 1)}
+                  className="flex py-3 px-8 bg-white hover:bg-zinc/10  w-fit text-zinc border border-zinc mt-5"
+                >
+                  Back
+                </button>
+                <button
+                  type="submit"
+                  className="flex py-3 px-8 bg-blue-500 hover:bg-blue-600 w-fit text-white mt-5"
+                >
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
 
@@ -526,4 +572,4 @@ function Appointment() {
   );
 }
 
-export default Appointment;
+export default Appointment; 

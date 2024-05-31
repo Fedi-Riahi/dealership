@@ -17,11 +17,11 @@ const ListingCard = ({ listing }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
     if (!session) {
-      router.push("/signin");
-    } else {
+
       setIsModalOpen(true);
-    }
+    
   };
+}
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -118,12 +118,12 @@ const ListingCard = ({ listing }) => {
           {/* <div className="border-t border-gray-300 my-4 w-full" /> */}
           <div className="flex items-center w-full  justify-between mt-6 gap-5">
             <div className=" flex items-center justify-center gap-1 cursor-pointer w-full">
-              <p
+              <Link
+              href={`/listing/${listing._id}`}
                 className="bg-blue-500 text-white  py-3 px-8 font-normal w-full text-center"
-                onClick={openModal}
               >
                 Technical Details
-              </p>
+              </Link>
               {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
             </div>
           </div>

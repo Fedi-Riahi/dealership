@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 md:mx-20">
       {/* Header Section with image and overlay */}
       <section className="relative" style={{ height: "60vh" }}>
         <div className="absolute inset-0 bg-cover bg-center z-10 w-full h-full">

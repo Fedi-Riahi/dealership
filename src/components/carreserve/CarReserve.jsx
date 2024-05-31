@@ -57,8 +57,8 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
 
   return (
     isOpen && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50 w-full backdrop-blur-sm">
-        <div className="bg-white p-8 w-2/5 relative">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50 w-full">
+        <div className="bg-white p-8 w-2/5 relative backdrop-blur-md">
           <span
             className="close text-zinc font-medium rounded-full py-1 w-fit px-3 flex items-center justify-center absolute right-4 top-4 cursor-pointer text-xl"
             onClick={onClose}

@@ -70,7 +70,7 @@ const CarParts = () => {
     <div className="md:px-20 sm:px-5 my-20">
       <div className="flex items-center justify-between w-full mt-4 mb-5">
         <h3 className="font-mercedes-bold md:w-3/5 md:text-4xl sm:text-xl w-full">
-          Sélectionnez votre Mercedes-Benz de rêve
+          Liste des Pièces Automobiles
         </h3>
         <div className="flex flex-col gap-1 w-2/5">
           <div className="md:flex items-center justify-center gap-4 hidden">
@@ -94,26 +94,26 @@ const CarParts = () => {
       </div>
       {/* Filter section for mobile */}
       {showFilters && (
-  <div>
-    {/* Overlay with blur effect */}
-    <div className="fixed inset-0 bg-gray-500 bg-opacity-50 backdrop-blur-sm z-10"></div>
-    {/* Filter popup */}
-    <div className="fixed z-20 inset-10 left-5 right-5 top-10 bottom-10 flex items-center justify-center ">
-      <div className="bg-white p-8 rounded-lg max-h-[700px] w-screen overflow-x-scroll">
-        <h2 className="text-2xl font-bold mb-4">Filters</h2>
-        <div className='p-5 border-b border-gray-200 dark:border-gray-700'>
-          <h3 className="text-lg font-semibold mb-2">Categories</h3>
-          <PartsFilter onChange={handleCategoryFilterChange} />
+        <div>
+          {/* Overlay with blur effect */}
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-50 backdrop-blur-sm z-10"></div>
+          {/* Filter popup */}
+          <div className="fixed z-20 inset-10 left-5 right-5 top-10 bottom-10 flex items-center justify-center ">
+            <div className="bg-white p-8 rounded-lg max-h-[700px] w-screen overflow-x-scroll">
+              <h2 className="text-2xl font-bold mb-4">Filters</h2>
+              <div className='p-5 border-b border-gray-200 dark:border-gray-700'>
+                <h3 className="text-lg font-semibold mb-2">Categories</h3>
+                <PartsFilter onChange={handleCategoryFilterChange} />
+              </div>
+              <div className='p-5 border-b border-gray-200 dark:border-gray-700'>
+                <h3 className="text-lg font-semibold mb-2">Compatible Models</h3>
+                <CompatibleCarModelsFilter onChange={handleModelFilterChange} />
+              </div>
+              <button onClick={() => setShowFilters(false)} className="bg-blue-500 text-white py-2 px-4 mt-4">Close</button>
+            </div>
+          </div>
         </div>
-        <div className='p-5 border-b border-gray-200 dark:border-gray-700'>
-          <h3 className="text-lg font-semibold mb-2">Compatible Models</h3>
-          <CompatibleCarModelsFilter onChange={handleModelFilterChange} />
-        </div>
-        <button onClick={() => setShowFilters(false)} className="bg-blue-500 text-white py-2 px-4 mt-4">Close</button>
-      </div>
-    </div>
-  </div>
-)}
+      )}
 
 
 

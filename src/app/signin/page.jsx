@@ -1,9 +1,10 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import SignInButton from "@/components/signinbutton/SignInButton";
 import Link from "next/link";
+
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,7 +56,20 @@ export default function LoginForm() {
   return (
     <div className="flex max-h-screen my-auto">
       <div className="flex-1 relative">
-        {/* Your image goes here */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-10 p-8">
+          <div className="absolute z-10 flex flex-col justify-center items-center">
+
+            <img
+              src="/log_res.png"
+              alt="Logo"
+              className="w-48 mb-4"
+            />
+            <h1 className="text-4xl w-1/2 font-mercedes-bold my-4">
+              Se connecter
+              à sfax silver star
+            </h1>
+          </div>
+        </div>
         <img
           src="/signup.png"
           alt="Registration Image"
@@ -70,12 +84,12 @@ export default function LoginForm() {
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <div className="w-full flex items-center justify-evenly my-1">
           <div className="border-t border-gray-300 my-6 flex-grow" />
-          <span className="text-2xl font-semibold text-gray-800 mx-4">
-            Log In
+          <span className="text-2xl font-mercedes-bold text-gray-800 mx-4">
+            Connecter a votre compte
           </span>
           <div className="border-t border-gray-300 my-6 flex-grow" />
         </div>
-        
+
         <div className="mb-4">
           <label
             htmlFor="email"
@@ -86,7 +100,8 @@ export default function LoginForm() {
           <input
             type="email"
             id="email"
-            className="mt-1 py-3 border border-gray-300 rounded-md w-full"
+            className="mt-1 py-3 px-4 border border-gray-300 rounded-md w-full"
+            placeholder="Adresse e-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -102,7 +117,8 @@ export default function LoginForm() {
           <input
             type="password"
             id="password"
-            className="mt-1 py-3 border border-gray-300 rounded-md w-full"
+            className="mt-1 py-3 px-4 border border-gray-300 rounded-md w-full"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -120,7 +136,7 @@ export default function LoginForm() {
             <span className="text-xl font-normal text-gray-800 mx-4">Or</span>
             <div className="border-t border-gray-300 my-6 flex-grow" />
           </div>
-          <span className="text-md mb-2">You don't have an account ? <Link href='/signup' className="text-blue-500 font-medium">Sign Up</Link></span>
+          <span className="text-md mb-2">You don't have an account? <Link href='/signup' className="text-blue-500 font-medium">Sign Up</Link></span>
           <SignInButton />
         </div>
       </form>

@@ -63,11 +63,11 @@ const MyCarousel = ({ model }) => {
 
         <div key={index} className="px-4 relative w-full">
           <div className="absolute inset-0 z-10 flex items-end px-5">
-            <div className="w-full bg-gradient-to-t from-black to-black/50 md:h-1/3 h-1/6 backdrop-blur-sm">
-              <span className="text-white text-center text-3xl h-full flex items-end   absolute md:bottom-32 left-10">
+            <div className="w-full bg-gradient-to-t from-black to-black/50  md:h-1/3 h-1/6 backdrop-blur-sm">
+              <span className="text-white text-center text-3xl h-full flex items-end py-2  absolute md:bottom-32 left-10">
                 {model.features[index]}
               </span>
-              <span className="text-gray-200 text-justify md:text-lg hidden h-full md:flex items-end left-10 absolute bottom-12 w-1/2">
+              <span className="text-gray-200 text-start md:text-lg hidden h-full md:flex items-end left-10 absolute bottom-12 w-2/3">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
                 ipsam sapiente.
               </span>

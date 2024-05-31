@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname} from "next/navigation";
+import { usePathname } from "next/navigation";
 import MyModel from "@/components/model/Model";
 import MyCarousel from "@/components/mycarousel/MyCarousel";
 import AudioSection from "@/components/audioSection/AudioSection";
@@ -13,17 +13,9 @@ import { GiSpeedometer } from "react-icons/gi";
 import { LuFuel } from "react-icons/lu";
 import { GiGearStickPattern } from "react-icons/gi";
 
-
-
-
-
 const ModelDetails = () => {
   const pathname = usePathname();
   const id = pathname.split("/").pop();
-
-  if (!id) {
-    return <div className="text-center">No ID provided</div>;
-  }
 
   const [model, setModel] = useState(null);
   const [similarModels, setSimilarModels] = useState([]);
@@ -34,7 +26,7 @@ const ModelDetails = () => {
     const fetchModelData = async () => {
       try {
         const modelResponse = await fetch(
-          `/api/carmodels/${id}`
+          `http://localhost:3000/api/carmodels/${id}`
         );
         if (!modelResponse.ok) {
           throw new Error("Failed to fetch model data");
@@ -43,7 +35,7 @@ const ModelDetails = () => {
         setModel(modelData.model);
 
         const allModelsResponse = await fetch(
-          `/api/carmodels`
+          `http://localhost:3000/api/carmodels`
         );
         if (!allModelsResponse.ok) {
           throw new Error("Failed to fetch all car models");
@@ -73,12 +65,8 @@ const ModelDetails = () => {
     setIsModalOpen(false);
   };
 
-
   const handleModalOpenReserve = () => {
-
     setIsModalOpenReserve(true);
-
-
   };
 
   const handleModalCloseReserve = () => {
@@ -88,6 +76,7 @@ const ModelDetails = () => {
   if (!model) {
     return <div className="text-center">Loading...</div>;
   }
+
 
   return (
     <div>

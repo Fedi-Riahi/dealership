@@ -52,7 +52,7 @@ const Register = () => {
           <div className="border-t border-gray-300 my-6 flex-grow" />
         </div>
         <span className="text-center">
-          L'email est utilisé pour vous connecter avec votre compte. Nous vous
+          L&apos;email est utilisé pour vous connecter avec votre compte. Nous vous
           enverrons un code de confirmation à ce email pour vérification.
         </span>
 
@@ -127,7 +127,7 @@ const Register = () => {
             htmlFor="agree"
             className="block text-sm font-medium text-gray-700"
           >
-            J'accepte les conditions suivantes
+            J&apos;accepte les conditions suivantes
           </label>
         </div>
         <div className="w-full flex flex-col justify-center items-center gap-5">
@@ -156,7 +156,7 @@ const Register = () => {
               className="w-48 mb-4"
             />
             <h1 className="text-4xl w-4/5 font-mercedes-bold my-4 text-center">
-              S'inscrire
+              S&apos;inscrire
               à sfax silver star
             </h1>
           </div>

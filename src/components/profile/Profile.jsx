@@ -19,6 +19,7 @@ const Profile = () => {
       try {
         // Retrieve user ID from session storage
         const userId = sessionStorage.getItem("userId");
+        console.log(userId)
 
         if (!userId) {
           throw new Error("User ID not found in session storage");
@@ -84,7 +85,6 @@ const Profile = () => {
         appointmentServices.push(service.name);
       }
     });
-
     // Join the service names into a comma-separated string
     return appointmentServices.join(", ");
   };

@@ -8,7 +8,7 @@ const PartsFilter = ({ onChange }) => {
   useEffect(() => {
     const fetchPartsCategories = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/carparts");
+        const response = await fetch("/api/carparts");
         if (!response.ok) {
           throw new Error("Failed to fetch parts categories");
         }

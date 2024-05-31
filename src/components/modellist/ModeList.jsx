@@ -6,7 +6,7 @@ function ModelList() {
   const [models, setModels] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/carmodels')
+    fetch('/api/carmodels')
       .then(response => response.json())
       .then(data => setModels(data.carListing.slice(0, 4))) // Fetch only the first 4 models
       .catch(error => console.error('Error fetching models:', error));

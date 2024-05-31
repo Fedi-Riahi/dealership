@@ -2,11 +2,9 @@
 import React, { Suspense, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
-import { MeshBasicMaterial } from "three"; // Import necessary material
 import SL from "../../../public/Sl";
 import * as THREE from "three";
-import GroundComponent   from "./Ground";
-import FloatingGrid from "./FloatingGrid";
+
 
 const MyModel = () => {
   const [cameraUpAndDown, setCameraUpAndDown] = useState(false);
@@ -56,11 +54,6 @@ const Car = ({ cameraUpAndDown }) => {
       <SL />
       {cameraUpAndDown && <CameraUpAndDownAnimation />}
       {/* Clickable points */}
-
-      {/* Add more clickable points as needed */}
-      <GroundComponent  /> {/* Add ground under the car */}
-
-      <FloatingGrid />
     </group>
   );
 };

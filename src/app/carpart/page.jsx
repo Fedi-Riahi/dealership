@@ -1,8 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import CarPartCard from "@/components/carPartCard/CarPartCard";
-import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
+import CarPartCard from "@/components/carpartcard/CarPartCard";
 import PartsFilter from "@/components/partfilter/PartsFilter";
 import CompatibleCarModelsFilter from "@/components/compatibleFilter/CompatibleCarModelsFilter ";
 
@@ -24,7 +23,7 @@ const CarParts = () => {
   useEffect(() => {
     const getCarParts = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/carparts");
+        const res = await fetch("/api/carparts");
 
         if (!res.ok) {
           throw new Error("Failed to fetch car parts");
@@ -141,7 +140,7 @@ const CarParts = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 w-full">
             {carParts.slice(0, displayedCarParts).map((part) => (
-              <CarPartCard part={part} id={part._id} />
+              <CarPartCard part={part} id={part._id} key={part._id}/>
             ))}
           </div>
           {/* Load More Button */}

@@ -71,8 +71,7 @@ const BillingDetails = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // Obtain userId from session storage
-  const userId = sessionStorage.getItem('userId');
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

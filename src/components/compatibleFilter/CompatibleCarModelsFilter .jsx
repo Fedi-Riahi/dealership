@@ -8,7 +8,7 @@ const CompatibleCarModelsFilter = ({ onChange }) => {
   useEffect(() => {
     const fetchCompatibleCarModels = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/carparts");
+        const response = await fetch("/api/carparts");
         if (!response.ok) {
           throw new Error("Failed to fetch compatible car models");
         }

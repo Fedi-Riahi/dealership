@@ -14,7 +14,7 @@ const withAuth = (WrappedComponent) => {
     }, [status, router]);
 
     if (status === 'loading') {
-      return <div>Loading...</div>;
+      return <div>Loading...</div>
     }
 
     return <WrappedComponent {...props} />;

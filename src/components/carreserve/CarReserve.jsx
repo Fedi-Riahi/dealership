@@ -20,7 +20,7 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/quote", {
+      const response = await fetch("/api/quote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
           )}
           <form onSubmit={handleSubmit}>
             <p className="text-gray-600 mb-4">
-              Pour prendre rendez-vous dans notre salle d'exposition, merci de
+              Pour prendre rendez-vous dans notre salle d&apos;exposition, merci de
               remplir ce formulaire et nous te contacterons dans les plus brefs
               délais.
             </p>

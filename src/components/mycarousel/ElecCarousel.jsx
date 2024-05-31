@@ -71,7 +71,7 @@ const ElecCarousel = () => {
       className="cursor-pointer"
     >
       {imagesData.map((imageData, index) => (
-        <div className="px-4 py-4 relative ">
+        <div className="px-4 py-4 relative " key={imageData.url}>
           <div key={index} className=" bg-white w-fit px-16 py-10 shadow-md rounded-md ">
           <div
               style={{ width: "500px", height: "300px", paddingRight: "10px" }}
@@ -91,7 +91,7 @@ const ElecCarousel = () => {
               <span className="text-zinc text-justify md:text-lg hidden md:flex items-end   w-full  my-4">
                 Les moteurs Mercedes sont réputés pour leur performance
                 exceptionnelle, leur fiabilité et leur technologie avancée.
-                Conçus avec une précision d'ingénierie allemande, ils offrent
+                Conçus avec une précision d&apos;ingénierie allemande, ils offrent
                 une puissance remarquable tout en garantissant une efficacité
                 énergétique optimale.
               </span>

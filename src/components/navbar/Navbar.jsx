@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,12 +15,17 @@ import { Context } from "@/app/context/page";
 const Navbar = () => {
   const { status, data: session } = useSession();
   const { cartItems } = useContext(Context);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isBurgerDropdownOpen, setIsBurgerDropdownOpen] = useState(false);
 
   const [userName, setUserName] = useState("");
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  const toggleUserDropdown = () => {
+    setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  const toggleBurgerDropdown = () => {
+    setIsBurgerDropdownOpen(!isBurgerDropdownOpen);
   };
 
   useEffect(() => {
@@ -53,7 +58,7 @@ const Navbar = () => {
         <div className="flex items-center md:hidden">
           <UserIcon
             className="h-6 w-6 cursor-pointer text-white"
-            onClick={toggleDropdown}
+            onClick={toggleUserDropdown}
           />
         </div>
 
@@ -118,12 +123,12 @@ const Navbar = () => {
           <div className="relative">
             <UserIcon
               className="h-6 w-6 cursor-pointer text-white"
-              onClick={toggleDropdown}
+              onClick={toggleUserDropdown}
             />
             {status === "authenticated" && (
               <CheckCircleIcon className="text-blue-500 h-5 w-5 absolute -top-3 -right-3" />
             )}
-            {status === "authenticated" && isDropdownOpen && (
+            {status === "authenticated" && isUserDropdownOpen && (
               <div className="absolute top-8 right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-48 z-50">
                 <p className="text-2xl">
                   Bonjour, {userName || "MercEnthusiast"}
@@ -140,7 +145,7 @@ const Navbar = () => {
                 </button>
               </div>
             )}
-            {status === "unauthenticated" && isDropdownOpen && (
+            {status === "unauthenticated" && isUserDropdownOpen && (
               <div className="absolute top-8 right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-48 z-50">
                 <Link className="text-zinc mt-2" href="/signin">
                   Sign In
@@ -158,7 +163,7 @@ const Navbar = () => {
 
         {/* Mobile burger menu on the right */}
         <div className="md:hidden">
-          <button onClick={toggleDropdown}>
+          <button onClick={toggleBurgerDropdown}>
             <svg
               className="h-6 w-6 text-white"
               viewBox="0 0 20 20"
@@ -174,41 +179,102 @@ const Navbar = () => {
         </div>
 
         {/* Dropdown menu (visible on mobile when toggled) */}
-        {isDropdownOpen && (
-          <div className="md:hidden absolute top-16 right-0 z-40 bg-white border border-gray-300 w-full  px-5">
+        {isBurgerDropdownOpen && (
+          <div className="md:hidden absolute top-16 right-0 z-40 bg-white w-full">
             <ul className="text-black p-4">
+              <li>
+                <Link href="/" className="block py-2 px-3 hover:text-gray-800">
+                  Acceuil
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/listing"
+                  className="block py-2 px-3 hover:text-gray-800"
+                >
+                  Modèles
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/carpart"
+                  className="block py-2 px-3 hover:text-gray-800"
+                >
+                  Achats
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/aboutus"
+                  className="block py-2 px-3 hover:text-gray-800"
+                >
+                  Nous connaître
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="block py-2 px-3 hover:text-gray-800"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cart"
+                  className="block py-2 px-3 hover:text-gray-800"
+                >
+                  Cart
+                </Link>
+              </li>
               {status === "authenticated" ? (
-                <>
-                  <li className="text-zinc text-2xl font-mercedes-bold mb-2">
-                    Bonjour, {userName || "MercEnthusiast"}
-                  </li>
-                  <li className="my-4">
-                    <Link
-                      href="/profile"
-                      className="block py-2 px-3 hover:text-gray-800 border-b border-blue-500"
-                    >
-                      Mon Compte
-                    </Link>
-                  </li>
-                  <li className="my-4">
-                    <button
-                      onClick={() => signOut()}
-                      className="block py-2 px-3 hover:text-gray-800 border-b border-blue-500 w-full text-start"
-                    >
-                      Logout
-                    </button>
-                  </li>
-                </>
+                <li>
+                  <Link
+                    href="/"
+                    className="block py-2 px-3 hover:text-gray-800"
+                    onClick={() => signOut()}
+                  >
+                    Logout
+                  </Link>
+                </li>
               ) : (
                 <li>
                   <Link
                     href="/signin"
                     className="block py-2 px-3 hover:text-gray-800"
                   >
-                    Sign In
+                    Sign Up
                   </Link>
                 </li>
               )}
+            </ul>
+          </div>
+        )}
+        {/* Dropdown menu for user profile (visible on mobile when toggled) */}
+        {isUserDropdownOpen && (
+          <div className="md:hidden absolute top-16 right-0 z-40 bg-white w-full">
+            <ul className="text-black p-4">
+              <li>
+                <p className="text-2xl">
+                  Bonjour, {userName || "MercEnthusiast"}
+                </p>
+              </li>
+              <li>
+                <Link
+                  href="/profile"
+                  className="block py-2 px-3 hover:text-gray-800"
+                >
+                  Mon Compte
+                </Link>
+              </li>
+              <li>
+                <button
+                  className="block py-2 px-3 hover:text-gray-800"
+                  onClick={() => signOut()}
+                >
+                  Sign out
+                </button>
+              </li>
             </ul>
           </div>
         )}

@@ -1,8 +1,13 @@
 "use client";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+<<<<<<< HEAD
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+=======
+import { usePathname } from "next/navigation";
+>>>>>>> 9098e462950bdf891dac978fc3c03db6fcd4d635
 import MyModel from "@/components/model/Model";
 import MyCarousel from "@/components/mycarousel/MyCarousel";
 import AudioSection from "@/components/audioSection/AudioSection";
@@ -12,45 +17,34 @@ import CarReserve from "@/components/carreserve/CarReserve";
 import { GiSpeedometer } from "react-icons/gi";
 import { LuFuel } from "react-icons/lu";
 import { GiGearStickPattern } from "react-icons/gi";
+<<<<<<< HEAD
 import { useSession } from "next-auth/react";
 
+=======
+>>>>>>> 9098e462950bdf891dac978fc3c03db6fcd4d635
 
 const ModelDetails = () => {
   const pathname = usePathname();
-  const isDesktop = window.innerWidth >= 1024;
   const id = pathname.split("/").pop();
 
+<<<<<<< HEAD
   if (!id) {
     return <div className="text-center">No ID provided</div>;
   }
   const { data: session, status } = useSession();
   const router = useRouter()
+=======
+>>>>>>> 9098e462950bdf891dac978fc3c03db6fcd4d635
   const [model, setModel] = useState(null);
   const [similarModels, setSimilarModels] = useState([]);
-  const scrollContainerRef = useRef(null);
-  const [currentImage, setCurrentImage] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenReserve, setIsModalOpenReserve] = useState(false);
-  const [topPosition, setTopPosition] = useState("-top-40");
-  const [acceleration, setAcceleration] = useState(0);
-  const [kw, setKw] = useState(0);
-  const [ps, setPs] = useState(0);
-  const [topSpeed, setTopSpeed] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTopPosition("top-28");
-    }, 500); // Adjust the delay time as needed (in milliseconds)
-
-    return () => clearTimeout(timer);
-  }, []); // This effect will run only once on component mount
 
   useEffect(() => {
     const fetchModelData = async () => {
       try {
-        // Fetch details of the current model
         const modelResponse = await fetch(
-          `http://localhost:3000/api/carmodels/${id}`
+          `/api/carmodels/${id}`
         );
         if (!modelResponse.ok) {
           throw new Error("Failed to fetch model data");
@@ -58,36 +52,28 @@ const ModelDetails = () => {
         const modelData = await modelResponse.json();
         setModel(modelData.model);
 
-        // Fetch all car models
         const allModelsResponse = await fetch(
-          `http://localhost:3000/api/carmodels`
+          `/api/carmodels`
         );
         if (!allModelsResponse.ok) {
           throw new Error("Failed to fetch all car models");
         }
         const allModelsData = await allModelsResponse.json();
 
-        // Filter similar models based on the year of the current model
         const similarModelsFiltered = allModelsData.carListing.filter(
           (similarModel) =>
             similarModel.year === modelData.model.year &&
             similarModel._id !== id
         );
         setSimilarModels(similarModelsFiltered);
-
-        // Set the current image once the model data is fetched
-        setCurrentImage(modelData.model.exteriorImages[0]);
       } catch (error) {
         console.error("Error fetching model:", error);
+        // Handle the error
       }
     };
 
     fetchModelData();
   }, [id]);
-
-  if (!model) {
-    return <div className="text-center">Loading...</div>;
-  }
 
   const handleModalOpen = () => {
     setIsModalOpen(true);
@@ -108,6 +94,10 @@ const ModelDetails = () => {
   const handleModalCloseReserve = () => {
     setIsModalOpenReserve(false);
   };
+
+  if (!model) {
+    return <div className="text-center">Loading...</div>;
+  }
 
   return (
     <div>
@@ -252,6 +242,7 @@ const ModelDetails = () => {
         <MyCarousel model={model} />
       </div>
       <div
+<<<<<<< HEAD
         className={`px-auto md:py-10 md:w-full flex items-center flex-col justify-center relative ${isDesktop ? "h-1/2" : "" // Apply the style only if it's a desktop
           }`}
         style={{ height: isDesktop ? "120vh" : "80vh" }} // Adjust height for desktop
@@ -259,6 +250,13 @@ const ModelDetails = () => {
         <h1 className="md:text-6xl text-2xl  w-fit text-zinc x-4 py-2 font-mercedes-bold text-center flex items-center justify-center mt-4 absolute md:-top-20   top-20 md:left-50 z-10">
           L'extérieur de l”{model.listingTitle}
 
+=======
+        className="px-auto md:py-10 md:w-full flex items-center flex-col justify-center relative"
+// Adjust height for desktop
+      >
+        <h1 className="md:text-4xl text-2xl  w-fit text-zinc x-4 py-2 font-mercedes-bold text-center flex items-center justify-center mt-4 absolute md:-top-16 top-20 md:left-50 z-10">
+          L”extérieur de l”{model.listingTitle}
+>>>>>>> 9098e462950bdf891dac978fc3c03db6fcd4d635
         </h1>
         <MyModel />
       </div>
@@ -315,7 +313,14 @@ const ModelDetails = () => {
         <h1 className="text-4xl font-mercedes-bold mb-10 text-left">Similar Car Models</h1>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {similarModels.slice(0, 4).map((similarModel) => (
+<<<<<<< HEAD
             <div className="flex flex-col items-start justify-center w-full bg-white">
+=======
+            <div
+              className="flex flex-col items-start justify-center w-full"
+              key={similarModel._id}
+            >
+>>>>>>> 9098e462950bdf891dac978fc3c03db6fcd4d635
               <div className="px-5 py-2">
                 <div className="flex items-start flex-col justify-start gap-2">
                   <h3 className="text-gray-900 font-semibold text-xl  cursor-pointer">

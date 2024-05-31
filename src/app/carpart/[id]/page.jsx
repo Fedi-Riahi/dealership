@@ -1,39 +1,28 @@
-"use client";
+"use client"
+import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
-import { useState, useEffect, useContext } from "react";
 import { usePathname } from "next/navigation";
 import { CiShoppingCart } from "react-icons/ci";
 import { Context } from "@/app/context/page";
 
 const PartDetails = () => {
-  const pathname = usePathname();
-  const id = pathname.split("/").pop();
-
-  if (!id) {
-    return <div className="text-center">No ID provided</div>;
-  }
-
+  const { handleAddToCart } = useContext(Context);
   const [part, setPart] = useState(null);
   const [similarParts, setSimilarParts] = useState([]);
-
-  const { handleAddToCart } = useContext(Context);
+  const pathname = usePathname();
+  const id = pathname.split("/").pop();
 
   useEffect(() => {
     const fetchPartData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/carparts/${id}`
-        );
+        const response = await fetch(`/api/carparts/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch part data");
         }
         const data = await response.json();
         setPart(data.part);
 
-        // Fetch similar parts based on category
-        const similarResponse = await fetch(
-          `http://localhost:3000/api/carparts?category=${data.part.category}`
-        );
+        const similarResponse = await fetch(`/api/carparts?category=${data.part.category}`);
         if (!similarResponse.ok) {
           throw new Error("Failed to fetch similar parts");
         }
@@ -41,16 +30,16 @@ const PartDetails = () => {
         setSimilarParts(similarData.parts);
       } catch (error) {
         console.error("Error fetching part data:", error);
+        // Handle the error (e.g., display an error message)
       }
     };
 
     fetchPartData();
-  }, [id]);
+  }, [id]); // Call useEffect unconditionally
 
   if (!part) {
     return <div>Loading...</div>;
   }
-
   return (
     <div className="container mx-auto my-40 w-full px-4">
       <span className="text-4xl font-mercedes-bold">Pièces Automobiles</span>

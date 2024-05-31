@@ -9,7 +9,7 @@ const TypeFilter = ({ selectedTypes = [], onChange }) => {
   useEffect(() => {
     const fetchCarTypes = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/carmodels");
+        const response = await fetch("/api/carmodels");
         if (!response.ok) {
           throw new Error("Failed to fetch car models");
         }

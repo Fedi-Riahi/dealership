@@ -20,8 +20,8 @@ const AboutUs = () => {
             <h1 className="text-3xl md:text-4xl font-bold">Sfax Silver Star</h1>
             <p className="text-base md:text-lg text-center mt-4">
               Sfax Silver Star est une concession automobile de renom offrant
-              une large gamme de services à sa clientèle, comprenant l'achat de
-              véhicules, l'acquisition de pièces détachées et la prise de
+              une large gamme de services à sa clientèle, comprenant l&apos;achat de
+              véhicules, l&apos;acquisition de pièces détachées et la prise de
               rendez-vous pour des contrôles de maintenance des véhicules
             </p>
           </div>
@@ -34,30 +34,33 @@ const AboutUs = () => {
           <span className="text-2xl md:text-3xl font-mercedes-bold">Nos services</span>
           <div className="flex flex-col md:flex-row justify-center mt-10 gap-10">
             <div className="w-full md:w-1/3">
-              <img
+              <Image
                 src="ser1.png"
                 alt="Service 1"
                 className="w-full h-auto rounded-md"
+                layout="fill"
               />
               <h2 className="text-lg font-semibold mt-4 text-center">
                 Entretien du voiture
               </h2>
             </div>
             <div className="w-full md:w-1/3">
-              <img
+              <Image
                 src="ser2.png"
                 alt="Service 2"
                 className="w-full h-auto rounded-md"
+                layout="fill"
               />
               <h2 className="text-lg font-semibold mt-4 text-center">
                 Vente des voitures
               </h2>
             </div>
             <div className="w-full md:w-1/3">
-              <img
+              <Image
                 src="ser3.png"
                 alt="Service 3"
                 className="w-full h-auto rounded-md"
+                layout="fill"
               />
               <h2 className="text-lg font-semibold mt-4 text-center">
                 Vente des pièces voitures
@@ -102,20 +105,20 @@ const AboutUs = () => {
             Notre partenaire officiel
           </h2>
           <div className="flex flex-col md:flex-row justify-center items-start mt-10">
-            <img src="/pixel.png" alt="Partner" className="w-full md:w-1/2 h-auto" />
+            <Image src="/pixel.png" alt="Partner" className="w-full md:w-1/2 h-auto" />
             <div className="flex flex-col justify-center items-center gap-10 md:gap-20 mt-10 md:mt-0 md:ml-8">
               <p className="text-lg md:text-xl">
                 <span className="text-zinc font-semibold">Mercedes-Benz</span>{" "}
-                incarne l'excellence et l'innovation dans l'industrie automobile
+                incarne l&apos;excellence et l&apos;innovation dans l&apos;industrie automobile
                 depuis des décennies. Chaque modèle est synonyme de luxe, de
                 qualité et de performance. Que ce soit par son design élégant,
                 son confort incomparable, ou ses technologies de pointe,
-                Mercedes-Benz repousse constamment les limites de l'ingénierie
+                Mercedes-Benz repousse constamment les limites de l&apos;ingénierie
                 automobile.
               </p>
               <p className="text-lg md:text-xl">
                 Avec une histoire riche et un héritage prestigieux, les
-                véhicules Mercedes-Benz représentent l'essence du savoir-faire
+                véhicules Mercedes-Benz représentent l&apos;essence du savoir-faire
                 allemand et sont un symbole de statut et de sophistication. Que
                 vous recherchiez une berline élégante, un SUV robuste ou une
                 voiture de sport exaltante, Mercedes-Benz offre une expérience
@@ -135,11 +138,11 @@ const AboutUs = () => {
           <div className="mt-10">
             <details className="mb-4">
               <summary className="cursor-pointer bg-white py-2 px-4 border-b border-gray-300 my-4">
-                Quelle est la fréquence recommandée pour l'entretien de mon
+                Quelle est la fréquence recommandée pour l&apos;entretien de mon
                 véhicule?
               </summary>
               <p className="bg-white py-2 px-4 border-b border-gray-300 my-4">
-                La fréquence d'entretien dépend du modèle et de l'année de votre
+                La fréquence d&apos;entretien dépend du modèle et de l&apos;année de votre
                 véhicule. En général, il est recommandé de faire un entretien
                 complet tous les 15 000 km ou une fois par an. Consultez votre
                 manuel du propriétaire ou contactez-nous pour des
@@ -152,9 +155,9 @@ const AboutUs = () => {
               </summary>
               <p className="bg-white py-2 px-4 border-b border-gray-300 my-4">
                 Nous offrons une gamme complète de services de maintenance, y
-                compris les vidanges, les changements de freins, l'inspection
+                compris les vidanges, les changements de freins, l&apos;inspection
                 générale du véhicule, le remplacement de pneus, et plus encore.
-                Nos techniciens qualifiés utilisent des pièces d'origine pour
+                Nos techniciens qualifiés utilisent des pièces d&apos;origine pour
                 garantir la qualité et la fiabilité.
               </p>
             </details>
@@ -163,8 +166,8 @@ const AboutUs = () => {
                 Proposez-vous des options de financement?
               </summary>
               <p className="bg-white py-2 px-4 border-b border-gray-300 my-4">
-                Oui, nous proposons diverses options de financement pour l'achat
-                de véhicules neufs et d'occasion. Nos conseillers financiers
+                Oui, nous proposons diverses options de financement pour l&apos;achat
+                de véhicules neufs et d&apos;occasion. Nos conseillers financiers
                 peuvent vous aider à trouver la solution de financement qui
                 correspond le mieux à votre budget.
               </p>

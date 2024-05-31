@@ -199,7 +199,7 @@ const ModelDetails = () => {
         <MyCarousel model={model} />
       </div>
       <div
-        style={{ height: isDesktop ? "120vh" : "80vh" }} // Adjust height for desktop
+       
         className="px-auto md:py-10 md:w-full flex items-center flex-col justify-center relative"
 // Adjust height for desktop
       >

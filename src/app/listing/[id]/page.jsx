@@ -22,9 +22,7 @@ const ModelDetails = () => {
   useEffect(() => {
     const fetchModelData = async () => {
       try {
-        const modelResponse = await fetch(
-          `/api/carmodels/${id}`
-        );
+        const modelResponse = await fetch(`/api/carmodels/${id}`);
         if (!modelResponse.ok) {
           throw new Error("Failed to fetch model data");
         }

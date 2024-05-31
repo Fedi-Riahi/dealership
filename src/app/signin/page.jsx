@@ -136,11 +136,9 @@ export default function LoginForm() {
             <span className="text-xl font-normal text-gray-800 mx-4">Or</span>
             <div className="border-t border-gray-300 my-6 flex-grow" />
           </div>
-<<<<<<< HEAD
-          <span className="text-md mb-2">You don't have an account? <Link href='/signup' className="text-blue-500 font-medium">Sign Up</Link></span>
-=======
+
           <span className="text-md mb-2">You don&apos;t have an account ? <Link href='/signup' className="text-blue-500 font-medium">Sign Up</Link></span>
->>>>>>> 9098e462950bdf891dac978fc3c03db6fcd4d635
+
           <SignInButton />
         </div>
       </form>

@@ -169,11 +169,10 @@ function Appointment() {
     <div className="flex justify-center items-center h-screen relative ">
       {/* Background Image */}
       <Image
-<<<<<<< HEAD
+
         src="/appointment-image.png"
-=======
-        src="./appointment-image.png"
->>>>>>> 9098e462950bdf891dac978fc3c03db6fcd4d635
+
+
         alt="Background"
         className="absolute inset-0 object-cover h-full"
         layout="fill"

@@ -14,17 +14,13 @@ import { LuFuel } from "react-icons/lu";
 import { GiGearStickPattern } from "react-icons/gi";
 import { useSession } from "next-auth/react";
 
-
 const ModelDetails = () => {
   const pathname = usePathname();
-  const isDesktop = window.innerWidth >= 1024;
+  const router = useRouter();
+  const { data: session, status } = useSession();
+
   const id = pathname.split("/").pop();
 
-  if (!id) {
-    return <div className="text-center">No ID provided</div>;
-  }
-  const { data: session, status } = useSession();
-  const router = useRouter()
   const [model, setModel] = useState(null);
   const [similarModels, setSimilarModels] = useState([]);
   const scrollContainerRef = useRef(null);
@@ -47,6 +43,7 @@ const ModelDetails = () => {
 
   useEffect(() => {
     const fetchModelData = async () => {
+      if (!id) return;
       try {
         // Fetch details of the current model
         const modelResponse = await fetch(
@@ -85,6 +82,10 @@ const ModelDetails = () => {
     fetchModelData();
   }, [id]);
 
+  if (!id) {
+    return <div className="text-center">No ID provided</div>;
+  }
+
   if (!model) {
     return <div className="text-center">Loading...</div>;
   }
@@ -97,12 +98,8 @@ const ModelDetails = () => {
     setIsModalOpen(false);
   };
 
-
   const handleModalOpenReserve = () => {
-
     setIsModalOpenReserve(true);
-
-
   };
 
   const handleModalCloseReserve = () => {
@@ -252,13 +249,13 @@ const ModelDetails = () => {
         <MyCarousel model={model} />
       </div>
       <div
-        className={`px-auto md:py-10 md:w-full flex items-center flex-col justify-center relative ${isDesktop ? "h-1/2" : "" // Apply the style only if it's a desktop
-          }`}
+        className={`px-auto md:py-10 md:w-full flex items-center flex-col justify-center relative ${
+          isDesktop ? "h-1/2" : "" // Apply the style only if it's a desktop
+        }`}
         style={{ height: isDesktop ? "120vh" : "80vh" }} // Adjust height for desktop
       >
         <h1 className="md:text-6xl text-2xl  w-fit text-zinc x-4 py-2 font-mercedes-bold text-center flex items-center justify-center mt-4 absolute md:-top-20   top-20 md:left-50 z-10">
           L'extérieur de l”{model.listingTitle}
-
         </h1>
         <MyModel />
       </div>
@@ -312,7 +309,9 @@ const ModelDetails = () => {
         </div>
       </div>
       <div className="flex flex-col items-start justify-center max-w-screen px-auto my-10 md:mx-20">
-        <h1 className="text-4xl font-mercedes-bold mb-10 text-left">Similar Car Models</h1>
+        <h1 className="text-4xl font-mercedes-bold mb-10 text-left">
+          Similar Car Models
+        </h1>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {similarModels.slice(0, 4).map((similarModel) => (
             <div className="flex flex-col items-start justify-center w-full bg-white">

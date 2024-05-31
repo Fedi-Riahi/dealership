@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
 import MyModel from "@/components/model/Model";
 import MyCarousel from "@/components/mycarousel/MyCarousel";
 import AudioSection from "@/components/audioSection/AudioSection";
@@ -12,64 +12,110 @@ import CarReserve from "@/components/carreserve/CarReserve";
 import { GiSpeedometer } from "react-icons/gi";
 import { LuFuel } from "react-icons/lu";
 import { GiGearStickPattern } from "react-icons/gi";
+import { useSession } from "next-auth/react";
+
+
 const ModelDetails = () => {
   const pathname = usePathname();
+  const isDesktop = window.innerWidth >= 1024;
   const id = pathname.split("/").pop();
+
+  if (!id) {
+    return <div className="text-center">No ID provided</div>;
+  }
+  const { data: session, status } = useSession();
+  const router = useRouter()
   const [model, setModel] = useState(null);
   const [similarModels, setSimilarModels] = useState([]);
+  const scrollContainerRef = useRef(null);
+  const [currentImage, setCurrentImage] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenReserve, setIsModalOpenReserve] = useState(false);
+  const [topPosition, setTopPosition] = useState("-top-40");
+  const [acceleration, setAcceleration] = useState(0);
+  const [kw, setKw] = useState(0);
+  const [ps, setPs] = useState(0);
+  const [topSpeed, setTopSpeed] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTopPosition("top-28");
+    }, 500); // Adjust the delay time as needed (in milliseconds)
+
+    return () => clearTimeout(timer);
+  }, []); // This effect will run only once on component mount
+
   useEffect(() => {
     const fetchModelData = async () => {
       try {
-        const modelResponse = await fetch(`/api/carmodels/${id}`);
+        // Fetch details of the current model
+        const modelResponse = await fetch(
+          `http://localhost:3000/api/carmodels/${id}`
+        );
         if (!modelResponse.ok) {
           throw new Error("Failed to fetch model data");
         }
         const modelData = await modelResponse.json();
         setModel(modelData.model);
+
+        // Fetch all car models
         const allModelsResponse = await fetch(
-          `/api/carmodels`
+          `http://localhost:3000/api/carmodels`
         );
         if (!allModelsResponse.ok) {
           throw new Error("Failed to fetch all car models");
         }
         const allModelsData = await allModelsResponse.json();
+
+        // Filter similar models based on the year of the current model
         const similarModelsFiltered = allModelsData.carListing.filter(
           (similarModel) =>
             similarModel.year === modelData.model.year &&
             similarModel._id !== id
         );
         setSimilarModels(similarModelsFiltered);
+
+        // Set the current image once the model data is fetched
+        setCurrentImage(modelData.model.exteriorImages[0]);
       } catch (error) {
         console.error("Error fetching model:", error);
-        // Handle the error
       }
     };
+
     fetchModelData();
   }, [id]);
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
-  const handleModalOpenReserve = () => {
-    setIsModalOpenReserve(true);
-  };
-  const handleModalCloseReserve = () => {
-    setIsModalOpenReserve(false);
-  };
+
   if (!model) {
     return <div className="text-center">Loading...</div>;
   }
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+
+  const handleModalOpenReserve = () => {
+
+    setIsModalOpenReserve(true);
+
+
+  };
+
+  const handleModalCloseReserve = () => {
+    setIsModalOpenReserve(false);
+  };
+
   return (
     <div>
       <div className=" flex flex-col items-center justify-center h-full">
         {/* Display the cardImages[2] */}
         <div className="w-full flex flex-col items-center justify-center ">
           <h1
-            className={`font-mercedes-light md:text-8xl text-4xl absolute md:top-16 top-10 text-center opacity-70 pb-80 -z-10 pt-20 transition-all duration-500 w-full  bg-gradient-to-t from-black/10 to-transparent`}
+            className={`font-mercedes-bold md:text-8xl text-4xl absolute md:top-16 top-10 text-center opacity-70 pb-80 -z-10 pt-20 transition-all duration-500 w-full  bg-gradient-to-t from-black/10 to-transparent`}
           >
             Mercedes-Benz
           </h1>
@@ -93,12 +139,7 @@ const ModelDetails = () => {
             </h1>
             <div className="absolute md:-top-10 top-10 flex items-center justify-center gap-4">
               {/* Technical Details button */}
-              <button
-                className="md:text-xl text-md font-normal px-8 py-3 text-white   bg-blue-500 hover:bg-blue-600"
-                onClick={handleModalOpen}
-              >
-                Technical Details
-              </button>
+
               {/* Demand a quote button */}
               <button
                 className="md:text-xl text-md font-normal px-8 py-3 text-zinc border border-zinc bg-back   hover:bg-gray-100/20"
@@ -119,9 +160,11 @@ const ModelDetails = () => {
         model={model}
         isOpen={isModalOpen}
         onClose={handleModalClose}
+        className="backdrop-blur-md"
       />
+
       {/* Specs*/}
-      <div className="flex items-center justify-center w-full gap-20 md:px-60 px-auto  mt-20 md:my-80 my-auto py-auto ">
+      <div className="flex items-center justify-center w-full gap-20 md:px-60 px-auto   md:my-44 my-auto py-auto ">
         {/* Details */}
         <div className="flex flex-col md:gap-10 gap-10 my-20">
           <div className="flex flex-col gap-2">
@@ -149,6 +192,12 @@ const ModelDetails = () => {
             </h1>
             <span className="text-center">Top speed</span>
           </div>
+          <button
+            className="md:text-xl text-md font-normal px-8 py-3 text-zinc border border-zinc   bg-back  hover:bg-zinc/10"
+            onClick={handleModalOpen}
+          >
+            Technical Details
+          </button>
         </div>
         {/* Image */}
         <div className="w-full hidden md:block">
@@ -161,6 +210,7 @@ const ModelDetails = () => {
           />
         </div>
       </div>
+
       <div className="md:flex flex-col items-center justify-center w-full px-auto mt-20 bg-zinc relative hidden">
         {/* <div className="w-full h-1/2  hidden md:block">
           <Image
@@ -171,18 +221,20 @@ const ModelDetails = () => {
             className="object-cover "
           />
         </div> */}
+
         {/* Text */}
         <div className=" flex items-center justify-center flex-col text-center  my-10 relative">
-          <span className="md:text-justify mx-auto md:text-6xl text-xl text-start  mt-6 absolute bottom-52 font-mercedes-bold z-20 text-zinc">
+          <span className="md:text-justify mx-auto md:text-6xl text-xl text-start  mt-6 absolute bottom-80 font-mercedes-bold z-20 text-zinc">
             {model.listingTitle}
           </span>
-          <span className="text-center mx-auto text-xl w-1/2 py-10  text-white">
+          <span className="text-center mx-auto text-xl w-1/2 pb-16 my-10  text-white">
             Les rêves sont la motivation la plus forte. Avec le {model.model},
             nous avons transposé cette conviction dans le domaine de
             l’électromobilité et avons ouvert un nouveau chapitre
           </span>
         </div>
       </div>
+
       <div
         className="md:flex hidden flex-col items-center justify-center w-full px-40 bg-zinc  relative"
         style={{ height: "50vh" }}
@@ -192,19 +244,21 @@ const ModelDetails = () => {
           <ElecCarousel model={model} />
         </div>
       </div>
+
       <div className="px-auto md:pt-10 my-36  md:h-screen ">
-        <h1 className="md:text-4xl text-xl  text-zinc text-center font-mercedes-bold flex items-center justify-center md:mb-20 mb-10">
+        <h1 className="md:text-6xl text-xl  text-zinc text-center font-mercedes-bold flex items-center justify-center md:mb-20 mb-10">
           {model.listingTitle} Highlights.
         </h1>
         <MyCarousel model={model} />
       </div>
       <div
-       
-        className="px-auto md:py-10 md:w-full flex items-center flex-col justify-center relative"
-// Adjust height for desktop
+        className={`px-auto md:py-10 md:w-full flex items-center flex-col justify-center relative ${isDesktop ? "h-1/2" : "" // Apply the style only if it's a desktop
+          }`}
+        style={{ height: isDesktop ? "120vh" : "80vh" }} // Adjust height for desktop
       >
-        <h1 className="md:text-4xl text-2xl  w-fit text-zinc x-4 py-2 font-mercedes-bold text-center flex items-center justify-center mt-4 absolute md:-top-16 top-20 md:left-50 z-10">
-          L”extérieur de l”{model.listingTitle}
+        <h1 className="md:text-6xl text-2xl  w-fit text-zinc x-4 py-2 font-mercedes-bold text-center flex items-center justify-center mt-4 absolute md:-top-20   top-20 md:left-50 z-10">
+          L'extérieur de l”{model.listingTitle}
+
         </h1>
         <MyModel />
       </div>
@@ -223,7 +277,7 @@ const ModelDetails = () => {
           style={{ height: "650px" }}
         >
           <div className="absolute top-10 z-20 flex flex-col items-center justify-center gap-5 ">
-            <h1 className="text-white md:text-6xl text-2xl font-medium">
+            <h1 className="text-white md:text-6xl text-2xl font-mercedes-bold">
               Setting the tone
             </h1>
             <span className="text-white md:text-xl font-normal text-center">
@@ -257,14 +311,11 @@ const ModelDetails = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center w-full px-auto my-20">
-        <h1 className="text-4xl font-medium mb-8">Similar Car Models</h1>
+      <div className="flex flex-col items-start justify-center max-w-screen px-auto my-10 md:mx-20">
+        <h1 className="text-4xl font-mercedes-bold mb-10 text-left">Similar Car Models</h1>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {similarModels.slice(0, 4).map((similarModel) => (
-            <div
-              className="flex flex-col items-start justify-center w-full"
-              key={similarModel._id}
-            >
+            <div className="flex flex-col items-start justify-center w-full bg-white">
               <div className="px-5 py-2">
                 <div className="flex items-start flex-col justify-start gap-2">
                   <h3 className="text-gray-900 font-semibold text-xl  cursor-pointer">
@@ -293,12 +344,14 @@ const ModelDetails = () => {
                         {similarModel.maxSpeed} Km/h
                       </p>
                     </div>
+
                     <div className="flex items-center gap-2 ">
                       <LuFuel className="h-7 w-7 text-zinc" />
                       <p className="text-lg font-normal mt-1 text-gray-700">
                         {similarModel.powerKw} kW {similarModel.powerPs}
                       </p>
                     </div>
+
                     <div className="flex items-center gap-2 ">
                       <GiGearStickPattern className="h-7 w-7 text-zinc" />
                       <p className="text-lg font-normal mt-1 text-gray-700 pb-1">
@@ -307,6 +360,7 @@ const ModelDetails = () => {
                     </div>
                   </div>
                 </div>
+
                 <div className="flex items-center justify-start gap-1 cursor-pointer w-full mt-10 ">
                   <p className="text-white bg-blue-500 py-4 md:px-10 font-normal hover:bg-blue-600 text-md sm:text-sm px-6 w-full text-center">
                     Technical Details
@@ -321,4 +375,5 @@ const ModelDetails = () => {
     </div>
   );
 };
+
 export default ModelDetails;

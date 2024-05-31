@@ -187,7 +187,7 @@ function Appointment() {
             <span className="py-2 px-4">Détails personnels</span>
           </div>
           <div
-            className="h-full bg-blue-500 z-40 absolute top-0 left-0 z-40"
+            className="h-full bg-blue-500 z-40 absolute top-0 left-0 "
             style={{ width: `${progressPercent}%` }}
           />
         </div>

@@ -26,7 +26,7 @@ const ModelDetails = () => {
     const fetchModelData = async () => {
       try {
         const modelResponse = await fetch(
-          `http://localhost:3000/api/carmodels/${id}`
+          `api/carmodels/${id}`
         );
         if (!modelResponse.ok) {
           throw new Error("Failed to fetch model data");
@@ -35,7 +35,7 @@ const ModelDetails = () => {
         setModel(modelData.model);
 
         const allModelsResponse = await fetch(
-          `http://localhost:3000/api/carmodels`
+          `/api/carmodels`
         );
         if (!allModelsResponse.ok) {
           throw new Error("Failed to fetch all car models");

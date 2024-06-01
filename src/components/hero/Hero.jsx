@@ -3,48 +3,43 @@ import React, { useRef, useState, useEffect } from "react";
 
 function Hero() {
   const videoRef = useRef(null);
-
-  const [showTextAndButtons, setShowTextAndButtons] = useState(false); // State to control the visibility of text and buttons
-
-
+  const [showTextAndButtons, setShowTextAndButtons] = useState(false);
 
   useEffect(() => {
-    // Play the video when the component mounts
     if (videoRef.current) {
       videoRef.current.play().catch((error) => {
         console.error("Play failed:", error.message);
       });
     }
 
-    // Set a timeout to show the text and buttons after some time (e.g., 3 seconds)
     const timeout = setTimeout(() => {
       setShowTextAndButtons(true);
-    }, 6000); // Adjust the delay as needed
+    }, 6000);
 
-    // Clean up the timeout when component unmounts or when the video starts playing
     return () => clearTimeout(timeout);
   }, []);
 
   return (
-    <div className="relative flex-grow w-full  bg-black">
-      <video ref={videoRef} className="w-full object-cover" muted>
+    <div className="relative flex-grow w-full bg-black">
+      <video
+        ref={videoRef}
+        className="w-full h-screen lg:h-auto object-cover"
+        muted
+      >
         <source src="/fn_1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Conditionally render title and buttons */}
       {showTextAndButtons && (
-        <div className="absolute bottom-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-          <h3 className="text-white font-mercedes-light z-10 relative text-6xl">
+        <div className="absolute bottom-60 lg:bottom-60 left-1/2 transform -translate-x-1/2 text-center px-4 w-full">
+          <h3 className="text-white font-mercedes-light z-10 relative text-3xl lg:text-6xl">
             <span className="block">Mercedes New E-Class</span>
           </h3>
-          <button className="bg-blue-500 text-white hover:bg-blue-600  px-10 py-4 mt-8 z-10 relative text-md">
+          <button className="bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 lg:px-10 lg:py-4 mt-8 z-10 relative text-sm lg:text-md">
             En savoir plus
           </button>
         </div>
       )}
-
-      
     </div>
   );
 }

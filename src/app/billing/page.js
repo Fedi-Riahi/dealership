@@ -1,4 +1,4 @@
-import BillingDetails from '@/components/billingDetails/BillingDetails'
+import BillingDetails from '../../../billingDetails/BillingDetails'
 import React from 'react'
 
 const Billing = () => {

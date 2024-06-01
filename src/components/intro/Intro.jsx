@@ -76,17 +76,9 @@ const Intro = ({ introTitle }) => {
             </div>
           </div>
 
-          {/* <div className="border-t border-gray-300 my-4 w-full" /> */}
-          <div className="flex items-center w-full  justify-center gap-4 mt-6">
-            <div className="flex items-center justify-center gap-1 cursor-pointer">
-              <p className="bg-blue-500 text-white hover:bg-blue-500/90 py-3 px-14 font-normal">Configure</p>
-              {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
-            </div>
-            <div className="flex items-center justify-center gap-1 cursor-pointer">
-              <p className="text-zinc border border-zinc py-3 md:px-10 font-normal hover:bg-gray-50 sm:text-sm px-6">Technical Details</p>
-              {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
-            </div>
-          </div>
+        <Link className='w-full py-4 px-auto text-center bg-blue-500 hover:bg-blue-600 my-4 text-white'  href={`/listing/${car._id}`}>
+        Technical Details
+        </Link>
         </div>
       </div>
     </div>

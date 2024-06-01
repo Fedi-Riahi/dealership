@@ -87,8 +87,6 @@ function Appointment() {
     setSelectedTime(time); // Update selectedTime directly with the time string
   };
 
-  const selectedDateString = selectedDate.toString();
-  const selectedTimeString = selectedTime.toString();
   const handleContactFormSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -169,22 +167,21 @@ function Appointment() {
     <div className="flex justify-center items-center h-screen relative ">
       {/* Background Image */}
       <Image
-
         src="/appointment-image.png"
-
-
         alt="Background"
         className="absolute inset-0 object-cover h-full"
         layout="fill"
       />
       {/* Progress Bar */}
       {currentStep > 1 && (
-        <div className="fixed -top-2 left-0 right-0 h-2 z-40  mx-36 my-20 bg-gray-100">
+        <div className="fixed md:-top-2 -top-4 left-2 right-2 h-2 z-40  md:mx-36 mx-4 my-20 bg-gray-100">
           <div className="w-full flex items-center justify-between py-4 bg-gray-100 ">
-            <span className="py-2 px-4">Services</span>
-            <span className="py-2 px-4">Mobilité</span>
-            <span className="py-2 px-4">Date et heure</span>
-            <span className="py-2 px-4">Détails personnels</span>
+            <span className="py-2 px-4 text-sm md:text-lg">Services</span>
+            <span className="py-2 px-4 text-sm md:text-lg">Mobilité</span>
+            <span className="py-2 px-4 text-sm md:text-lg">Date et heure</span>
+            <span className="py-2 px-4 text-sm md:text-lg">
+              Détails personnels
+            </span>
           </div>
           <div
             className="h-full bg-blue-500 z-40 absolute top-0 left-0 "
@@ -194,7 +191,7 @@ function Appointment() {
       )}
       {currentStep === 1 && (
         <div className="z-10 bg-white py-6 px-8 md:mx-20 mx-4 flex flex-col">
-          <h2 className="text-3xl font-medium">
+          <h2 className="text-4xl font-mercedes-bold">
             Réservation SAV en quelques clics.
           </h2>
           <span className="text-sm font-normal md:w-3/5 my-4">
@@ -224,8 +221,10 @@ function Appointment() {
       )}
 
       {currentStep === 2 && (
-        <div className="absolute z-10 bg-white h-screen overflow-y-auto md:my-10 w-screen md:py-40 md:px-40 my-10 py-20 px-10">
-          <h2>Sélectionnez une ou plusieurs prestation(s) de service.</h2>
+        <div className="absolute z-10 bg-white h-screen overflow-y-auto md:my-10 w-screen md:py-40 md:px-40 my-32 py-36 px-10">
+          <h2 className="text-lg font-semibold mb-20">
+            Sélectionnez une ou plusieurs prestation(s) de service.
+          </h2>
           {services.map((category) => (
             <div key={category._id} className="mt-14">
               <h3 className="text-blue-500 font-semibold text-2xl">
@@ -236,10 +235,11 @@ function Appointment() {
                 {category.services.map((service) => (
                   <div
                     key={service._id}
-                    className={` p-4 rounded-md border border-gray-300 cursor-pointer ${selectedServices.includes(service)
-                      ? "bg-blue-100 text-blue-500"
-                      : "bg-white text-gray-700"
-                      }`}
+                    className={` p-4 rounded-md border border-gray-300 cursor-pointer ${
+                      selectedServices.includes(service)
+                        ? "bg-blue-100 text-blue-500"
+                        : "bg-white text-gray-700"
+                    }`}
                     onClick={() => handleServiceSelection(service)}
                   >
                     <div className="py-3flex items-center justify-start">
@@ -251,7 +251,6 @@ function Appointment() {
             </div>
           ))}
           <div className="flex items-center gap-10">
-
             <button
               onClick={() => setCurrentStep(currentStep - 1)}
               className="flex py-3 px-8 border border-zinc w-fit text-zinc hover:bg-zinc/10 mt-5"
@@ -276,7 +275,11 @@ function Appointment() {
                 être payante.
               </h2>
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4">
-                <div class={`mobility-option ${mobilityOption === "agency" ? "selected" : ""}`}>
+                <div
+                  class={`mobility-option ${
+                    mobilityOption === "agency" ? "selected" : ""
+                  }`}
+                >
                   <input
                     type="radio"
                     id="agency"
@@ -288,12 +291,22 @@ function Appointment() {
                   />
                   <label
                     htmlFor="agency"
-                    className={`py-4 px-40 rounded-md border border-gray-300 cursor-pointer inline-flex items-center justify-start ${mobilityOption === "agency" ? "bg-blue-100 text-blue-500" : "bg-white text-gray-700 hover:bg-gray-100"}`}
+                    className={`py-4 md:px-40 px-4 px-auto w-full rounded-md border border-gray-300 cursor-pointer inline-flex items-center justify-start ${
+                      mobilityOption === "agency"
+                        ? "bg-blue-100 text-blue-500"
+                        : "bg-white text-gray-700 hover:bg-gray-100"
+                    }`}
                   >
-                    <span class=" cursor-pointer">No , merci (sauter)</span>
+                    <span class=" cursor-pointer text-center ">
+                      No , merci (sauter)
+                    </span>
                   </label>
                 </div>
-                <div class={`mobility-option ${mobilityOption === "tow" ? "selected" : ""}`}>
+                <div
+                  class={`mobility-option ${
+                    mobilityOption === "tow" ? "selected" : ""
+                  }`}
+                >
                   <input
                     type="radio"
                     id="tow"
@@ -305,14 +318,18 @@ function Appointment() {
                   />
                   <label
                     htmlFor="tow"
-                    className={`py-4 px-32 rounded-md border border-gray-300 cursor-pointer inline-flex items-center justify-start ${mobilityOption === "tow" ? "bg-blue-100 text-blue-500" : "bg-white text-gray-700 hover:bg-gray-100"}`}
+                    className={`py-4  md:px-32 px-4 px-auto w-full rounded-md border border-gray-300 cursor-pointer inline-flex items-center justify-start ${
+                      mobilityOption === "tow"
+                        ? "bg-blue-100 text-blue-500"
+                        : "bg-white text-gray-700 hover:bg-gray-100"
+                    }`}
                   >
-                    <span class=" cursor-pointer">Vehicule de remplacement</span>
+                    <span class=" cursor-pointer">
+                      Vehicule de remplacement
+                    </span>
                   </label>
                 </div>
               </div>
-
-
 
               <div className="flex items-center gap-10 my-10">
                 <button
@@ -344,17 +361,17 @@ function Appointment() {
 
       {currentStep === 4 && (
         <div className="z-10 bg-white h-screen w-screen md:py-12 px-8 flex justify-center items-center">
-          <div className="w-screen flex justify-center items-center mx-32 px-auto">
+          <div className="w-screen flex justify-center items-center md:mx-32 px-auto">
             {/* Left side: Inputs */}
-            <div className="flex-1 mr-8">
-              <h2 className="text-lg font-semibold mb-20">
+            <div className="flex-1 ">
+              <h2 className="text-lg font-semibold mb-20 w-full ">
                 Consultez les dates de rendez-vous disponibles et choisissez
                 celui qui convient à votre emploi du temps.
               </h2>
               <div className="flex flex-col space-y-4">
                 <div>
                   <h3 className="text-lg font-medium mb-5">Choose a Date</h3>
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="flex items-center justify-start w-full flex-wrap md:gap-4 gap-4">
                     {[
                       "Monday",
                       "Tuesday",
@@ -375,7 +392,7 @@ function Appointment() {
                         />
                         <label
                           htmlFor={`day-${day}`}
-                          className={`inline-flex items-center justify-center w-full p-4 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
+                          className={`inline-flex md:px-4 px-4 py-3  items-center justify-center w-full  text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
                         >
                           {day}
                         </label>
@@ -385,7 +402,7 @@ function Appointment() {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium mb-5">Choose a Time</h3>
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="flex items-center justify-start w-full flex-wrap md:gap-4 gap-4">
                     {Array.from(Array(5)).map((_, index) => {
                       const hour = 8 + index;
                       const timeString = `${hour}:00`;
@@ -398,12 +415,14 @@ function Appointment() {
                             name="time"
                             value={timeString}
                             checked={selectedTime === timeString}
-                            onChange={(e) => handleTimeSelection(e.target.value)}
+                            onChange={(e) =>
+                              handleTimeSelection(e.target.value)
+                            }
                             className="hidden peer"
                           />
                           <label
                             htmlFor={`time-${hour}`}
-                            className={`inline-flex items-center justify-center w-full p-4 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
+                            className={`inline-flex md:px-4 px-4 py-3 items-center justify-center w-full  text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
                           >
                             {timeString}
                           </label>
@@ -434,10 +453,10 @@ function Appointment() {
       )}
 
       {currentStep === 5 && (
-        <div className="z-10 bg-white h-screen w-screen md:py-12  px-36 flex justify-center items-center">
+        <div className="z-10 bg-white md:h-screen w-screen  md:py-32  px-8 md:px-36 flex flex-col md:flex-row justify-start items-start">
           {/* Left side - Form */}
-          <div className="flex-1 mr-8">
-            <h2 className="text-lg font-semibold ">Détails personnels</h2>
+          <div className="flex-1 md:mr-8 mb-8 md:mb-0">
+            <h2 className="text-2xl font-mercedes-bold">Détails personnels</h2>
             <h3 className="py-8">
               Ces détails nous aideront à comprendre les meilleurs services pour
               votre véhicule.
@@ -457,7 +476,7 @@ function Appointment() {
                   onChange={(e) =>
                     setFormData({ ...formData, firstName: e.target.value })
                   }
-                  className="md:w-3/4 w-full py-3 px-2 border border-gray-300 mt-2"
+                  className="w-full py-3 px-2 border border-gray-300 mt-2"
                 />
               </div>
               <div>
@@ -474,7 +493,7 @@ function Appointment() {
                   onChange={(e) =>
                     setFormData({ ...formData, lastName: e.target.value })
                   }
-                  className="md:w-3/4 w-full py-3 px-2 border border-gray-300 mt-2"
+                  className="w-full py-3 px-2 border border-gray-300 mt-2"
                 />
               </div>
               <div>
@@ -491,7 +510,7 @@ function Appointment() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="md:w-3/4 w-full py-3 px-2 border border-gray-300 mt-2"
+                  className="w-full py-3 px-2 border border-gray-300 mt-2"
                 />
               </div>
               <div>
@@ -508,20 +527,19 @@ function Appointment() {
                   onChange={(e) =>
                     setFormData({ ...formData, phoneNumber: e.target.value })
                   }
-                  className="md:w-3/4 w-full py-3 px-2 border border-gray-300 mt-2"
+                  className="w-full py-3 px-2 border border-gray-300 mt-2"
                 />
               </div>
-              <div className="flex items-center gap-10">
-
+              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10 mt-8">
                 <button
                   onClick={() => setCurrentStep(currentStep - 1)}
-                  className="flex py-3 px-8 bg-white hover:bg-zinc/10  w-fit text-zinc border border-zinc mt-5"
+                  className="flex py-3 px-8 bg-white hover:bg-zinc/10 w-full md:w-auto text-zinc border border-zinc"
                 >
                   Back
                 </button>
                 <button
                   type="submit"
-                  className="flex py-3 px-8 bg-blue-500 hover:bg-blue-600 w-fit text-white mt-5"
+                  className="flex py-3 px-8 bg-blue-500 hover:bg-blue-600 w-full md:w-auto text-white"
                 >
                   Submit
                 </button>
@@ -532,10 +550,10 @@ function Appointment() {
           {/* Right side - Appointment Summary */}
           <div className="flex-1">
             <div>
-              <h3 className="font-semibold">Appointment Summary:</h3>
+              <h3 className="text-2xl font-mercedes-bold">Appointment Summary:</h3>
               {appointmentSummary && (
                 <div className="mb-4">
-                  <div className="flex items-start justify-center flex-col gap-1 my-4">
+                  <div className="flex flex-col gap-1 my-4">
                     <span className="text-blue-500">Véhicule</span>
                     <p>
                       {appointmentSummary.carModel
@@ -548,7 +566,7 @@ function Appointment() {
                         : ""}
                     </p>
                   </div>
-                  <div className="flex items-start justify-center flex-col gap-1 my-4">
+                  <div className="flex flex-col gap-1 my-4">
                     <span className="text-blue-500">Services</span>
                     <p>
                       {appointmentSummary.services
@@ -556,12 +574,12 @@ function Appointment() {
                         .join(", ")}
                     </p>
                   </div>
-                  <div className="flex items-start justify-center flex-col gap-1 my-4">
+                  <div className="flex flex-col gap-1 my-4">
                     <span className="text-blue-500">Date and Time</span>
                     <p> {appointmentSummary.selectedDate}</p>
                     <p> {appointmentSummary.selectedTime}</p>
                   </div>
-                  <div className="flex items-start justify-center flex-col gap-1 my-4">
+                  <div className="flex flex-col gap-1 my-4">
                     <span className="text-blue-500">Mobility</span>
                     <p> {appointmentSummary.mobilityOption}</p>
                   </div>
@@ -575,4 +593,4 @@ function Appointment() {
   );
 }
 
-export default Appointment; 
+export default Appointment;

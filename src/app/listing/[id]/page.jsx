@@ -314,7 +314,7 @@ const ModelDetails = () => {
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {similarModels.slice(0, 4).map((similarModel) => (
-            <div className="flex flex-col items-start justify-center w-full bg-white">
+            <div className="flex flex-col items-start justify-center w-full bg-white" key={similarModel._id}>
               <div className="px-5 py-2">
                 <div className="flex items-start flex-col justify-start gap-2">
                   <h3 className="text-gray-900 font-semibold text-xl  cursor-pointer">

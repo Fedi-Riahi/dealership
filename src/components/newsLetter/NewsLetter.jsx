@@ -9,10 +9,10 @@ function Newsletter() {
 
   return (
     <div
-      className="flex items-center justify-center py-10 w-full px-10"
+      className="flex items-center justify-center py-10 w-full md:px-10 px-4"
       style={bgImageStyle}
     >
-      <div className="flex flex-col md:flex-row items-center justify-center w-full md:space-x-8  p-8">
+      <div className="flex flex-col md:flex-row items-center justify-center w-full md:space-x-8  ">
         {/* Left side: Title, Text, and Newsletter Input */}
         <div className="w-full md:w-1/2">
           <div className="mb-4">

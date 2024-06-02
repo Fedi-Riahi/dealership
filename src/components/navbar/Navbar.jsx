@@ -64,11 +64,20 @@ const Navbar = () => {
 
         {/* Logo in the center for mobile */}
         <div className="flex-1 flex justify-center md:justify-start">
-          <Link href="/">
+          <Link href="/" className="hidden md:block">
             <Image
               src="/log.png"
               alt="Silver Star Sfax"
               width={190}
+              height={80}
+              className="cursor-pointer"
+            />
+          </Link>
+          <Link href="/" className="block md:hidden">
+            <Image
+              src="/log_res.png"
+              alt="Silver Star Sfax"
+              width={80}
               height={80}
               className="cursor-pointer"
             />

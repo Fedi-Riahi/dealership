@@ -30,7 +30,7 @@ const Footer = () => {
         {/* Section with flex */}
         <div className="flex flex-wrap justify-center -mx-4">
           {/* Section 1 */}
-          <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-8 text-center">
+          <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-8 text-start">
             <h3 className="text-lg font-semibold mb-4">Société</h3>
             <ul>
               <li>
@@ -52,7 +52,7 @@ const Footer = () => {
           </div>
 
           {/* Section 2 */}
-          <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-8 text-center">
+          <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-8 text-start">
             <h3 className="text-lg font-semibold mb-4">Liens rapides</h3>
             <ul>
               <li>
@@ -71,7 +71,7 @@ const Footer = () => {
           </div>
 
           {/* Section 3 */}
-          <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-8 text-center">
+          <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-8 text-start">
             <h3 className="text-lg font-semibold mb-4">Type de véhicules</h3>
             <ul>
               <li>

@@ -146,10 +146,10 @@ const CarParts = () => {
           {/* Load More Button */}
           {displayedCarParts < carParts.length && (
             <button
-              className="bg-gray-900 text-white py-2 px-4 mt-4 rounded"
+              className="bg-blue-500 text-white py-2 px-4 mt-8 rounded"
               onClick={loadMoreCarParts}
             >
-              Load More
+              Voir Plus
             </button>
           )}
         </div>

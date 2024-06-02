@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import SignInButton from "@/components/signinbutton/SignInButton";
+import { signIn } from "next-auth/react";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-
+  
     try {
       const response = await fetch("/api/user", {
         method: "POST",
@@ -24,15 +25,46 @@ const Register = () => {
         },
         body: JSON.stringify({ email, password, firstName, lastName }),
       });
-
+  
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Something went wrong");
       }
+  
+   
+  
+      // Authenticate the user with their newly created credentials
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+  
+      if (res.error) {
+        setError("Sign-in failed");
+        return;
+      }
 
-      // Redirect user to verification pending page
+      // Fetch the user after successful sign-in
+      const userResponse = await fetch("/api/user", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (!userResponse.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+
+      const userDataAfterSignIn = await userResponse.json();
+      const userId = userDataAfterSignIn.users.find(user => user.email === email);
+  
+      // Save the loggedInUser's id in session storage
+      sessionStorage.setItem("userId", userId._id);
+
+      // Redirect user to verification pending page or any other page
       router.push("/");
-
     } catch (error) {
       setError(error.message);
     }
@@ -70,6 +102,7 @@ const Register = () => {
             className="mt-1 py-3 px-4 border border-gray-300 rounded-md w-full"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Prénom"
             required
           />
         </div>
@@ -85,6 +118,7 @@ const Register = () => {
             id="lastName"
             className="mt-1 py-3 px-4 border border-gray-300 rounded-md w-full"
             value={lastName}
+            placeholder="Nom de famille"
             onChange={(e) => setLastName(e.target.value)}
             required
           />
@@ -103,6 +137,7 @@ const Register = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder="Adresse e-mail"
           />
         </div>
         <div className="mb-4">
@@ -119,6 +154,7 @@ const Register = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Mot de passe"
           />
         </div>
 

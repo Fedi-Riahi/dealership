@@ -47,7 +47,7 @@ const authOptions = {
           console.log("Profile email:", profile.email);
 
           // Save user's email to the database
-          const newUser = new User({ email: profile.email });
+          const newUser = new User({ email: profile.email, password });
           await newUser.save();
           console.log("User email saved:", profile.email);
 
@@ -57,7 +57,7 @@ const authOptions = {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email: profile.email }),
+            body: JSON.stringify({ email: profile.email , password }),
           });
 
           if (!response.ok) {

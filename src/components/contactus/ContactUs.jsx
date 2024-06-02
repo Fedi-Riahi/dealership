@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <section className="py-12 md:px-28 px-4 w-full">
+    <section className="py-12 my-10 md:px-28 px-4 w-full">
       <div className="container flex flex-col md:flex-row items-center justify-center w-full">
         {/* Image */}
         <div className="w-full md:w-1/2 mb-6 md:mb-0 flex-1">

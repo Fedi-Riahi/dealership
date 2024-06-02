@@ -116,7 +116,7 @@ export default function LoginForm() {
             type="password"
             id="password"
             className="mt-1 py-4 px-4 border border-gray-300 rounded-md w-full"
-            placeholder="Password"
+            placeholder="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

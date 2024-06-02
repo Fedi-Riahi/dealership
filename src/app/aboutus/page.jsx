@@ -5,66 +5,80 @@ const AboutUs = () => {
   return (
     <div className="bg-gray-100 md:mx-20">
       {/* Header Section with image and overlay */}
-      <section className="relative" style={{ height: "60vh" }}>
-        <div className="absolute inset-0 bg-cover bg-center z-10 w-full h-full">
-          <Image
-            src="/about-bg.png"
-            alt=""
-            className="w-full h-full object-cover"
-            layout="fill"
-          />
-        </div>
-        <div className="absolute inset-0 bg-black opacity-50 z-20"></div>
-        <div className="absolute inset-0 flex items-center justify-center z-30">
-          <div className="text-white text-center w-4/5 md:w-1/2 px-4">
-            <h1 className="text-3xl md:text-4xl font-bold">Sfax Silver Star</h1>
-            <p className="text-base md:text-lg text-center mt-4">
-              Sfax Silver Star est une concession automobile de renom offrant
-              une large gamme de services à sa clientèle, comprenant l&apos;achat de
-              véhicules, l&apos;acquisition de pièces détachées et la prise de
-              rendez-vous pour des contrôles de maintenance des véhicules
-            </p>
-          </div>
+      <section className="flex flex-col items-center justify-center bg-cover bg-center h-screen ">
+        <Image
+          src="/about-bg.png"
+          alt=""
+          className=" w-full h-full object-cover"
+          layout="fill"
+        />
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="text-white text-center w-4/5 md:w-1/2 px-4 z-10">
+          <h1 className="text-3xl md:text-4xl font-bold">Sfax Silver Star</h1>
+          <p className="text-base md:text-lg text-center mt-4">
+            Sfax Silver Star est une concession automobile de renom offrant une
+            large gamme de services à sa clientèle, comprenant l&apos;achat de
+            véhicules, l&apos;acquisition de pièces détachées et la prise de
+            rendez-vous pour des contrôles de maintenance des véhicules
+          </p>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-12 px-4 md:px-0">
+      {/* Service Cards Section */}
+      <section className="py-12 px-4 md:px-0 bg-white">
         <div className="container mx-auto">
-          <span className="text-2xl md:text-3xl font-mercedes-bold">Nos services</span>
-          <div className="flex flex-col md:flex-row justify-center mt-10 gap-10">
-            <div className="w-full md:w-1/3">
+          <h2 className="text-2xl md:text-3xl font-mercedes-bold mb-4">
+            Our Services
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Service Card 1 */}
+            <div className=" p-6 rounded-lg">
               <Image
-                src="ser1.png"
+                src="/ser1.png"
                 alt="Service 1"
                 className="w-full h-auto rounded-md"
-                layout="fill"
+                width={500}
+                height={300}
               />
-              <h2 className="text-lg font-semibold mt-4 text-center">
+              <h3 className="text-xl font-semibold mt-4">
                 Entretien du voiture
-              </h2>
+              </h3>
+              <p className="mt-2">
+                Description of service 1 goes here. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit.
+              </p>
             </div>
-            <div className="w-full md:w-1/3">
+            {/* Service Card 2 */}
+            <div className=" p-6 rounded-lg">
               <Image
-                src="ser2.png"
+                src="/ser2.png"
                 alt="Service 2"
                 className="w-full h-auto rounded-md"
-                layout="fill"
+                width={500}
+                height={300}
               />
-              <h2 className="text-lg font-semibold mt-4 text-center">
-                Vente des voitures
-              </h2>
+              <h3 className="text-xl font-semibold mt-4">Vente des voitures</h3>
+              <p className="mt-2">
+                Description of service 2 goes here. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit.
+              </p>
             </div>
-            <div className="w-full md:w-1/3">
+            {/* Service Card 3 */}
+            <div className=" p-6 rounded-lg">
               <Image
-                src="ser3.png"
+                src="/ser3.png"
                 alt="Service 3"
                 className="w-full h-auto rounded-md"
-                layout="fill"
+                width={500}
+                height={300}
               />
-              <h2 className="text-lg font-semibold mt-4 text-center">
+              <h3 className="text-xl font-semibold mt-4">
                 Vente des pièces voitures
-              </h2>
+              </h3>
+              <p className="mt-2">
+                Description of service 3 goes here. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit.
+              </p>
             </div>
           </div>
         </div>
@@ -73,7 +87,7 @@ const AboutUs = () => {
       {/* Maintenance and Repairs Section */}
       <section className="py-12 px-4 md:px-0">
         <div className="container mx-auto flex flex-col md:flex-row gap-10">
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 mb-4 md:mb-0">
             <video
               src="/sl1.mp4" // Replace with the path to your video file
               autoPlay
@@ -105,24 +119,31 @@ const AboutUs = () => {
             Notre partenaire officiel
           </h2>
           <div className="flex flex-col md:flex-row justify-center items-start mt-10">
-            <Image src="/pixel.png" alt="Partner" className="w-full md:w-1/2 h-auto" />
+            <Image
+              src="/pixel.png"
+              alt="Partner"
+              className="w-full md:w-1/2 h-auto"
+              width={800}
+              height={800}
+            />
             <div className="flex flex-col justify-center items-center gap-10 md:gap-20 mt-10 md:mt-0 md:ml-8">
               <p className="text-lg md:text-xl">
                 <span className="text-zinc font-semibold">Mercedes-Benz</span>{" "}
-                incarne l&apos;excellence et l&apos;innovation dans l&apos;industrie automobile
-                depuis des décennies. Chaque modèle est synonyme de luxe, de
-                qualité et de performance. Que ce soit par son design élégant,
-                son confort incomparable, ou ses technologies de pointe,
-                Mercedes-Benz repousse constamment les limites de l&apos;ingénierie
-                automobile.
+                incarne l&apos;excellence et l&apos;innovation dans
+                l&apos;industrie automobile depuis des décennies. Chaque modèle
+                est synonyme de luxe, de qualité et de performance. Que ce soit
+                par son design élégant, son confort incomparable, ou ses
+                technologies de pointe, Mercedes-Benz repousse constamment les
+                limites de l&apos;ingénierie automobile.
               </p>
               <p className="text-lg md:text-xl">
                 Avec une histoire riche et un héritage prestigieux, les
-                véhicules Mercedes-Benz représentent l&apos;essence du savoir-faire
-                allemand et sont un symbole de statut et de sophistication. Que
-                vous recherchiez une berline élégante, un SUV robuste ou une
-                voiture de sport exaltante, Mercedes-Benz offre une expérience
-                de conduite inégalée pour ceux qui exigent le meilleur.
+                véhicules Mercedes-Benz représentent l&apos;essence du
+                savoir-faire allemand et sont un symbole de statut et de
+                sophistication. Que vous recherchiez une berline élégante, un
+                SUV robuste ou une voiture de sport exaltante, Mercedes-Benz
+                offre une expérience de conduite inégalée pour ceux qui exigent
+                le meilleur.
               </p>
             </div>
           </div>
@@ -142,11 +163,11 @@ const AboutUs = () => {
                 véhicule?
               </summary>
               <p className="bg-white py-2 px-4 border-b border-gray-300 my-4">
-                La fréquence d&apos;entretien dépend du modèle et de l&apos;année de votre
-                véhicule. En général, il est recommandé de faire un entretien
-                complet tous les 15 000 km ou une fois par an. Consultez votre
-                manuel du propriétaire ou contactez-nous pour des
-                recommandations spécifiques.
+                La fréquence d&apos;entretien dépend du modèle et de
+                l&apos;année de votre véhicule. En général, il est recommandé de
+                faire un entretien complet tous les 15 000 km ou une fois par
+                an. Consultez votre manuel du propriétaire ou contactez-nous
+                pour des recommandations spécifiques.
               </p>
             </details>
             <details className="mb-4">
@@ -155,10 +176,10 @@ const AboutUs = () => {
               </summary>
               <p className="bg-white py-2 px-4 border-b border-gray-300 my-4">
                 Nous offrons une gamme complète de services de maintenance, y
-                compris les vidanges, les changements de freins, l&apos;inspection
-                générale du véhicule, le remplacement de pneus, et plus encore.
-                Nos techniciens qualifiés utilisent des pièces d&apos;origine pour
-                garantir la qualité et la fiabilité.
+                compris les vidanges, les changements de freins,
+                l&apos;inspection générale du véhicule, le remplacement de
+                pneus, et plus encore. Nos techniciens qualifiés utilisent des
+                pièces d&apos;origine pour garantir la qualité et la fiabilité.
               </p>
             </details>
             <details className="mb-4">
@@ -166,10 +187,10 @@ const AboutUs = () => {
                 Proposez-vous des options de financement?
               </summary>
               <p className="bg-white py-2 px-4 border-b border-gray-300 my-4">
-                Oui, nous proposons diverses options de financement pour l&apos;achat
-                de véhicules neufs et d&apos;occasion. Nos conseillers financiers
-                peuvent vous aider à trouver la solution de financement qui
-                correspond le mieux à votre budget.
+                Oui, nous proposons diverses options de financement pour
+                l&apos;achat de véhicules neufs et d&apos;occasion. Nos
+                conseillers financiers peuvent vous aider à trouver la solution
+                de financement qui correspond le mieux à votre budget.
               </p>
             </details>
             {/* Add more FAQs as needed */}

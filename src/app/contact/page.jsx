@@ -3,7 +3,7 @@ import React from "react";
 const Contact = () => {
   return (
     <div className="my-10 mx-4 md:mx-60">
-      <h1 className="text-3xl text-zinc my-4 text-center">Contact us</h1>
+      <h1 className="text-5xl text-zinc font-mercedes-bold my-8 text-left">Contact us</h1>
       <div className="contact-page flex flex-col items-center">
         <div className="map-container w-full ">
           {/* Your map component here */}
@@ -30,24 +30,24 @@ const Contact = () => {
               <div className="flex flex-col mb-4">
                 <input
                   type="text"
-                  className="w-full px-4 py-3 mb-2 rounded-md border border-gray-300"
-                  placeholder="Name"
+                  className="w-full px-4 py-3 mb-2  border border-gray-300"
+                  placeholder="Nom"
                 />
               </div>
               <div className="flex flex-col mb-4">
                 <input
                   type="email"
-                  className="w-full px-4 py-3 mb-2 rounded-md border border-gray-300"
-                  placeholder="Email"
+                  className="w-full px-4 py-3 mb-2  border border-gray-300"
+                  placeholder="Adresse e-mail"
                 />
               </div>
               <div className="flex flex-col mb-4">
                 <textarea
-                  className="w-full px-4 py-3 mb-2 rounded-md border border-gray-300"
+                  className="w-full px-4 py-3 mb-2  border border-gray-300"
                   placeholder="Message"
                 ></textarea>
               </div>
-              <button type="submit" className="bg-zinc text-white px-14 py-3">
+              <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white px-14 py-3">
                 Send
               </button>
             </form>

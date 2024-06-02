@@ -43,7 +43,7 @@ const Intro = ({ introTitle }) => {
           </div>
           <Image
             src={car.cardImages[0]}
-            alt={car.listingTitle}
+            alt={car.listingTitle}  
             width={280}
             height={280}
             className="w-full object-cover"
@@ -77,7 +77,7 @@ const Intro = ({ introTitle }) => {
           </div>
 
         <Link className='w-full py-4 px-auto text-center bg-blue-500 hover:bg-blue-600 my-4 text-white'  href={`/listing/${car._id}`}>
-        Technical Details
+        Détails techniques
         </Link>
         </div>
       </div>
@@ -91,9 +91,9 @@ return (
   <div className="px-4 md:px-20"> {/* Add padding for mobile screens */}
     <div className='flex items-center justify-between w-full'>
       {introTitle && <h2 className="text-3xl font-mercedes-light mb-4">{introTitle}</h2>} {/* Adjust font size for mobile */}
-      {!introTitle && <h2 className="text-3xl font-mercedes-light mb-4">Explorez tous les véhicules</h2>} {/* Adjust font size for mobile */}
+      {!introTitle && <h2 className="text-5xl font-mercedes-bold mb-4">Explorez tous les véhicules</h2>} {/* Adjust font size for mobile */}
       <Link href='/listing' className='md:flex items-center justify-center cursor-pointer hidden'>
-        <p className='text-zinc font-medium '>View Details</p>
+        <p className='text-zinc font-medium '>Voir les détails</p>
         <PiArrowUpRightThin className='h-6 w-6 text-zinc ' />
       </Link>
     </div>
@@ -120,7 +120,7 @@ return (
         );
       })}
     </div>
-    <div className="border-t border-gray-300 mt-4" />
+    <div className="border-t border-gray-300 mb-16" />
     <div className="flex flex-col justify-center gap-6 mt-4 md:flex-row md:flex-wrap"> {/* Adjust spacing for mobile */}
       {renderCarCards()}
     </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useRef, useEffect } from "react";
 import { IoPlayOutline } from "react-icons/io5";
 
@@ -50,7 +50,12 @@ const AudioSection = ({ model }) => {
 
       <div className="relative h-96 w-96 mt-5">
         <div className="absolute inset-0 z-10 flex items-center justify-center mt-1">
-          <svg className="h-full w-full hidden md:block" viewBox="0 0 24 24" fill="none" strokeWidth="0.6">
+          <svg
+            className="h-full w-full hidden md:block"
+            viewBox="0 0 24 24"
+            fill="none"
+            strokeWidth="0.6"
+          >
             <circle cx="12" cy="12" r="10" className="text-gray-300"></circle>
             {speed >= 280 ? (
               <circle
@@ -58,7 +63,9 @@ const AudioSection = ({ model }) => {
                 cy="12"
                 r="10"
                 className="text-red-500 stroke-current"
-                strokeDasharray={`${(speed / model.maxSpeed || 220) * 40.7}, 63`}
+                strokeDasharray={`${
+                  (speed / model.maxSpeed || 220) * 40.7
+                }, 63`}
                 transform="rotate(176 12 12)"
               ></circle>
             ) : (
@@ -67,7 +74,9 @@ const AudioSection = ({ model }) => {
                 cy="12"
                 r="10"
                 className="text-red-500 stroke-current"
-                strokeDasharray={`${(speed / model.maxSpeed || 220) * 40.7}, 63`}
+                strokeDasharray={`${
+                  (speed / model.maxSpeed || 220) * 40.7
+                }, 63`}
                 transform="rotate(176 12 12)"
                 strokeWidth="0.6"
               ></circle>
@@ -102,7 +111,7 @@ const AudioSection = ({ model }) => {
           className="bg-white font-medium text-zinc py-4 px-10 rounded flex items-center justify-center hover:bg-gray-100 gap-2"
         >
           <IoPlayOutline className="h-5 w-5 text-zinc" />
-          Hold for sound
+          Attendez pour le son
         </button>
       </div>
     </div>

@@ -66,7 +66,7 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
             X
           </span>
 
-          <h2 className="text-2xl font-bold mb-4">Showroom rendez vous</h2>
+          <h2 className="text-2xl font-bold mb-4">Demande de Devis</h2>
           {successMessage && (
             <div className="bg-green-100 text-green-900 p-3 mb-3 rounded">
               {successMessage}
@@ -82,7 +82,7 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
               <div className="flex items-center justify-between w-full gap-5">
                 <div className="flex flex-1 flex-col space-y-2">
                   <label htmlFor="firstName" className="text-gray-700">
-                    Full Name
+                   Nom & Prenom
                   </label>
                   <input
                     id="firstName"
@@ -90,7 +90,7 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    placeholder="Full name"
+                    placeholder="Nom & Prenom"
                     className="border border-gray-300  px-4 py-3"
                   />
                 </div>
@@ -112,7 +112,7 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
               <div className="flex items-center justify-between w-full gap-5">
                 <div className="flex flex-1 flex-col space-y-2">
                   <label htmlFor="phoneNumber" className="text-gray-700">
-                    Phone Number
+                    Telephone
                   </label>
                   <input
                     id="phoneNumber"
@@ -120,7 +120,7 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleChange}
-                    placeholder="Phone number"
+                    placeholder="Telephone"
                     className="border border-gray-300  px-4 py-3"
                   />
                 </div>

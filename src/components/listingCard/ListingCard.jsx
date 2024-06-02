@@ -93,15 +93,15 @@ const ListingCard = ({ listing }) => {
                   {listing.maxSpeed} Km/h
                 </p>
               </div>
-              <p className="text-sm">Top speed</p>
+              <p className="text-sm">Vitesse maximale</p>
               <div className="w-full border-t border-gray-200 my-2" />
               <div className="flex items-center gap-2 ">
                 <LuFuel className="h-5 w-5 text-zinc" />
                 <p className="font-normal mt-1 text-gray-700">
-                  {listing.powerKw} kW / 424 PS
+                  {listing.powerKw} kW /  {listing.powerKw ? 'PS' : ''}
                 </p>
               </div>
-              <p className="text-sm">power up to (kW) power up to (PS)</p>
+              <p className="text-sm">Puissance jusqu'à (kW)/Puissance jusqu'à (PS)</p>
               <div className="w-full border-t border-gray-200 my-2" />
               <div className="flex items-center gap-2 ">
                 <GiGearStickPattern className="h-5 w-5 text-zinc" />
@@ -110,7 +110,7 @@ const ListingCard = ({ listing }) => {
                 </p>
               </div>
               <p className="text-sm">
-                Acceleration from 0 to 100 Km/h with launch control
+              Accélération 0 - 100 km/h avec Launch Control
               </p>
             </div>
           </div>
@@ -122,7 +122,7 @@ const ListingCard = ({ listing }) => {
               href={`/listing/${listing._id}`}
                 className="bg-blue-500 text-white  py-3 px-8 font-normal w-full text-center"
               >
-                Technical Details
+                Détails techniques
               </Link>
               {/* <PiArrowUpRightThin className="h-6 w-6 text-blue-600" /> */}
             </div>

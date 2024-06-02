@@ -32,10 +32,10 @@ function Hero() {
 
       {showTextAndButtons && (
         <div className="absolute bottom-60 lg:bottom-60 left-1/2 transform -translate-x-1/2 text-center px-4 w-full">
-          <h3 className="text-white font-mercedes-light z-10 relative text-3xl lg:text-6xl">
-            <span className="block">Mercedes New E-Class</span>
+          <h3 className="text-white font-mercedes-light z-10 relative text-3xl lg:text-7xl">
+            <span className="block font-mercedes-bold ">Mercedes Nouvelle Classe E</span>
           </h3>
-          <button className="bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 lg:px-10 lg:py-4 mt-8 z-10 relative text-sm lg:text-md">
+          <button className="bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 lg:px-10 lg:py-4 mt-8 z-10 relative text-lg lg:text-md">
             En savoir plus
           </button>
         </div>

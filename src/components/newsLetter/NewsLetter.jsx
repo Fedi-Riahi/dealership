@@ -9,17 +9,17 @@ function Newsletter() {
 
   return (
     <div
-      className="flex items-center justify-center py-10 w-full md:px-10 px-4"
+      className="flex items-center justify-center py-10 w-full md:px-20 px-4"
       style={bgImageStyle}
     >
       <div className="flex flex-col md:flex-row items-center justify-center w-full md:space-x-8  ">
         {/* Left side: Title, Text, and Newsletter Input */}
         <div className="w-full md:w-1/2">
           <div className="mb-4">
-            <h2 className="text-3xl font-bold mb-2 text-white py-2">
+            <h2 className="text-5xl font-mercedes-bold mb-2 text-white py-2 w-3/4">
               Voulez-vous recevoir des offres spéciales ?
             </h2>
-            <p className="text-gray-300 w-full md:w-1/2 py-2">
+            <p className="text-gray-300 w-full md:w-1/2 py-2 text-lg">
               Soyez le premier à recevoir toutes les informations sur nos produits et nos nouvelles voitures par e-mail en vous inscrivant à notre liste de diffusion.
             </p>
           </div>

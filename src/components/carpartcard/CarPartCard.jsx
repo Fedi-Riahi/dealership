@@ -47,7 +47,7 @@ const CarPartCard = ({ part }) => {
   return (
     <div className="max-w-xs h-full bg-white relative flex flex-col transition-transform duration-500 ">
       <div className="w-full flex flex-col items-start justify-center px-4 py-4 gap-5">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Chargement en cours...</div>}>
           <div className="w-full h-52 mb-4">
               <Image
                 src={part.images[0]}
@@ -69,7 +69,7 @@ const CarPartCard = ({ part }) => {
             </h3>
           </Link>
           <p className="text-zinc font-semibold text-xl ">{part.price} DT</p>
-          <div className="flex items-center justify-center gap-1 cursor-pointer  px-6 py-4 mt-5 text-white bg-white hover:bg-blue-500 border border-zinc text-zinc hover:text-white" onClick={addToCart}>
+          <div className="flex items-center justify-center gap-1 cursor-pointer  px-6 py-4 mt-5  bg-white hover:bg-blue-500 border border-zinc text-zinc hover:text-white" onClick={addToCart}>
             <CiShoppingCart className="h-6 w-6" />
             <p className=" font-normal sm:text-sm">Ajouter au panier</p>
           </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { PiArrowUpRightThin } from "react-icons/pi";
@@ -46,18 +46,20 @@ const Latest = () => {
     return (
         <div className="latest-news  md:mx-20 mx-5">
             <div className='flex items-center justify-between w-full my-6'>
-                <h2 className="text-4xl font-mercedes-bold px-4 my-4">Actualité</h2>
+                <h2 className="text-5xl font-mercedes-bold  my-4">Actualité</h2>
                 <div className='flex items-center justify-center gap-1 cursor-pointer'>
-                    <Link href='/news' className='text-zinc font-medium'>View Details</Link>
+                    <Link href='/news' className='text-zinc font-medium'>Voir les détails</Link>
                     <PiArrowUpRightThin className='h-6 w-6 text-zinc' />
                 </div>
             </div>
             <div className="relative my-6">
                 <div className="overflow-hidden relative w-full sm:h-64 md:h-full">
-                    <div key={newsData[currentSlide].id} className="w-full h-full flex flex-col items-center">
-                        <img src={newsData[currentSlide].image} alt={newsData[currentSlide].title} className="w-full h-auto" />
-                        <div className="px-2 py-2 w-full">
-                            <h3 className="text-2xl font-mercedes-bold ">{newsData[currentSlide].title}</h3>
+                    <div key={newsData[currentSlide].id} className="w-full h-full flex flex-col items-center relative">
+                        <img src={newsData[currentSlide].image} alt={newsData[currentSlide].title} className="w-full h-full object-cover" />
+                        <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-black opacity-50"></div>
+                        <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-black opacity-50"></div>
+                        <div className="px-2 py-4 w-full absolute bottom-0 bg-black bg-opacity-50 text-white">
+                            <h3 className="text-4xl font-mercedes-bold ">{newsData[currentSlide].title}</h3>
                         </div>
                     </div>
                 </div>

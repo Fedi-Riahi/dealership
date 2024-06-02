@@ -21,7 +21,7 @@ export default function Home() {
           <AboutService />
         </div>
         <div className="flex items-start justify-start flex-col mt-4">
-          <h1 className="md:text-4xl font-mercedes-bold px-4 text-2xl">Explorez Plus de Fonctionnalités</h1>
+          <h1 className="md:text-5xl font-mercedes-bold px-4 py-8 text-2xl">Explorez Plus de Fonctionnalités</h1>
           <Featured />
           
         </div>
@@ -32,7 +32,7 @@ export default function Home() {
           <Newsletter />
         </div>
 
-        <div className="flex items-center justify-center w-screen mt-20 ">
+        <div className="flex items-center justify-center w-full mt-20 ">
           <ContactUs />
         </div>
       </main>

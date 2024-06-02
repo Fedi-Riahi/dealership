@@ -132,18 +132,19 @@ const BillingDetails = () => {
       <main className="flex-grow mx-4 flex flex-col lg:flex-row">
         
         <div className="w-full lg:w-3/4 md:w-3/4 p-4">
-          <h2 className="text-3xl font-semibold mb-4">Payment</h2>
-          <h2 className="text-lg font-normal mb-4">Billing Details</h2>
+          <h2 className="text-3xl font-semibold mb-4">Paiement</h2>
+          <h2 className="text-lg font-normal mb-4">"Détails de facturation"</h2>
           <form onSubmit={handleSubmit} className="w-full">
             <div className="flex flex-col lg:flex-row gap-4 mb-4">
               <div className="flex-1">
                 <label htmlFor="firstName" className="block text-sm font-medium">
-                  First Name
+                  Nom
                 </label>
                 <input
                   type="text"
                   id="firstName"
                   name="firstName"
+                  placeholder='Nom'
                   value={formData.firstName}
                   onChange={handleChange}
                   className="mt-1 py-3 px-2 border border-gray-300  w-full"
@@ -151,7 +152,7 @@ const BillingDetails = () => {
               </div>
               <div className="flex-1">
                 <label htmlFor="lastName" className="block text-sm font-medium">
-                  Last Name
+                  Prenom
                 </label>
                 <input
                   type="text"
@@ -159,6 +160,7 @@ const BillingDetails = () => {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
+                  placeholder='Prenom'
                   className="mt-1 py-3 px-2 border border-gray-300  w-full"
                 />
               </div>
@@ -173,12 +175,13 @@ const BillingDetails = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                placeholder='email'
                 className="mt-1 py-3 px-2 border border-gray-300  w-full"
               />
             </div>
             <div className="mb-4">
               <label htmlFor="phone" className="block text-sm font-medium">
-                Phone Number
+                Telephone
               </label>
               <input
                 type="text"
@@ -186,17 +189,19 @@ const BillingDetails = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                placeholder='Telephone'
                 className="mt-1 py-3 px-2 border border-gray-300  w-full"
               />
             </div>
             <div className="mb-4">
               <label htmlFor="address" className="block text-sm font-medium">
-                Address
+                Addresse
               </label>
               <input
                 type="text"
                 id="address"
                 name="address"
+                placeholder='Addresse'
                 value={formData.address}
                 onChange={handleChange}
                 className="mt-1 py-3 px-2 border border-gray-300  w-full"
@@ -204,12 +209,13 @@ const BillingDetails = () => {
             </div>
             <div className="mb-4">
               <label htmlFor="state" className="block text-sm font-medium">
-                State
+                Pays
               </label>
               <input
                 type="text"
                 id="state"
                 name="state"
+                placeholder='Pays'
                 value={formData.state}
                 onChange={handleChange}
                 className="mt-1 py-3 px-2 border border-gray-300  w-full"
@@ -217,7 +223,7 @@ const BillingDetails = () => {
             </div>
             <div className="mb-4">
               <label htmlFor="city" className="block text-sm font-medium">
-                City
+                Ville
               </label>
               <input
                 type="text"
@@ -225,6 +231,7 @@ const BillingDetails = () => {
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
+                placeholder='Ville'
                 className="mt-1 py-3 px-2 border border-gray-300  w-full"
               />
             </div>

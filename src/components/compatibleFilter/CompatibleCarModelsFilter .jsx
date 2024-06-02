@@ -45,13 +45,13 @@ const CompatibleCarModelsFilter = ({ onChange }) => {
           value=""
           className="w-full p-2 font-normal text-gray-900 cursor-pointer border border-zinc rounded"
         >
-          Select a car model
+          Sélectionnez un modèle de voiture
         </option>
         <option
           value=""
           className="w-full p-2 font-normal text-gray-900 cursor-pointer border border-zinc rounded"
         >
-          All Models
+          Tous les modèles
         </option>
         {compatibleCarModels.map((model, index) => (
           <option key={index} value={model}>

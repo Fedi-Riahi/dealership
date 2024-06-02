@@ -14,7 +14,7 @@ const ContactUs = () => {
         </div>
         {/* Form */}
         <div className="w-full md:w-1/2 h-full">
-          <h2 className="text-2xl md:text-3xl font-mercedes-bold mb-6">
+          <h2 className="text-2xl md:text-5xl font-mercedes-bold mb-6">
             Vous avez d’autres questions? N’hésitez pas à nous contacter
           </h2>
           <span className="my-4 block">Vous avez des questions? N’hésitez pas à nous contacter</span>

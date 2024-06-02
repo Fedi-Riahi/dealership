@@ -56,10 +56,10 @@ const Latest = () => {
                 <div className="overflow-hidden relative w-full sm:h-64 md:h-full">
                     <div key={newsData[currentSlide].id} className="w-full h-full flex flex-col items-center relative">
                         <img src={newsData[currentSlide].image} alt={newsData[currentSlide].title} className="w-full h-full object-cover" />
-                        <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-black opacity-50"></div>
-                        <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-black opacity-50"></div>
+                        <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-black opacity-60"></div>
+                        <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-black opacity-60"></div>
                         <div className="px-2 py-4 w-full absolute bottom-0 bg-black bg-opacity-50 text-white">
-                            <h3 className="text-4xl font-mercedes-bold ">{newsData[currentSlide].title}</h3>
+                            <h3 className="text-4xl font-mercedes-bold px-4 cursor-pointer">{newsData[currentSlide].title}</h3>
                         </div>
                     </div>
                 </div>

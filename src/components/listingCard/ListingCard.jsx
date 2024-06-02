@@ -101,7 +101,7 @@ const ListingCard = ({ listing }) => {
                   {listing.powerKw} kW /  {listing.powerKw ? 'PS' : ''}
                 </p>
               </div>
-              <p className="text-sm">Puissance jusqu'à (kW)/Puissance jusqu'à (PS)</p>
+              <p className="text-sm">Puissance jusqu&apos;à (kW)/Puissance jusqu&apos;à (PS)</p>
               <div className="w-full border-t border-gray-200 my-2" />
               <div className="flex items-center gap-2 ">
                 <GiGearStickPattern className="h-5 w-5 text-zinc" />

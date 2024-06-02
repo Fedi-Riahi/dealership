@@ -145,7 +145,7 @@ const ModelDetails = () => {
               <span className="font-normal text-2xl"> kW </span> {model.powerPs}
             </h1>
             <span className="text-center">
-              Puissance jusqu'à (kW)/Puissance jusqu'à (PS)
+              Puissance jusqu&apos;à (kW)/Puissance jusqu&apos;à (PS)
             </span>
           </div>
           <div className="flex flex-col">
@@ -193,7 +193,7 @@ const ModelDetails = () => {
           <span className="text-center mx-auto text-xl w-1/2 py-10  text-white">
             Les rêves sont la motivation la plus forte. Avec le {model.model},
             nous avons transposé cette conviction dans le domaine de
-            l’électromobilité et avons ouvert un nouveau chapitre
+            l&apos;électromobilité et avons ouvert un nouveau chapitre
           </span>
         </div>
       </div>

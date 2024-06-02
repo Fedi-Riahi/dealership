@@ -133,7 +133,7 @@ const BillingDetails = () => {
         
         <div className="w-full lg:w-3/4 md:w-3/4 p-4">
           <h2 className="text-3xl font-semibold mb-4">Paiement</h2>
-          <h2 className="text-lg font-normal mb-4">"Détails de facturation"</h2>
+          <h2 className="text-lg font-normal mb-4">Détails de facturation</h2>
           <form onSubmit={handleSubmit} className="w-full">
             <div className="flex flex-col lg:flex-row gap-4 mb-4">
               <div className="flex-1">

@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEf } from "react";
 import { Context } from "../context/page";
 import { PlusIcon, MinusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
@@ -15,6 +15,7 @@ function Cart() {
     handleAddToCart(item, quantityDifference);
   };
 
+
   const cartSubtotal = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0
@@ -27,6 +28,8 @@ function Cart() {
       setDiscount(0);
     }
   };
+
+  
 
   const cartTotal = cartSubtotal - discount;
 

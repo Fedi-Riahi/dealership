@@ -142,7 +142,10 @@ const Navbar = () => {
                 <p className="text-3xl font-mercedes-bold py-2 font-medium">
                   Bonjour, {userName || "MercEnthusiast"}
                 </p>
-                <Link className="text-white bg-blue-500 hover:bg-blue-600 w-full py-4 px-auto text-center mt-4 font-medium" href="/profile">
+                <Link
+                  className="text-white bg-blue-500 hover:bg-blue-600 w-full py-4 px-auto text-center mt-4 font-medium"
+                  href="/profile"
+                >
                   Mon Compte
                 </Link>
                 <div className="border border-zinc w-full my-3" />
@@ -156,13 +159,23 @@ const Navbar = () => {
             )}
             {status === "unauthenticated" && isUserDropdownOpen && (
               <div className="absolute top-8 right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50">
-                <span className="text-3xl font-mercedes-bold py-2 font-medium">Connexion à Votre compte</span>
-                <span className="font-mercedes-bold py-1 text-lg">Connectez-vous avec votre Mercedes me ID</span>
-                <Link className="text-white bg-blue-500 hover:bg-blue-600 w-full py-4 px-auto text-center mt-4 font-medium" href="/signin">
-                Connexion
+                <span className="text-3xl font-mercedes-bold py-2 font-medium">
+                  Connexion à Votre compte
+                </span>
+                <span className="font-mercedes-bold py-1 text-lg">
+                  Connectez-vous avec votre Mercedes me ID
+                </span>
+                <Link
+                  className="text-white bg-blue-500 hover:bg-blue-600 w-full py-4 px-auto text-center mt-4 font-medium"
+                  href="/signin"
+                >
+                  Connexion
                 </Link>
-                <Link className="text-zinc white hover:bg-zinc/10 border border-zinc w-full py-4 px-auto text-center mt-4 font-medium " href="/signup">
-                s”enregistrer 
+                <Link
+                  className="text-zinc white hover:bg-zinc/10 border border-zinc w-full py-4 px-auto text-center mt-4 font-medium "
+                  href="/signup"
+                >
+                  s”enregistrer
                 </Link>
               </div>
             )}
@@ -265,31 +278,46 @@ const Navbar = () => {
           </div>
         )}
         {/* Dropdown menu for user profile (visible on mobile when toggled) */}
-        {isUserDropdownOpen && (
-          <div className="md:hidden absolute top-16 right-0 z-40 bg-white w-full">
-            <ul className="text-black p-4">
-              <li>
-                <p className="text-2xl">
-                  Bonjour, {userName || "MercEnthusiast"}
-                </p>
-              </li>
-              <li>
-                <Link
-                  href="/profile"
-                  className="block py-2 px-3 hover:text-gray-800"
-                >
-                  Mon Compte
-                </Link>
-              </li>
-              <li>
-                <button
-                  className="block py-2 px-3 hover:text-gray-800"
-                  onClick={() => signOut()}
-                >
-                  Sign out
-                </button>
-              </li>
-            </ul>
+        {status === "unauthenticated" && isUserDropdownOpen && (
+          <div className="absolute md:top-8 top-20 md:right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50">
+            <span className="text-3xl font-mercedes-bold py-2 font-medium">
+              Connexion à Votre compte
+            </span>
+            <span className="font-mercedes-bold py-1 text-lg">
+              Connectez-vous avec votre Mercedes me ID
+            </span>
+            <Link
+              className="text-white bg-blue-500 hover:bg-blue-600 w-full py-4 px-auto text-center mt-4 font-medium"
+              href="/signin"
+            >
+              Connexion
+            </Link>
+            <Link
+              className="text-zinc white hover:bg-zinc/10 border border-zinc w-full py-4 px-auto text-center mt-4 font-medium "
+              href="/signup"
+            >
+              s”enregistrer
+            </Link>
+          </div>
+        )}
+        {status === "authenticated" && isUserDropdownOpen && (
+          <div className="absolute md:top-8 top-20 md:right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50">
+            <p className="text-3xl font-mercedes-bold py-2 font-medium">
+              Bonjour, {userName || "MercEnthusiast"}
+            </p>
+            <Link
+              className="text-white bg-blue-500 hover:bg-blue-600 w-full py-4 px-auto text-center mt-4 font-medium"
+              href="/profile"
+            >
+              Mon Compte
+            </Link>
+            <div className="border border-zinc w-full my-3" />
+            <button
+              className="text-zinc white hover:bg-zinc/10 border border-zinc w-full py-4 px-auto text-center  font-medium"
+              onClick={() => signOut()}
+            >
+              Sign out
+            </button>
           </div>
         )}
       </div>

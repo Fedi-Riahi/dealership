@@ -19,54 +19,53 @@ const Profile = () => {
       try {
         // Retrieve user ID from session storage
         const userId = sessionStorage.getItem("userId");
-        console.log(userId)
-
+  
         if (!userId) {
           throw new Error("User ID not found in session storage");
         }
-
+  
         // Fetch user details using the user ID
-        const response = await fetch(`/api/user/${userId}`);
-        if (!response.ok) {
+        const userResponse = await fetch(`/api/user/${userId}`);
+        if (!userResponse.ok) {
           throw new Error("Failed to fetch user data");
         }
-        const userData = await response.json();
-        setUserData(userData.user); // Accessing user details from 'user' key
-
-        // Fetch orders for the user
+        const userData = await userResponse.json();
+        setUserData(userData.user);
+  
+        // Fetch orders for the user with userId
         const ordersResponse = await fetch(`/api/order?userId=${userId}`);
         if (!ordersResponse.ok) {
           throw new Error("Failed to fetch user orders");
         }
         const ordersData = await ordersResponse.json();
-        setUserOrders(ordersData.orders);
-
-        // Fetch appointments for the user
+        // Filter orders based on userId
+        const filteredOrders = ordersData.orders.filter(order => order.userId === userId);
+        setUserOrders(filteredOrders);
+  
+        // Fetch appointments for the user's email
         const appointmentsResponse = await fetch(
-          `/api/appointment?userId=${userId}`
+          `/api/appointment?email=${userData.user.email}`
         );
         if (!appointmentsResponse.ok) {
           throw new Error("Failed to fetch user appointments");
         }
         const appointmentsData = await appointmentsResponse.json();
-        setUserAppointments(appointmentsData.appointments);
-
-        // Fetch services
-        const servicesResponse = await fetch("/api/service");
-        if (!servicesResponse.ok) {
-          throw new Error("Failed to fetch services");
-        }
-        const servicesData = await servicesResponse.json();
-        setServices(servicesData.services);
+        // Filter appointments based on user's email
+        const filteredAppointments = appointmentsData.appointments.filter(appointment => appointment.email === session.user.email);
+        setUserAppointments(filteredAppointments);
+  
+        setIsLoading(false);
       } catch (error) {
         setError(error.message);
-      } finally {
         setIsLoading(false);
       }
     };
-
-    fetchUserData();
-  }, []);
+  
+    if (status === "authenticated") {
+      fetchUserData();
+    }
+  }, [status, session]); // Ensure to include session in the dependency array
+  
 
   const getServiceNames = (serviceIds) => {
     const appointmentServices = [];

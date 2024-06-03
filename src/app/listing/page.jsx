@@ -60,9 +60,11 @@ const Listings = () => {
           );
         }
 
-        if (searchQuery) {
+        if (searchQuery.trim() !== "") {
           filteredListings = filteredListings.filter((listing) =>
-            listing.model.toLowerCase().includes(searchQuery.toLowerCase())
+            listing.listingTitle
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase().trim())
           );
         }
 

@@ -56,7 +56,7 @@ const PartDetails = () => {
 
   return (
     <div className="container mx-20 my-28 w-full px-4">
-      <span className="text-4xl font-mercedes-bold">Pièces Automobiles</span>
+      <span className="text-5xl font-mercedes-bold">Pièces Automobiles</span>
       <div className="flex flex-col md:flex-row items-start gap-10 my-16 w-full">
         <div className="">
           <Image

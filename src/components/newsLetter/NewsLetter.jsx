@@ -12,9 +12,13 @@ function Newsletter() {
       className="flex items-center justify-center py-10 w-full md:px-20 px-4"
       style={bgImageStyle}
     >
-      <div className="flex flex-col md:flex-row items-center justify-center w-full md:space-x-8  ">
-        {/* Left side: Title, Text, and Newsletter Input */}
-        <div className="w-full md:w-1/2 order-2 md:order-1">
+      <div className="flex flex-col md:flex-row items-center justify-center w-full md:space-x-8">
+        {/* Left side: Image */}
+        <div className="hidden md:block w-full md:w-1/2 order-1 md:order-2 animate-slideLeft">
+          <img src="/car-news.png" alt="Newsletter" className="w-full h-auto" />
+        </div>
+        {/* Right side: Title, Text, and Newsletter Input */}
+        <div className="w-full md:w-1/2 order-2 md:order-1 animate-slideRight">
           <div className="mb-4">
             <h2 className="text-5xl font-mercedes-bold mb-2 text-white py-2 w-3/4">
               Voulez-vous recevoir des offres spéciales ?
@@ -26,17 +30,13 @@ function Newsletter() {
           <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 relative">
             <input
               type="email"
-              placeholder="Entrez votre adresse email  "
-              className="px-4 py-5 w-full md:w-3/4 "
+              placeholder="Entrez votre adresse email"
+              className="px-4 py-5 w-full md:w-3/4"
             />
             <button className="bg-black text-white px-6 py-3 hover:bg-zinc transition duration-300 mt-4 md:mt-0 md:absolute  md:left-72 md:z-10 ">
               Subscribe
             </button>
           </div>
-        </div>
-        {/* Right side: Image */}
-        <div className="hidden md:block w-full md:w-1/2 order-1 md:order-2 mt-8 md:mt-0">
-          <img src="/car-news.png" alt="Newsletter" className="w-full h-auto" />
         </div>
       </div>
     </div>

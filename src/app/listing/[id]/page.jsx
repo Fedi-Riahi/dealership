@@ -217,7 +217,7 @@ const ModelDetails = () => {
       </div>
 
       <div className="px-auto md:pt-10 md:my-36  md:h-screen ">
-        <h1 className="md:text-4xl text-xl  text-zinc text-center font-mercedes-bold flex items-center justify-center md:mb-20 mb-10">
+        <h1 className="md:text-5xl text-xl  text-zinc text-center font-mercedes-bold flex items-center justify-center md:mb-20 mb-10">
           {model.listingTitle} Points forts.
         </h1>
         <MyCarousel model={model} />
@@ -228,7 +228,7 @@ const ModelDetails = () => {
         }`}
         style={{ height: isDesktop ? "100vh" : "60vh" }} // Adjust height for desktop
       >
-        <h1 className="md:text-4xl text-2xl  w-fit text-zinc x-4 py-2 font-mercedes-bold text-center flex items-center justify-center mt-4 absolute md:-top-16 top-20 md:left-50 z-10">
+        <h1 className="md:text-5xl text-2xl  w-fit text-zinc x-4 py-2 font-mercedes-bold text-center flex items-center justify-center mt-4 absolute md:-top-16 top-20 md:left-50 z-10">
           L”extérieur de l”{model.listingTitle}
         </h1>
         <MyModel />

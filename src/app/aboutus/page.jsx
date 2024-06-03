@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="bg-gray-100 md:mx-20">
+    <div className=" md:mx-20">
       {/* Header Section with image and overlay */}
       <section className="flex flex-col items-center justify-center bg-cover bg-center h-screen ">
         <Image
@@ -25,7 +25,7 @@ const AboutUs = () => {
       </section>
 
       {/* Service Cards Section */}
-      <section className="py-12 px-4 md:px-0 bg-white">
+      <section className="py-12 px-4 md:px-0 ">
         <div className="container mx-auto">
           <h2 className="text-2xl md:text-3xl font-mercedes-bold mb-4">
             Our Services
@@ -85,7 +85,7 @@ const AboutUs = () => {
       </section>
 
       {/* Maintenance and Repairs Section */}
-      <section className="py-12 px-4 md:px-0">
+      <section className="py-12 px-4 md:px-0 bg-back">
         <div className="container mx-auto flex flex-col md:flex-row gap-10">
           <div className="w-full md:w-1/2 mb-4 md:mb-0">
             <video

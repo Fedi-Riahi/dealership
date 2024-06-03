@@ -11,6 +11,7 @@ const CarParts = () => {
   const [filteredModels, setFilteredModels] = useState([]);
   const [displayedCarParts, setDisplayedCarParts] = useState(8);
   const [showFilters, setShowFilters] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleCategoryFilterChange = (selectedCategories) => {
     setFilteredCategories(selectedCategories);
@@ -65,10 +66,18 @@ const CarParts = () => {
     }
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredCarParts = carParts.filter((part) =>
+    part.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="md:px-20 sm:px-5 my-20">
-      <div className="flex items-center justify-between w-full mt-4 mb-5">
-        <h3 className="font-mercedes-bold md:w-3/5 md:text-4xl sm:text-xl w-full">
+      <div className="flex items-center justify-between w-full mt-4 mb-5 px-4">
+        <h3 className="font-mercedes-bold md:w-3/5 md:text-4xl text-2xl w-full">
           Liste des Pièces Automobiles
         </h3>
         <div className="flex flex-col gap-1 w-2/5">
@@ -76,10 +85,12 @@ const CarParts = () => {
             <input
               type="text"
               placeholder="Rechercher un modèle"
-              className="w-[500px] px-4 py-3 border border-zinc bg-transparent"
+              className="w-[900px] px-4 py-3 border border-zinc bg-transparent"
+              value={searchTerm}
+              onChange={handleSearchChange}
             />
             <button className="bg-blue-500 text-white px-8 py-3 hover:bg-blue-500/90">
-              Search
+              Chercher
             </button>
           </div>
           {/* Filter button for mobile */}
@@ -100,51 +111,47 @@ const CarParts = () => {
           <div className="fixed z-20 inset-10 left-5 right-5 top-10 bottom-10 flex items-center justify-center ">
             <div className="bg-white p-8 rounded-lg max-h-[700px] w-screen overflow-x-scroll">
               <h2 className="text-2xl font-bold mb-4">Filters</h2>
-              <div className='p-5 border-b border-gray-200 dark:border-gray-700'>
-                <h3 className="text-lg font-semibold mb-2">Categories</h3>
+              <div className="p-5 border-b border-gray-200 dark:border-gray-700">
+                <h3 className="text-lg font-semibold mb-2">Catégorie</h3>
                 <PartsFilter onChange={handleCategoryFilterChange} />
               </div>
-              <div className='p-5 border-b border-gray-200 dark:border-gray-700'>
-                <h3 className="text-lg font-semibold mb-2">Compatible Models</h3>
+              <div className="p-5 border-b border-gray-200 dark:border-gray-700">
+                <h3 className="text-lg font-semibold mb-2">Modèles Compatibles</h3>
                 <CompatibleCarModelsFilter onChange={handleModelFilterChange} />
               </div>
-              <button onClick={() => setShowFilters(false)} className="bg-blue-500 text-white py-2 px-4 mt-4">Close</button>
+              <button onClick={() => setShowFilters(false)} className="bg-blue-500 text-white py-2 px-4 mt-4">
+                Fermer
+              </button>
             </div>
           </div>
         </div>
       )}
 
-
-
-
-
-
       <div className="flex items-start justify-between mx-auto my-15 gap-5">
         {/* Filters section for desktop */}
         <div className="w-1/5 hidden md:block bg-white">
-          <div className=" mb-2">
+          <div className="mb-2">
             <div className="p-5">
-              <h3 className="text-lg font-semibold mb-2">Categories</h3>
+              <h3 className="text-lg font-semibold mb-2">Catégorie</h3>
               <PartsFilter onChange={handleCategoryFilterChange} />
             </div>
-            <div className="p-5 ">
-              <h3 className="text-lg font-semibold mb-2">Compatible Models</h3>
+            <div className="p-5">
+              <h3 className="text-lg font-semibold mb-2">Modèles Compatibles</h3>
               <CompatibleCarModelsFilter onChange={handleModelFilterChange} />
             </div>
           </div>
         </div>
         {/* Car parts listing section */}
-        <div
-          className="w-4/5 flex items-center flex-col mb-40"
-          id="car-parts-container"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 w-full">
-            {carParts.slice(0, displayedCarParts).map((part) => (
-              <CarPartCard part={part} id={part._id} key={part._id}/>
+        <div className="w-full flex items-center flex-col mb-40" id="car-parts-container">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 w-full justify-center items-center">
+            {filteredCarParts.slice(0, displayedCarParts).map((part) => (
+              <div key={part._id} className="flex justify-center  w-full">
+                <CarPartCard part={part} id={part._id} />
+              </div>
             ))}
           </div>
           {/* Load More Button */}
-          {displayedCarParts < carParts.length && (
+          {displayedCarParts < filteredCarParts.length && (
             <button
               className="bg-blue-500 text-white py-2 px-4 mt-8 rounded"
               onClick={loadMoreCarParts}

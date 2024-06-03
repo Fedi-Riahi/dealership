@@ -12,7 +12,9 @@ import CarReserve from "@/components/carreserve/CarReserve";
 import { GiSpeedometer } from "react-icons/gi";
 import { LuFuel } from "react-icons/lu";
 import { GiGearStickPattern } from "react-icons/gi";
-
+import { useSession } from "next-auth/react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ModelDetails = () => {
   const pathname = usePathname();
   const id = pathname.split("/").pop();
@@ -21,7 +23,7 @@ const ModelDetails = () => {
   const [similarModels, setSimilarModels] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenReserve, setIsModalOpenReserve] = useState(false);
-
+  const { status, data: session } = useSession();
   useEffect(() => {
     const fetchModelData = async () => {
       try {
@@ -62,7 +64,13 @@ const ModelDetails = () => {
   };
 
   const handleModalOpenReserve = () => {
-    setIsModalOpenReserve(true);
+    // Open the modal only if user status is "authenticated"
+    if (status === "authenticated") {
+      setIsModalOpenReserve(true);
+    } else {
+      // Display a message to prompt the user to log in
+    alert("Please log in to reserve a car.");
+    }
   };
 
   const handleModalCloseReserve = () => {

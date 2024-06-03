@@ -5,6 +5,7 @@ import GlobalState from "./context/page";
 import { NextAuthProvider } from "./Providers";
 import Footer from "@/components/footer/Footer";
 
+
 const inter = Inter({ subsets: ["latin"]});
 
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
           <body className="mx-auto max-w-screen-4xl bg-back">
             <Navbar />
             <div className="">
+              
               {children}
             </div>
             <Footer />

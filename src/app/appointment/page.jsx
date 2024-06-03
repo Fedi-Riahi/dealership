@@ -222,7 +222,8 @@ function Appointment() {
 
       {currentStep === 2 && (
         <div className="absolute z-10 bg-white h-screen overflow-y-auto md:my-10 w-screen md:py-40 md:px-40 my-32 py-36 px-10">
-          <h2 className="text-lg font-semibold mb-20">
+          <h2 className="text-3xl font-mercedes-bold mb-20">Services</h2>
+          <h2 className="text-lg  mb-20">
             Sélectionnez une ou plusieurs prestation(s) de service.
           </h2>
           {services.map((category) => (
@@ -270,7 +271,8 @@ function Appointment() {
         <div className="z-10 bg-white h-screen w-screen md:py-40 md:px-40 px-10 my-20 flex justify-center items-center">
           <div className="flex flex-col md:flex-row items-center md:items-start justify-center w-full">
             <div className="flex-1 md:mr-8">
-              <h2 className="text-lg font-semibold mb-20">
+              <h2 className="text-3xl font-mercedes-bold mb-20">Mobilité</h2>
+              <h2 className="text-lg mb-20">
                 Profitez de nos solutions de mobilité. Cette prestation peut
                 être payante.
               </h2>
@@ -364,6 +366,9 @@ function Appointment() {
           <div className="w-screen flex justify-center items-center md:mx-32 px-auto">
             {/* Left side: Inputs */}
             <div className="flex-1 ">
+            <h2 className="text-3xl font-mercedes-bold mb-20">
+            Date et heure
+          </h2>
               <h2 className="text-lg font-semibold mb-20 w-full ">
                 Consultez les dates de rendez-vous disponibles et choisissez
                 celui qui convient à votre emploi du temps.
@@ -456,7 +461,7 @@ function Appointment() {
         <div className="z-10 bg-white md:h-screen w-screen  md:py-32  px-8 md:px-36 flex flex-col md:flex-row justify-start items-start">
           {/* Left side - Form */}
           <div className="flex-1 md:mr-8 mb-8 md:mb-0">
-            <h2 className="text-2xl font-mercedes-bold">Détails personnels</h2>
+            <h2 className="text-3xl font-mercedes-bold">Détails personnels</h2>
             <h3 className="py-8">
               Ces détails nous aideront à comprendre les meilleurs services pour
               votre véhicule.
@@ -550,7 +555,9 @@ function Appointment() {
           {/* Right side - Appointment Summary */}
           <div className="flex-1">
             <div>
-              <h3 className="text-2xl font-mercedes-bold">Appointment Summary:</h3>
+              <h3 className="text-3xl font-mercedes-bold">
+                Appointment Summary
+              </h3>
               {appointmentSummary && (
                 <div className="mb-4">
                   <div className="flex flex-col gap-1 my-4">

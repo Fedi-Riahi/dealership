@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 
 function Hero() {
@@ -31,13 +32,13 @@ function Hero() {
       </video>
 
       {showTextAndButtons && (
-        <div className="absolute bottom-60 lg:bottom-60 left-1/2 transform -translate-x-1/2 text-center px-4 w-full">
+        <div className="absolute bottom-60 lg:bottom-72 md:bottom-72 left-1/2 transform -translate-x-1/2 text-center px-4 w-full">
           <h3 className="text-white font-mercedes-light z-10 relative text-3xl lg:text-7xl">
-            <span className="block font-mercedes-bold ">Mercedes Nouvelle Classe E</span>
+            <span className="block font-mercedes-bold my-10">Mercedes Nouvelle Classe E</span>
           </h3>
-          <button className="bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 lg:px-10 lg:py-4 mt-8 z-10 relative text-lg lg:text-md">
+          <Link href='/listing' className="bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 lg:px-10 lg:py-4 mt-8 z-10 relative text-lg lg:text-md">
             En savoir plus
-          </button>
+          </Link>
         </div>
       )}
     </div>

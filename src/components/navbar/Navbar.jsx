@@ -138,25 +138,52 @@ const Navbar = () => {
               <CheckCircleIcon className="text-blue-500 h-5 w-5 absolute -top-3 -right-3" />
             )}
             {status === "authenticated" && isUserDropdownOpen && (
-              <div className="absolute top-8 right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50">
-                <p className="text-3xl font-mercedes-bold py-2 font-medium">
-                  Bonjour, {userName || "MercEnthusiast"}
-                </p>
-                <Link
-                  className="text-white bg-blue-500 hover:bg-blue-600 w-full py-4 px-auto text-center mt-4 font-medium"
-                  href="/profile"
-                >
-                  Mon Compte
-                </Link>
-                <div className="border border-zinc w-full my-3" />
-                <button
-                  className="text-zinc white hover:bg-zinc/10 border border-zinc w-full py-4 px-auto text-center  font-medium"
-                  onClick={() => signOut()}
-                >
-                  Sign out
-                </button>
-              </div>
+
+                <div className="absolute top-8 right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50 drop-shadow-md">
+                  <p className="text-3xl font-mercedes-bold py-2 font-medium">
+                    Bonjour, {userName || "MercEnthusiast"}
+                  </p>
+                  <Link
+                    className="text-white bg-blue-500 hover:bg-blue-600 w-full py-4 px-auto text-center mt-4 font-medium"
+                    href="/profile"
+                  >
+                    Mon Compte
+                  </Link>
+                  <div className="border border-zinc w-full my-3" />
+                  <button
+                    className="text-zinc white hover:bg-zinc/10 border border-zinc w-full py-4 px-auto text-center font-medium"
+                    onClick={() => signOut()}
+                  >
+                    Sign out
+                  </button>
+                </div>
             )}
+
+            {status === "unauthenticated" && isUserDropdownOpen && (
+
+                <div className="absolute top-8 right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50">
+                  <span className="text-3xl font-mercedes-bold py-2 font-medium">
+                    Connexion à Votre compte
+                  </span>
+                  <span className="font-mercedes-bold py-1 text-lg">
+                    Connectez-vous avec votre Mercedes me ID
+                  </span>
+                  <Link
+                    className="text-white bg-blue-500 hover:bg-blue-600 w-full py-4 px-auto text-center mt-4 font-medium"
+                    href="/signin"
+                  >
+                    Connexion
+                  </Link>
+                  <Link
+                    className="text-zinc white hover:bg-zinc/10 border border-zinc w-full py-4 px-auto text-center mt-4 font-medium"
+                    href="/signup"
+                  >
+                    s”enregistrer
+                  </Link>
+                </div>
+
+            )}
+
             {status === "unauthenticated" && isUserDropdownOpen && (
               <div className="absolute top-8 right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50">
                 <span className="text-3xl font-mercedes-bold py-2 font-medium">
@@ -279,7 +306,7 @@ const Navbar = () => {
         )}
         {/* Dropdown menu for user profile (visible on mobile when toggled) */}
         {status === "unauthenticated" && isUserDropdownOpen && (
-          <div className="absolute md:top-8 top-20 md:right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50">
+          <div className="absolute md:hidden top-20  right-4 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50 bac">
             <span className="text-3xl font-mercedes-bold py-2 font-medium">
               Connexion à Votre compte
             </span>
@@ -301,7 +328,7 @@ const Navbar = () => {
           </div>
         )}
         {status === "authenticated" && isUserDropdownOpen && (
-          <div className="absolute md:top-8 top-20 md:right-2 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50">
+          <div className="absolute md:hidden top-16  right-4 bg-white text-zinc px-6 py-4 rounded-md flex flex-col items-start w-[400px] z-50">
             <p className="text-3xl font-mercedes-bold py-2 font-medium">
               Bonjour, {userName || "MercEnthusiast"}
             </p>

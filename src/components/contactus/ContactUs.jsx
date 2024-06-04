@@ -3,7 +3,7 @@ import React from "react";
 const ContactUs = () => {
   return (
     <section className="py-12 my-10 md:px-28 px-4 w-full">
-      <div className="container flex flex-col md:flex-row items-center justify-center w-full">
+      <div className="container flex flex-col md:flex-row items-center justify-between min-w-screen">
         {/* Image */}
         <div className="w-full md:w-1/2 mb-6 md:mb-0 flex-1">
           <img
@@ -13,7 +13,7 @@ const ContactUs = () => {
           />
         </div>
         {/* Form */}
-        <div className="w-full md:w-1/2 h-full">
+        <div className="w-full md:w-1/2 flex-1 h-full lg:pl-40">
           <h2 className="text-2xl md:text-5xl font-mercedes-bold mb-6">
             Vous avez d’autres questions? N’hésitez pas à nous contacter
           </h2>
@@ -96,7 +96,7 @@ const ContactUs = () => {
             </div>
             <button
               type="submit"
-              className="bg-blue-500 text-white px-10 py-4 hover:bg-blue-600"
+              className="bg-blue-500 text-white px-10 py-4 hover:bg-blue-600 w-full"
             >
               Send Message
             </button>

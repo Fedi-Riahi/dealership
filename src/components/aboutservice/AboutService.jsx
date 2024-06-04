@@ -7,7 +7,7 @@ function AboutService() {
       <div className="flex flex-col md:flex-row w-full">
         {/* Left side: Image */}
         <div className="w-full md:w-1/2">
-          <img src="./imageService.png" alt="Car" className="w-full h-auto object-cover" />
+          <img src="./imageService.png" alt="Car" className="w-full h-full object-cover" />
         </div>
         {/* Right side: Title, Description, Button */}
         <div className="w-full md:w-1/2 md:px-20 px-10 py-10 bg-gray-900 flex items-start justify-center flex-col"> {/* Change background color here */}

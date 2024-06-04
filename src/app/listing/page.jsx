@@ -193,7 +193,7 @@ const Listings = () => {
           {/* Load More Button */}
           {displayedListings < listings.length && (
             <button
-              className="bg-blue-500 text-white py-2 px-4 mt-4"
+              className="bg-blue-500 text-white py-3 px-8 hover:bg-blue-600 mt-16"
               onClick={loadMoreListings}
             >
               Charger plus

@@ -54,7 +54,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen my-auto ">
+    <div className="flex flex-col md:flex-row min-h-screen my-auto">
       <div className="flex-1 relative">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-10 p-8">
           <div className="absolute z-10 flex flex-col justify-center items-center">
@@ -62,7 +62,7 @@ export default function LoginForm() {
               src="/log_res.png"
               alt="Logo"
               className="w-24 md:w-48 mb-4"
-            />
+              />
             <h1 className="text-2xl md:text-4xl w-full md:w-1/2 font-mercedes-bold my-4 text-center">
               Se connecter à sfax silver star
             </h1>
@@ -72,13 +72,13 @@ export default function LoginForm() {
           src="/signup.png"
           alt="Registration Image"
           className="w-full h-full object-cover"
-        />
+          />
         <div className="absolute inset-0 bg-black opacity-80"></div>
       </div>
       <form
         className="flex-1 flex flex-col justify-center items-stretch w-full px-6 md:px-20 pt-10 md:pt-20"
         onSubmit={handleSubmit}
-      >
+        >
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <div className="w-full flex items-center justify-evenly my-1">
           <div className="border-t border-gray-300 my-6 flex-grow" />
@@ -103,13 +103,13 @@ export default function LoginForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-          />
+            />
         </div>
         <div className="mb-4">
           <label
             htmlFor="password"
             className="block text-sm font-medium text-gray-700"
-          >
+            >
             Mot de passe
           </label>
           <input
@@ -120,13 +120,13 @@ export default function LoginForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-          />
+            />
         </div>
         <div className="w-full flex flex-col justify-center items-center gap-5 my-4">
           <button
             type="submit"
             className=" font-normal w-full py-5 px-4 border border-transparent  shadow-sm text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          >
+            >
             Connexion
           </button>
           <div className="w-full flex items-center justify-evenly my-1">
@@ -141,5 +141,6 @@ export default function LoginForm() {
         </div>
       </form>
     </div>
+
   );
 }

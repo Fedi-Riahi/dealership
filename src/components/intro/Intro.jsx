@@ -116,7 +116,7 @@ const Intro = ({ introTitle }) => {
         })}
       </div>
       <div className="border-t border-gray-300 mb-16" />
-      <div className="flex flex-col justify-center gap-6 mt-4 md:flex-row md:flex-wrap"> {/* Adjust spacing for mobile */}
+      <div className="grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-1"> {/* Adjust spacing for mobile */}
         {renderCarCards()}
       </div>
     </div>

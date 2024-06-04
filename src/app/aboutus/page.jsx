@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const AboutUs = () => {
@@ -13,9 +14,10 @@ const AboutUs = () => {
           layout="fill"
         />
         <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="text-white text-center w-4/5 md:w-1/2 px-4 z-10">
-          <h1 className="text-3xl md:text-4xl font-bold">Sfax Silver Star</h1>
-          <p className="text-base md:text-lg text-center mt-4">
+        <div className="text-white text-center w-4/5 md:w-1/2 px-4 z-10 flex flex-col items-center">
+          <Image className="" src="/log_res.png" alt="" width={200} height={200}/>
+          <h1 className="text-3xl md:text-4xl font-bold my-4">Sfax Silver Star</h1>
+          <p className="text-base md:text-lg text-center my-16">
             Sfax Silver Star est une concession automobile de renom offrant une
             large gamme de services à sa clientèle, comprenant l&apos;achat de
             véhicules, l&apos;acquisition de pièces détachées et la prise de
@@ -27,12 +29,12 @@ const AboutUs = () => {
       {/* Service Cards Section */}
       <section className="py-12 px-4 md:px-0 ">
         <div className="container mx-auto">
-          <h2 className="text-2xl md:text-3xl font-mercedes-bold mb-4">
+          <h2 className="text-2xl md:text-5xl font-mercedes-bold mb-20">
             Our Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Service Card 1 */}
-            <div className=" p-6 rounded-lg">
+            <div className="  rounded-lg">
               <Image
                 src="/ser1.png"
                 alt="Service 1"
@@ -40,7 +42,7 @@ const AboutUs = () => {
                 width={500}
                 height={300}
               />
-              <h3 className="text-xl font-semibold mt-4">
+              <h3 className="text-xl font-semibold mt-10">
                 Entretien du voiture
               </h3>
               <p className="mt-2">
@@ -49,7 +51,7 @@ const AboutUs = () => {
               </p>
             </div>
             {/* Service Card 2 */}
-            <div className=" p-6 rounded-lg">
+            <div className=" rounded-lg">
               <Image
                 src="/ser2.png"
                 alt="Service 2"
@@ -57,14 +59,14 @@ const AboutUs = () => {
                 width={500}
                 height={300}
               />
-              <h3 className="text-xl font-semibold mt-4">Vente des voitures</h3>
+              <h3 className="text-xl font-semibold mt-10">Vente des voitures</h3>
               <p className="mt-2">
                 Description of service 2 goes here. Lorem ipsum dolor sit amet,
                 consectetur adipiscing elit.
               </p>
             </div>
             {/* Service Card 3 */}
-            <div className=" p-6 rounded-lg">
+            <div className=" rounded-lg">
               <Image
                 src="/ser3.png"
                 alt="Service 3"
@@ -72,7 +74,7 @@ const AboutUs = () => {
                 width={500}
                 height={300}
               />
-              <h3 className="text-xl font-semibold mt-4">
+              <h3 className="text-xl font-semibold mt-10">
                 Vente des pièces voitures
               </h3>
               <p className="mt-2">
@@ -84,41 +86,54 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Maintenance and Repairs Section */}
-      <section className="py-12 px-4 md:px-0 bg-back">
-        <div className="container mx-auto flex flex-col md:flex-row gap-10">
-          <div className="w-full md:w-1/2 mb-4 md:mb-0">
+      <section className="py-12 px-4 md:px-24 bg-back relative">
+        <h2 className="text-2xl md:text-5xl font-mercedes-bold mb-20 ">
+          Frequently Asked Questions
+        </h2>
+        <div className="container mx-auto flex flex-col gap-10">
+          <div className="w-full mb-4 md:mb-0">
             <video
-              src="/sl1.mp4" // Replace with the path to your video file
+              src="/maint.mp4" // Replace with the path to your video file
               autoPlay
               loop
               muted
-              className="w-full h-auto rounded-md"
+              className="w-full h-full rounded-md"
             />
           </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-start">
-            <h2 className="text-2xl md:text-3xl font-mercedes-bold mb-4">
-              Entretien et réparations
-            </h2>
-            <p className="text-base md:text-lg mb-4">
-              Planifiez votre rendez-vous dès maintenant et profitez d’un
-              traitement VIP pour votre précieuse voiture. Nos experts sont
-              prêts à vous accueillir.
-            </p>
-            <button className="bg-blue-500 text-white px-6 md:px-8 py-2 md:py-3 w-fit">
-              Reserver un rendez-vous
-            </button>
+          <div className="flex items-start justify-center w-full  gap-10 my-16">
+            {" "}
+            {/* Add relative positioning here */}
+            <div className="flex-1">
+              <Image
+                src="/appointment-image.png"
+                alt="pixel"
+                width={800}
+                height={400}
+              />
+            </div>
+            <div className="w-full md:w-1/2 flex flex-col justify-start ">
+              <h2 className="text-2xl md:text-5xl font-mercedes-bold mb-4">
+                Entretien et réparations
+              </h2>
+              <p className="text-base md:text-lg my-4">
+                Planifiez votre rendez-vous dès maintenant et profitez d’un
+                traitement VIP pour votre précieuse voiture. Nos experts sont
+                prêts à vous accueillir.
+              </p>
+              <Link href='/appointment' className="bg-blue-500 text-white px-6 md:px-8 py-2 md:py-3 w-fit my-4">
+                Reserver un rendez-vous
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-
       {/* Official Partner Section */}
-      <section className="py-16 px-4 md:px-0 bg-white">
+      <section className="py-16 px-4 md:px-0 ">
         <div className="container mx-auto">
-          <h2 className="text-2xl md:text-3xl font-mercedes-bold mb-4">
+          <h2 className="text-2xl md:text-5xl font-mercedes-bold mb-20">
             Notre partenaire officiel
           </h2>
-          <div className="flex flex-col md:flex-row justify-center items-start mt-10">
+          <div className="flex flex-col md:flex-row justify-center items-start mt-10 gap-20">
             <Image
               src="/pixel.png"
               alt="Partner"
@@ -151,9 +166,9 @@ const AboutUs = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 px-4 md:px-0 bg-white">
+      <section className="py-12 px-4 md:px-0 ">
         <div className="container mx-auto">
-          <h2 className="text-2xl md:text-3xl font-mercedes-bold mb-4">
+          <h2 className="text-2xl md:text-5xl font-mercedes-bold mb-20">
             Frequently Asked Questions
           </h2>
           <div className="mt-10">

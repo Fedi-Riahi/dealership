@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 
 const CarReserve = ({ isOpen, onClose, carId }) => {
@@ -35,15 +35,12 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
       });
 
       if (response.ok) {
-        // Reservation submitted successfully
         setSuccessMessage("Reservation submitted successfully!");
-        // Optionally, you can close the modal after a delay
         setTimeout(() => {
           onClose();
-          setSuccessMessage(""); // Clear the success message after closing the modal
-        }, 2000); // Close the modal after 2 seconds (2000 milliseconds)
+          setSuccessMessage("");
+        }, 2000);
       } else {
-        // If there was an error, log the error message
         const errorMessage = await response.text();
         console.error("Failed to submit reservation:", errorMessage);
       }
@@ -52,13 +49,10 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
     }
   };
 
-  
-  
-
   return (
     isOpen && (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50 w-full">
-        <div className="bg-white p-8 w-2/5 relative backdrop-blur-md">
+        <div className="bg-white p-8  w-[550px] relative backdrop-blur-md rounded-lg">
           <span
             className="close text-zinc font-medium rounded-full py-1 w-fit px-3 flex items-center justify-center absolute right-4 top-4 cursor-pointer text-xl"
             onClick={onClose}
@@ -66,84 +60,67 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
             X
           </span>
 
-          <h2 className="text-2xl font-bold mb-4">Demande de Devis</h2>
+          <h2 className="text-2xl md:text-4xl font-mercedes-bold mb-4">Demande de Devis</h2>
           {successMessage && (
             <div className="bg-green-100 text-green-900 p-3 mb-3 rounded">
               {successMessage}
             </div>
           )}
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="space-y-4">
             <p className="text-gray-600 mb-4">
-              Pour prendre rendez-vous dans notre salle d&apos;exposition, merci de
+              Pour prendre rendez-vous dans notre salle d'exposition, merci de
               remplir ce formulaire et nous te contacterons dans les plus brefs
               délais.
             </p>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between w-full gap-5">
-                <div className="flex flex-1 flex-col space-y-2">
-                  <label htmlFor="firstName" className="text-gray-700">
-                   Nom & Prenom
-                  </label>
-                  <input
-                    id="firstName"
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    placeholder="Nom & Prenom"
-                    className="border border-gray-300  px-4 py-3"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col space-y-2">
-                  <label htmlFor="email" className="text-gray-700">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Email"
-                    className="border border-gray-300  px-4 py-3"
-                  />
-                </div>
+            <div className="flex items-center justify-between gap-4">
+              <div className="space-y-4 flex-1">
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  placeholder="Nom & Prénom"
+                  className="border border-gray-300  px-4 py-3 w-full"
+                />
               </div>
-              <div className="flex items-center justify-between w-full gap-5">
-                <div className="flex flex-1 flex-col space-y-2">
-                  <label htmlFor="phoneNumber" className="text-gray-700">
-                    Telephone
-                  </label>
-                  <input
-                    id="phoneNumber"
-                    type="text"
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
-                    onChange={handleChange}
-                    placeholder="Telephone"
-                    className="border border-gray-300  px-4 py-3"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col space-y-2">
-                  <label htmlFor="date" className="text-gray-700">
-                    Date
-                  </label>
-                  <input
-                    id="date"
-                    type="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    placeholder="Date"
-                    className="border border-gray-300  px-4 py-3"
-                  />
-                </div>
+              <div className="space-y-4 flex-1">
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email"
+                  className="border border-gray-300  px-4 py-3 w-full"
+                />
               </div>
             </div>
-            <button className="w-full py-3 px-auto flex items-center justify-center bg-blue-500 my-10 text-white">
-              Confirm
+            <div className="flex items-center justify-between gap-4">
+              <div className="space-y-4 flex-1">
+                <input
+                  type="text"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  placeholder="Téléphone"
+                  className="border border-gray-300  px-4 py-3 w-full"
+                />
+              </div>
+              <div className="space-y-4 flex-1">
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  placeholder="Date"
+                  className="border border-gray-300  px-4 py-3 w-full"
+                />
+              </div>
+            </div>
+
+            <button className="w-full py-3 px-auto bg-blue-500 my-10 text-white">
+              Confirmer
             </button>
-            <p className="text-sm">
+            <p className="text-xs">
               En soumettant ce formulaire, vous fixerez un rendez-vous de
               service sans engagement et serez contacté dans les 48 heures par
               un conseiller de service.

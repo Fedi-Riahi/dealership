@@ -139,29 +139,29 @@ const ModelDetails = () => {
         {/* Details */}
         <div className="flex flex-col md:gap-10 gap-10 my-20">
           <div className="flex flex-col gap-2">
-            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-center">
+            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
               {model.acceleration.toFixed(1)}
-              <span className="font-normal text-2xl"> S </span>
+              <span className="font-normal text-2xl"> S</span>
             </h1>
-            <span className="text-center">
+            <span className="text-start">
               Accélération 0 - 100 km/h avec Launch Control
             </span>
           </div>
           <div className="flex flex-col">
-            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-center">
+            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
               {model.powerKw}
               <span className="font-normal text-2xl"> kW </span> {model.powerPs}
             </h1>
-            <span className="text-center">
+            <span className="text-start">
               Puissance jusqu&apos;à (kW)/Puissance jusqu&apos;à (PS)
             </span>
           </div>
           <div className="flex flex-col">
-            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-center">
+            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
               {model.maxSpeed}
               <span className="font-normal text-2xl">km/h</span>
             </h1>
-            <span className="text-center">Vitesse maximale</span>
+            <span className="text-start">Vitesse maximale</span>
           </div>
           <button
             className="md:text-xl text-md font-normal px-8 py-3 text-zinc border border-zinc   bg-back hover:bg-zinc/10"

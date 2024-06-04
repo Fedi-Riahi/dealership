@@ -68,7 +68,7 @@ const CarReserve = ({ isOpen, onClose, carId }) => {
           )}
           <form onSubmit={handleSubmit} className="space-y-4">
             <p className="text-gray-600 mb-4">
-              Pour prendre rendez-vous dans notre salle d'exposition, merci de
+              Pour prendre rendez-vous dans notre salle d&aposexposition, merci de
               remplir ce formulaire et nous te contacterons dans les plus brefs
               délais.
             </p>

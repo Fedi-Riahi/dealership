@@ -1,6 +1,10 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function Newsletter() {
+  const [ref, inView] = useInView({ triggerOnce: false });
+
   const bgImageStyle = {
     backgroundImage: `url('/bg-news.png')`, // Specify the URL of the background image
     backgroundSize: "cover",
@@ -9,16 +13,28 @@ function Newsletter() {
 
   return (
     <div
-      className="flex items-center justify-center py-10 w-full md:px-20 px-4"
+      ref={ref}
+      className="flex items-center justify-center py-10 w-full md:px-20 px-4 overflow-x-hidden"
       style={bgImageStyle}
     >
       <div className="flex flex-col md:flex-row items-center justify-center w-full md:space-x-8">
         {/* Left side: Image */}
-        <div className="hidden md:block w-full md:w-1/2 order-1 md:order-2 animate-slideLeft">
+        <motion.div
+          initial={{ x: 800 }}
+          animate={inView ? { x: 100 } : { x: 800 }}
+          transition={{ duration: 1, type: "Tween", stiffness: 120, delay: inView ? 1 : 0 }}
+          className="hidden md:block w-full md:w-1/2 order-1 md:order-2 overflow-hidden"
+          style={{ overflow: "hidden" }} 
+        >
           <img src="/car-news.png" alt="Newsletter" className="w-full h-auto" />
-        </div>
+        </motion.div>
         {/* Right side: Title, Text, and Newsletter Input */}
-        <div className="w-full md:w-1/2 order-2  md:order-1 animate-slideRight">
+        <motion.div
+          initial={{ x: -800 }}
+          animate={inView ? { x: 0 } : { x: -800 }}
+          transition={{ duration: 1, type: "Tween", stiffness: 120, delay: inView ? 1 : 0 }}
+          className="w-full md:w-1/2 order-2  md:order-1"
+        >
           <div className="mb-4">
             <h2 className="text-5xl font-mercedes-bold py-4 text-white  w-3/4">
               Voulez-vous recevoir des offres spéciales ?
@@ -37,7 +53,7 @@ function Newsletter() {
               Subscribe
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

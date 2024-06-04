@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import ListingCard from "@/components/listingCard/ListingCard";
 import ModelFilter from "@/components/modelFilter/ModelFilter";
 import TypeFilter from "@/components/typefilter/TypeFilter";
+import { motion } from "framer-motion";
 import TransmissionFilter from "@/components/transmissionFilter/TransmissionFilter";
 
 const Listings = () => {
@@ -182,12 +183,15 @@ const Listings = () => {
           id="listings-container"
         >
           <div className="grid md:grid-cols-3 grid-cols-1 gap-5 w-full">
-            {listings.slice(0, displayedListings).map((listing) => (
-              <ListingCard
-                listing={listing}
-                id={listing._id}
+          {listings.slice(0, displayedListings).map((listing, index) => (
+              <motion.div
                 key={listing._id}
-              />
+                initial={{ opacity: 0, y: 50 * (index + 1) }} // Initial animation properties
+                animate={{ opacity: 1, y: 0 }} // Animation properties when in view
+                transition={{ duration: 1.5, delay: 0.5 * index }} // Transition duration
+              >
+                <ListingCard listing={listing} id={listing._id} />
+              </motion.div>
             ))}
           </div>
           {/* Load More Button */}

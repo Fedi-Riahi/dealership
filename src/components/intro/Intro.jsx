@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 const Intro = ({ introTitle }) => {
   const [carModels, setCarModels] = useState([]);
-  const [selectedType, setSelectedType] = useState('Sedan'); // Default selected type is Sedan
+  const [selectedType, setSelectedType] = useState('SUV'); // Default selected type is Sedan
   const [isMounted, setIsMounted] = useState(false); // State to track component mount
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import Link from "next/link";
 import CarPartCard from "@/components/carpartcard/CarPartCard";
 import PartsFilter from "@/components/partfilter/PartsFilter";
 import CompatibleCarModelsFilter from "@/components/compatibleFilter/CompatibleCarModelsFilter ";
-
+import { motion } from "framer-motion";
 const CarParts = () => {
   const [carParts, setCarParts] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
@@ -144,10 +144,15 @@ const CarParts = () => {
         {/* Car parts listing section */}
         <div className="w-full flex items-center flex-col mb-40" id="car-parts-container">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 w-full justify-center items-center">
-            {filteredCarParts.slice(0, displayedCarParts).map((part) => (
-              <div key={part._id} className="flex justify-center  w-full">
+            {filteredCarParts.slice(0, displayedCarParts).map((part, index) => (
+              <motion.div
+              key={part._id}
+              initial={{ opacity: 0, y: 50 * (index + 1) }} // Initial animation properties
+              animate={{ opacity: 1, y: 0 }} // Animation properties when in view
+              transition={{ duration: 1.5, delay: 0.5 * index }} // Transition duration
+            >
                 <CarPartCard part={part} id={part._id} />
-              </div>
+              </motion.div>
             ))}
           </div>
           {/* Load More Button */}

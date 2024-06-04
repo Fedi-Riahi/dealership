@@ -13,8 +13,10 @@ import { GiSpeedometer } from "react-icons/gi";
 import { LuFuel } from "react-icons/lu";
 import { GiGearStickPattern } from "react-icons/gi";
 import { useSession } from "next-auth/react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+
+import { motion } from "framer-motion";
+
 const ModelDetails = () => {
   const pathname = usePathname();
   const id = pathname.split("/").pop();
@@ -69,7 +71,7 @@ const ModelDetails = () => {
       setIsModalOpenReserve(true);
     } else {
       // Display a message to prompt the user to log in
-    alert("Please log in to reserve a car.");
+      alert("Please log in to reserve a car.");
     }
   };
 
@@ -83,7 +85,7 @@ const ModelDetails = () => {
 
   return (
     <div>
-      <div className=" flex flex-col items-center justify-center h-full">
+      <div className=" flex flex-col items-center justify-center h-full overflow-x-hidden overflow-y-hidden">
         {/* Display the cardImages[2] */}
         <div className="w-full flex flex-col items-center justify-center ">
           <h1
@@ -91,13 +93,19 @@ const ModelDetails = () => {
           >
             Mercedes-Benz
           </h1>
-          <Image
-            src={model.cardImages[1]}
-            alt="Car Image"
-            width={1100}
-            height={1100}
-            quality={100}
-          />
+          <motion.div
+            initial={{ x: 1500 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1.5,delay:0.5, type: "Tween", stiffness: 120 }}
+          >
+            <Image
+              src={model.cardImages[1]}
+              alt="Car Image"
+              width={1100}
+              height={1100}
+              quality={100}
+            />
+          </motion.div>
           {/* Display the h1 elements under the image */}
           <div className="relative flex flex-col items-center justify-center  gap-5 w-full">
             <h1 className="md:text-4xl font-normal mt-4 absolute md:-top-64 -top-28">
@@ -123,6 +131,7 @@ const ModelDetails = () => {
           </div>
         </div>
       </div>
+
       <CarReserve
         isOpen={isModalOpenReserve}
         onClose={handleModalCloseReserve}
@@ -172,6 +181,11 @@ const ModelDetails = () => {
         </div>
         {/* Image */}
         <div className="w-full hidden md:block">
+        <motion.div
+            initial={{ x: 1500 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1.5,delay:0.5, type: "Tween", stiffness: 120 }}
+          >
           <Image
             src={model.cardImages[0]}
             alt="Details Image"
@@ -179,6 +193,7 @@ const ModelDetails = () => {
             height={1100}
             className="ml-14 w-full object-cover h-full"
           />
+          </motion.div>
         </div>
       </div>
 

@@ -1,0 +1,16 @@
+/* features.module.css */
+
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+  
+  .animateIn {
+    animation: slideInFromLeft 2s forwards;
+    animation-delay: 2s;
+  }
+  

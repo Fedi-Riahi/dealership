@@ -37,7 +37,7 @@ const Intro = ({ introTitle }) => {
   const renderCarCards = () => {
     const filteredModels = carModels.filter(car => car.type === selectedType); // Filter car models based on selected type
     return filteredModels.map(car => (
-      <div className={`w-screen bg-white relative flex flex-col transition-transform duration-500 rounded-lg transform${
+      <div className={`max-w-md bg-white relative flex flex-col transition-transform duration-500 rounded-lg transform${
           isMounted ? 'translate-y-0 opacity-100 animate-slideUp' : 'translate-y-10 opacity-0'
         }`} key={car._id}>
         <div className="flex flex-col items-start justify-center w-full">
@@ -116,7 +116,7 @@ const Intro = ({ introTitle }) => {
         })}
       </div>
       <div className="border-t border-gray-300 mb-16" />
-      <div className="grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-1 gap-10"> {/* Adjust spacing for mobile */}
+      <div className="grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-1 gap-4"> {/* Adjust spacing for mobile */}
         {renderCarCards()}
       </div>
     </div>

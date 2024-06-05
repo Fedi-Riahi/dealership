@@ -26,6 +26,7 @@ const ModelDetails = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenReserve, setIsModalOpenReserve] = useState(false);
   const { status, data: session } = useSession();
+
   useEffect(() => {
     const fetchModelData = async () => {
       try {
@@ -56,7 +57,8 @@ const ModelDetails = () => {
 
     fetchModelData();
   }, [id]);
-
+  
+  
   const handleModalOpen = () => {
     setIsModalOpen(true);
   };
@@ -148,8 +150,8 @@ const ModelDetails = () => {
         {/* Details */}
         <div className="flex flex-col md:gap-10 gap-10 my-20">
           <div className="flex flex-col gap-2">
-            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
-              {model.acceleration.toFixed(1)}
+          <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
+              {model.acceleration}
               <span className="font-normal text-2xl"> S</span>
             </h1>
             <span className="text-start">
@@ -157,10 +159,11 @@ const ModelDetails = () => {
             </span>
           </div>
           <div className="flex flex-col">
-            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
-              {model.powerKw}
-              <span className="font-normal text-2xl"> kW </span> {model.powerPs}
-            </h1>
+          <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
+          <span>{model.powerKw}</span>
+            <span className="font-normal text-2xl"> kW </span>{" "}
+            <span>{model.powerPs}</span>
+          </h1>
             <span className="text-start">
               Puissance jusqu&apos;à (kW)/Puissance jusqu&apos;à (PS)
             </span>

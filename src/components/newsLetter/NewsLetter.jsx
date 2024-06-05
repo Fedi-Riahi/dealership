@@ -22,9 +22,14 @@ function Newsletter() {
         <motion.div
           initial={{ x: 800 }}
           animate={inView ? { x: 100 } : { x: 800 }}
-          transition={{ duration: 1, type: "Tween", stiffness: 120, delay: inView ? 1 : 0 }}
+          transition={{
+            duration: 0.5,
+            type: "Tween",
+            stiffness: 120,
+            delay: inView ? 1 : 0,
+          }}
           className="hidden md:block w-full md:w-1/2 order-1 md:order-2 overflow-hidden"
-          style={{ overflow: "hidden" }} 
+          style={{ overflow: "hidden" }}
         >
           <img src="/car-news.png" alt="Newsletter" className="w-full h-auto" />
         </motion.div>
@@ -32,7 +37,12 @@ function Newsletter() {
         <motion.div
           initial={{ x: -800 }}
           animate={inView ? { x: 0 } : { x: -800 }}
-          transition={{ duration: 1, type: "Tween", stiffness: 120, delay: inView ? 1 : 0 }}
+          transition={{
+            duration: 0.5,
+            type: "Tween",
+            stiffness: 120,
+            delay: inView ? 1 : 0,
+          }}
           className="w-full md:w-1/2 order-2  md:order-1"
         >
           <div className="mb-4">
@@ -40,7 +50,9 @@ function Newsletter() {
               Voulez-vous recevoir des offres spéciales ?
             </h2>
             <p className="text-gray-300 w-full md:w-3/4 py-4 text-lg">
-              Soyez le premier à recevoir toutes les informations sur nos produits et nos nouvelles voitures par e-mail en vous inscrivant à notre liste de diffusion.
+              Soyez le premier à recevoir toutes les informations sur nos
+              produits et nos nouvelles voitures par e-mail en vous inscrivant à
+              notre liste de diffusion.
             </p>
           </div>
           <div className="flex flex-col md:flex-row items-center space-y-4 my-4 md:space-y-0 md:space-x-4">
@@ -49,9 +61,25 @@ function Newsletter() {
               placeholder="Entrez votre adresse email"
               className="px-4 py-5 w-full md:w-2/4"
             />
-            <button className="bg-black text-white text-lg px-10 py-5 hover:bg-zinc transition duration-300 mt-4 md:mt-0 ">
-              Subscribe
-            </button>
+            <motion.button
+              initial={{ x: -800 }}
+              animate={inView ? { x: 0 } : { x: -800 }}
+              transition={{
+                duration: 0.5,
+                type: "Tween",
+                stiffness: 120,
+                delay: inView ? 1 : 0,
+              }}
+              className="bg-black text-white text-lg px-10 py-5 hover:bg-zinc transition duration-300 mt-4 md:mt-0 "
+            >
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ delay: 1.5 }}
+              >
+                Subscribe
+              </motion.span>
+            </motion.button>
           </div>
         </motion.div>
       </div>

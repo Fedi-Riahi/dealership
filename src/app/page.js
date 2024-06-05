@@ -1,6 +1,6 @@
 "use client"
-import { motion } from "framer-motion";
-import React, { useRef } from "react";
+import { motion, useAnimation } from "framer-motion";
+import React, { useRef, useEffect } from "react";
 import Hero from "@/components/hero/Hero";
 import Intro from "@/components/intro/Intro";
 import AboutService from "@/components/aboutservice/AboutService";
@@ -13,13 +13,20 @@ import { useInView } from "react-intersection-observer";
 
 const AnimatedComponent = ({ children }) => {
   const [ref, inView] = useInView({ triggerOnce: true });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ opacity: 1, y: 0 });
+    }
+  }, [controls, inView]);
 
   return (
     <motion.div
       ref={ref}
-      initial={{ y: 100 }}
-      animate={{ y: inView ? 0 : 100 }}
-      transition={{ duration: 2, ease: "linear"}}
+      initial={{ opacity: 0, y: 100 }}
+      animate={controls}
+      transition={{ duration: 1, ease: "easeOut" }}
     >
       {children}
     </motion.div>
@@ -30,7 +37,7 @@ export default function Home() {
   return (
     <div className="">
       <Hero />
-      <main className="flex flex-col items-center justify-between pt-40">
+      <main className="flex flex-col items-center justify-between pt-28">
         <div className="w-full">
           <AnimatedComponent>
             <Intro />

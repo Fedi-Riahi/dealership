@@ -89,7 +89,7 @@ const Listings = () => {
   return (
     <div className="md:px-20 sm:px-5 my-28">
       <div className="flex items-center justify-between w-full mt-4 mb-5">
-        <h3 className=" md:w-3/5 md:text-4xl sm:text-lg font-mercedes-bold w-full mx-4">
+        <h3 className=" md:w-3/5 md:text-5xl sm:text-lg font-mercedes-bold w-full mx-4">
           Sélectionnez votre Mercedes-Benz de rêve
         </h3>
         <div className="flex flex-col gap-1 w-2/5">

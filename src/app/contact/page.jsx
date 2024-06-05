@@ -2,7 +2,7 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="my-10 mx-4 md:mx-60">
+    <div className="my-10 mx-4 md:mx-20">
       <h1 className="text-5xl text-zinc font-mercedes-bold my-8 text-left">Contact us</h1>
       <div className="contact-page flex flex-col items-center">
         <div className="map-container w-full ">
@@ -52,7 +52,7 @@ const Contact = () => {
               </button>
             </form>
           </div>
-          <div className="company-info w-full md:w-1/2 border border-gray-300 mt-2 md:mt-0 px-6 py-6">
+          <div className="company-info w-full md:w-1/2 border border-gray-300 mt-2 md:mt-0 px-6 py-6 bg-gray-100">
             {/* Company info */}
             <h2 className="text-xl font-semibold mb-4 text-center md:text-left">
               Coordonnées de contact

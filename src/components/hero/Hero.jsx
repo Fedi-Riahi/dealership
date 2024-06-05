@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 
+
 function Hero() {
   const videoRef = useRef(null);
   const [showTextAndButtons, setShowTextAndButtons] = useState(false);
@@ -39,6 +40,7 @@ function Hero() {
           <Link href='/listing' className="bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 lg:px-10 lg:py-4 mt-8 z-10 relative text-lg lg:text-md">
             En savoir plus
           </Link>
+
         </div>
       )}
     </div>

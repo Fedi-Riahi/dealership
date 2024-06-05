@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { motion, useAnimation } from "framer-motion";
 import React, { useRef, useEffect } from "react";
 import Hero from "@/components/hero/Hero";
@@ -8,8 +8,8 @@ import Latest from "@/components/latest/Latest";
 import ContactUs from "@/components/contactus/ContactUs";
 import Featured from "@/components/Featured/Featured";
 import Newsletter from "@/components/newsLetter/NewsLetter";
-import styles from "./features.module.css"; // Import the CSS module
 import { useInView } from "react-intersection-observer";
+import VoiceAssistant from "@/components/voiceAssistant/VoiceAssistant";
 
 const AnimatedComponent = ({ children }) => {
   const [ref, inView] = useInView({ triggerOnce: true });
@@ -36,6 +36,7 @@ const AnimatedComponent = ({ children }) => {
 export default function Home() {
   return (
     <div className="">
+
       <Hero />
       <main className="flex flex-col items-center justify-between pt-28">
         <div className="w-full">

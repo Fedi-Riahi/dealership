@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar/Navbar";
 import GlobalState from "./context/page";
 import { NextAuthProvider } from "./Providers";
 import Footer from "@/components/footer/Footer";
+import VoiceAssistant from "@/components/voiceAssistant/VoiceAssistant";
 
 
 const inter = Inter({ subsets: ["latin"]});
@@ -19,8 +20,11 @@ export default function RootLayout({ children }) {
     <NextAuthProvider>
       <GlobalState>
         <html lang="en">
-          <body className="mx-auto max-w-screen-4xl bg-back">
+          <body className="mx-auto max-w-screen-4xl bg-back relative">
             <Navbar />
+            <div className="top-50 right-10 absolute z-40">
+              <VoiceAssistant />
+              </div>
             <div className="">
               
               {children}

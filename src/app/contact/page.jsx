@@ -9,16 +9,16 @@ const Contact = () => {
           {/* Your map component here */}
           {/* You can use an iframe with a map embedded from a service like Google Maps */}
           <iframe
-            className="map w-full h-96 md:h-100"
+            className="map w-full h-100 md:h-100"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.2929490420383!2d10.768433712689216!3d34.7482126171773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1301d3fad8270c49%3A0x6c925dffb8665a28!2sMercedes-Benz%20-%20Sfax%20Silver%20Star%20-%20Agent%20agr%C3%A9%C3%A9%20Le%20Moteur!5e0!3m2!1sen!2stn!4v1714640109944!5m2!1sen!2stn"
             width="100%"
-            height="400"
+            height="500"
             allowFullScreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-        <div className="contact-info-container w-full mt-8 flex flex-col md:flex-row justify-center">
+        <div className="contact-info-container w-full my-20 flex flex-col md:flex-row justify-center gap-10">
           <div className="contact-form w-full md:w-1/2 md:mr-8">
             {/* Your contact form component here */}
             {/* Example form */}
@@ -48,13 +48,13 @@ const Contact = () => {
                 ></textarea>
               </div>
               <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white px-14 py-3">
-                Send
+                Envoyer
               </button>
             </form>
           </div>
-          <div className="company-info w-full md:w-1/2 border border-gray-300 mt-2 md:mt-0 px-6 py-6 bg-gray-100">
+          <div className="company-info w-full md:w-1/2 border border-gray-300 mt-2 md:mt-0 px-6 py-6 bg-blue-50">
             {/* Company info */}
-            <h2 className="text-xl font-semibold mb-4 text-center md:text-left">
+            <h2 className="text-3xl font-mercedes-bold mb-4 text-center md:text-left">
               Coordonnées de contact
             </h2>
             <p className="my-4 text-center md:text-left">

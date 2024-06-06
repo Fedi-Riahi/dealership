@@ -35,7 +35,7 @@ const MyModel = () => {
         <Suspense fallback={null}>
           <Car cameraUpAndDown={cameraUpAndDown} />
         </Suspense>
-        <Environment preset="city" />
+        <Environment preset="sunset" />
       </Canvas>
     </div>
   );

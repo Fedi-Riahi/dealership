@@ -14,8 +14,8 @@ import { LuFuel } from "react-icons/lu";
 import { GiGearStickPattern } from "react-icons/gi";
 import { useSession } from "next-auth/react";
 import "react-toastify/dist/ReactToastify.css";
-
 import { motion } from "framer-motion";
+import { useSpring, animated } from "@react-spring/web";
 
 const ModelDetails = () => {
   const pathname = usePathname();
@@ -57,8 +57,7 @@ const ModelDetails = () => {
 
     fetchModelData();
   }, [id]);
-  
-  
+
   const handleModalOpen = () => {
     setIsModalOpen(true);
   };
@@ -80,6 +79,30 @@ const ModelDetails = () => {
   const handleModalCloseReserve = () => {
     setIsModalOpenReserve(false);
   };
+  const powerKwProps = useSpring({
+    powerKw: model ? model.powerKw : 0,
+    from: { powerKw: 0 },
+    config: { duration: 2000 },
+    delay:2
+  });
+  const powerPsProps = useSpring({
+    powerPs: model ? model.powerPs : 0,
+    from: { powerPs: 0 },
+    config: { duration: 2000 },
+    delay:2
+  });
+  const maxSpeedProps = useSpring({
+    maxSpeed: model ? model.maxSpeed : 0,
+    from: { maxSpeed: 0 },
+    config: { duration: 2000 },
+     delay:2
+  });
+  const accelerationProps = useSpring({
+    acceleration: model ? model.acceleration : 0,
+    from: { acceleration: 0 },
+    config: { duration: 2000 },
+     delay:2
+  });
 
   if (!model) {
     return <div className="text-center">Loading...</div>;
@@ -98,7 +121,12 @@ const ModelDetails = () => {
           <motion.div
             initial={{ x: 1500 }}
             animate={{ x: 0 }}
-            transition={{ duration: 1.5,delay:0.5, type: "Tween", stiffness: 120 }}
+            transition={{
+              duration: 1.5,
+              delay: 0.5,
+              type: "Tween",
+              stiffness: 120,
+            }}
           >
             <Image
               src={model.cardImages[1]}
@@ -150,8 +178,10 @@ const ModelDetails = () => {
         {/* Details */}
         <div className="flex flex-col md:gap-10 gap-10 my-20">
           <div className="flex flex-col gap-2">
-          <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
-              {model.acceleration}
+            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
+              <animated.span>
+                {accelerationProps.acceleration.to((val) => val.toFixed(1))}
+              </animated.span>
               <span className="font-normal text-2xl"> S</span>
             </h1>
             <span className="text-start">
@@ -159,19 +189,23 @@ const ModelDetails = () => {
             </span>
           </div>
           <div className="flex flex-col">
-          <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
-          <span>{model.powerKw}</span>
-            <span className="font-normal text-2xl"> kW </span>{" "}
-            <span>{model.powerPs}</span>
-          </h1>
+            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
+              <animated.span>
+                {powerKwProps.powerKw.to((val) => Math.round(val))}
+              </animated.span>
+              <span className="font-normal text-2xl"> kW </span>{" "}
+
+            </h1>
             <span className="text-start">
               Puissance jusqu&apos;à (kW)/Puissance jusqu&apos;à (PS)
             </span>
           </div>
           <div className="flex flex-col">
-            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start">
-              {model.maxSpeed}
-              <span className="font-normal text-2xl">km/h</span>
+            <h1 className="font-normal md:text-9xl text-6xl mb-4 text-start flex items-end">
+              <animated.span>
+                {maxSpeedProps.maxSpeed.to((val) => Math.round(val))}
+              </animated.span>
+              <span className="font-normal text-2xl"> km/h</span>
             </h1>
             <span className="text-start">Vitesse maximale</span>
           </div>
@@ -184,18 +218,23 @@ const ModelDetails = () => {
         </div>
         {/* Image */}
         <div className="w-full hidden md:block">
-        <motion.div
+          <motion.div
             initial={{ x: 1500 }}
             animate={{ x: 0 }}
-            transition={{ duration: 1.5,delay:0.5, type: "Tween", stiffness: 120 }}
+            transition={{
+              duration: 1.5,
+              delay: 0.5,
+              type: "Tween",
+              stiffness: 120,
+            }}
           >
-          <Image
-            src={model.cardImages[0]}
-            alt="Details Image"
-            width={1200}
-            height={1100}
-            className="ml-14 w-full object-cover h-full"
-          />
+            <Image
+              src={model.cardImages[0]}
+              alt="Details Image"
+              width={1200}
+              height={1100}
+              className="ml-14 w-full object-cover h-full"
+            />
           </motion.div>
         </div>
       </div>

@@ -52,7 +52,7 @@ const Contact = () => {
               </button>
             </form>
           </div>
-          <div className="company-info w-full md:w-1/2 border border-gray-300 mt-2 md:mt-0 px-6 py-6 bg-blue-50">
+          <div className="company-info w-full md:w-1/2 border border-gray-300 mt-2 md:mt-0 px-6 py-6 bg-white">
             {/* Company info */}
             <h2 className="text-3xl font-mercedes-bold mb-4 text-center md:text-left">
               Coordonnées de contact

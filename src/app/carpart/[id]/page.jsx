@@ -145,9 +145,9 @@ const PartDetails = () => {
                 <h2 className="font-semibold text-lg mt-2 line-clamp-1">
                   {similarPart.name}
                 </h2>
-                <p className="text-gray-500">{similarPart.price} DT</p>
+                <p className="text-zinc font-medium text-lg py-6">{similarPart.price} DT</p>
                 <button
-                  className="text-white bg-blue-500 hover:underline mt-2 w-full py-2 flex items-center justify-center gap-2"
+                  className="text-white bg-blue-500 hover:underline mt-2 w-full py-4 flex items-center justify-center gap-2"
                   onClick={() => handleAddToCart(similarPart)}
                 >
                   <CiShoppingCart className="h-5 w-5" />

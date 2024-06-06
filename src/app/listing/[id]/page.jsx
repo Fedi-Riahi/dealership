@@ -340,14 +340,14 @@ const ModelDetails = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center w-full px-auto my-20">
-        <h1 className="text-4xl font-mercedes-bold mb-8 text-left w-full px-20">
+      <div className="flex flex-col items-center justify-center w-full px-auto my-20 px-20">
+        <h1 className="text-4xl font-mercedes-bold mb-8 text-left w-full ">
           Modèles de voitures similaires
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {similarModels.slice(0, 4).map((similarModel) => (
             <div
-              className="flex flex-col items-start justify-center w-full"
+              className="flex flex-col items-start justify-center w-full bg-white p-2"
               key={similarModel._id}
             >
               <div className="px-5 py-2">

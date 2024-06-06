@@ -83,25 +83,25 @@ const ModelDetails = () => {
     powerKw: model ? model.powerKw : 0,
     from: { powerKw: 0 },
     config: { duration: 2000 },
-    delay:2
+    delay:6
   });
   const powerPsProps = useSpring({
     powerPs: model ? model.powerPs : 0,
     from: { powerPs: 0 },
     config: { duration: 2000 },
-    delay:2
+    delay:6
   });
   const maxSpeedProps = useSpring({
     maxSpeed: model ? model.maxSpeed : 0,
     from: { maxSpeed: 0 },
     config: { duration: 2000 },
-     delay:2
+     delay:6
   });
   const accelerationProps = useSpring({
     acceleration: model ? model.acceleration : 0,
     from: { acceleration: 0 },
     config: { duration: 2000 },
-     delay:2
+     delay:6
   });
 
   if (!model) {

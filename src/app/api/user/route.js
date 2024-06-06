@@ -4,7 +4,7 @@ import User from '@/models/User';
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-    const { email, password } = await request.json();
+    const { email, password, firstName , lastName } = await request.json();
 
     try {
         await connectDatabase();
@@ -16,7 +16,7 @@ export async function POST(request) {
         }
 
         // Create new user if not already exists
-        await User.create({ email, password });
+        await User.create({ email, password, firstName , lastName  });
         return NextResponse.json({ message: "User registered" }, { status: 201 });
     } catch (error) {
         console.error("Error saving user email:", error);

@@ -11,7 +11,7 @@ function FeatureSection() {
     <div ref={ref} className="flex flex-col items-center justify-center py-10 relative my-4 mx-5 md:mx-24 lg:mx-40 xl:mx-96">
       {inView && (
         <motion.div
-          initial={{ y: -500 }}
+          initial={{ y: 500 }}
           animate={{ y: 0 }}
           transition={{ duration: 1, type: "Tween", stiffness: 120 }}
           className="w-full md:w-4/5 h-auto mb-8 -z-10 overflow-hidden"

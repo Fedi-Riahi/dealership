@@ -23,7 +23,7 @@ const Contact = () => {
             {/* Your contact form component here */}
             {/* Example form */}
             <h1 className="text-zinc my-2 text-xl text-center md:text-left">
-              Vous avez des questions? N’hésitez pas à nous contacter
+              Vous avez des questions? N&apos;hésitez pas à nous contacter
             </h1>
             <form className="my-6">
               {/* Form fields */}
@@ -63,7 +63,7 @@ const Contact = () => {
   <div className="mb-4">
     <p className="text-xl font-normal">Address</p>
     <p className="text-md text-gray-500">
-      123 Rue de l'Innovation, 75000 Tunis - Tunisie
+      123 Rue de l&apos;Innovation, 75000 Tunis - Tunisie
     </p>
   </div>
   <div className="mb-4">

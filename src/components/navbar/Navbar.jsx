@@ -64,19 +64,23 @@ const Navbar = () => {
 
         {/* Logo in the center for mobile */}
         <div className="flex-1 flex justify-center md:justify-start">
+          <div className="flex items-center justify-center">
+
           <Link href="/" className="hidden md:block">
             <Image
-              src="/log.png"
-              alt="Silver Star Sfax"
-              width={190}
+              src="/benz.png"
+              alt="Silver Star"
+              width={80}
               height={80}
               className="cursor-pointer"
-            />
+              />
           </Link>
+              </div>
+          <h2 className="flex items-center justify-center font-mercedes-bold text-2xl pl-5">Silver Star</h2>
           <Link href="/" className="block md:hidden">
             <Image
               src="/log_res.png"
-              alt="Silver Star Sfax"
+              alt="Silver Star"
               width={80}
               height={80}
               className="cursor-pointer"
@@ -117,9 +121,7 @@ const Navbar = () => {
 
         {/* Icons and button on the right */}
         <div className="hidden md:flex items-center gap-6 flex-1 justify-end">
-          <Link className="text-white" href="/">
-            <MagnifyingGlassIcon className="h-6 w-6 text-white" />
-          </Link>
+
           <Link href="/cart" className="relative text-white">
             <ShoppingCartIcon className="h-6 w-6" />
             {cartItems.length > 0 && (

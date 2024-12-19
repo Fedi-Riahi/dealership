@@ -9,7 +9,7 @@ import ContactUs from "@/components/contactus/ContactUs";
 import Featured from "@/components/Featured/Featured";
 import Newsletter from "@/components/newsLetter/NewsLetter";
 import { useInView } from "react-intersection-observer";
-import VoiceAssistant from "@/components/voiceAssistant/VoiceAssistant";
+
 
 const AnimatedComponent = ({ children }) => {
   const [ref, inView] = useInView({ triggerOnce: true });

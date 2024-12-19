@@ -44,7 +44,7 @@ const AboutUs = () => {
         className="flex flex-col items-center justify-center bg-cover bg-center h-screen relative"
       >
         <Image
-          src="/about-bg.png"
+          src="/MStore.jpg"
           alt=""
           className="w-full h-full object-cover"
           layout="fill"
@@ -52,12 +52,9 @@ const AboutUs = () => {
         <div className="absolute inset-0 bg-gradient-to-bt opacity-50"></div>
         <div className="absolute inset-0 flex items-end justify-center">
           <div className="w-full bg-black bg-opacity-70 text-white text-center px-4 py-8 z-10 flex flex-col items-center rounded-lg">
-            <Image src="/log_res.png" alt="" width={200} height={200} />
-            <h1 className="text-3xl md:text-3xl font-bold my-4">
-              Sfax Silver Star
-            </h1>
+            <Image src="/benz.png" alt="" width={90} height={90} />
             <p className="text-base md:text-2xl text-center my-24 w-1/2">
-              Sfax Silver Star est une concession automobile de renom offrant
+              Silver Star est une concession automobile de renom offrant
               une large gamme de services à sa clientèle, comprenant
               l&apos;achat de véhicules, l&apos;acquisition de pièces détachées
               et la prise de rendez-vous pour des contrôles de maintenance des

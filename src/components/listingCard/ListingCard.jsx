@@ -120,7 +120,7 @@ const ListingCard = ({ listing }) => {
             <div className=" flex items-center justify-center gap-1 cursor-pointer w-full">
               <Link
               href={`/listing/${listing._id}`}
-                className="bg-blue-500 text-white  py-4 text-lg px-8 font-normal w-full text-center"
+                className="bg-blue-500 hover:hover:bg-blue-600 transition-all duration-300 text-white  py-4 text-lg px-8 font-normal w-full text-center"
               >
                 Détails techniques
               </Link>

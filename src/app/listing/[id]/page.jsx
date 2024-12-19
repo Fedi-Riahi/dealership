@@ -20,12 +20,18 @@ import { useSpring, animated } from "@react-spring/web";
 const ModelDetails = () => {
   const pathname = usePathname();
   const id = pathname.split("/").pop();
-  const isDesktop = useRef(window.innerWidth >= 1024);
+  const [isDesktop, setIsDesktop] = useState(false);
   const [model, setModel] = useState(null);
   const [similarModels, setSimilarModels] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenReserve, setIsModalOpenReserve] = useState(false);
   const { status, data: session } = useSession();
+
+
+  useEffect(() => {
+    // Check if the window object is available (client-side)
+    setIsDesktop(window.innerWidth >= 1024);
+  }, []);
 
   useEffect(() => {
     const fetchModelData = async () => {

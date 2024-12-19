@@ -1,16 +1,31 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer className="bg-black text-white py-12">
       <div className="container mx-auto px-4">
         {/* Title and Description */}
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold">Sfax Silver Star</h2>
-          <p className="mt-2">
-            Recevez des mises à jour, des conseils d’achat et plus encore!{" "}
+        <div className="text-center mb-8 flex justify-center items-center">
+        <div className="text-center mb-8 flex justify-center items-center flex-col">
+
+        <Link href="/" className="hidden md:block">
+            <Image
+              src="/benz.png"
+              alt="Silver Star"
+              width={80}
+              height={80}
+              className="cursor-pointer"
+              />
+          </Link>
+          <p className="mt-2 font-mercedes-bold text-4xl">
+            Silver Star{" "}
           </p>
+          <p className="mt-2">
+            Your ultimate online destination for Mercedes-Benz cars, genuine parts, and after-sales services.{" "}
+          </p>
+              </div>
         </div>
 
         {/* Newsletter Input */}

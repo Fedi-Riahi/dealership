@@ -98,7 +98,7 @@ const ContactUs = () => {
               type="submit"
               className="bg-blue-500 text-white px-10 py-4 hover:bg-blue-600 w-full"
             >
-              Send Message
+              Envoyer un Message
             </button>
           </form>
         </div>

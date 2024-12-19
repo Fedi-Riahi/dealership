@@ -106,7 +106,7 @@ const VoiceAssistant = () => {
       ) : (
         <div className="flex items-center">
           <BsSoundwave className="text-white h-6 w-6" />
-          <span className="mx-2">Voice</span>
+          <span className="mx-2">Voice Search Model</span>
         </div>
       )}
     </button>
